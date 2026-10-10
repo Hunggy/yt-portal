@@ -95,6 +95,11 @@
 
 <script>
 const LS_KEY = "ytp.instance";
+const FALLBACK = [
+  "https://piped.video", "https://piped.adminforge.de", "https://piped.private.coffee",
+  "https://piped.mha.fi", "https://yewtu.be", "https://invidious.nerdvpn.de",
+  "https://iv.melmac.space", "https://inv.nadeko.net", "https://invidious.privacyredirect.com"
+];
 const S = { instances: [], picked: null, meta: {}, videos: null };
 const $ = id => document.getElementById(id);
 
@@ -179,9 +184,10 @@ function renderVideos(){
   const data = S.videos;
   const main = $("main");
   if (!data || !data.channels || !data.channels.length){
-    main.innerHTML = '<div class="empty">还没有抓取到频道。<br><br>' +
-      '点下面的「＋ 添加频道」，把你想追的频道地址 <code>@handle</code> 或 <code>UC…</code> 粘进去保存即可。<br>' +
-      '或者到 <b>Actions → Update feed → Run workflow</b> 手动跑一次。</div>';
+    main.innerHTML = '<div class="empty">下面还没有频道更新。<br><br>' +
+      '<b>上面的搜索框现在就能用</b>，它会走当前选中的入口，不经过 youtube.com 首页。<br><br>' +
+      '想追频道更新：点底部「＋ 添加频道」，把 <code>@handle</code> 或 <code>UC…</code> 粘进 channels.json 保存，' +
+      '再去 <b>Actions → Update feed → Run workflow</b> 跑一次。</div>';
     return;
   }
   let html = "";
@@ -226,7 +232,9 @@ async function boot(){
   try {
     const st = await jget("data/status.json");
     S.instances = (st.instances || []).filter(i => i.url);
-  } catch(e){ S.instances = []; }
+  } catch(e){
+    S.instances = FALLBACK.map(u => ({ url: u, ok: true, ms: 0, type: "invidious" }));
+  }
 
   $("updated").textContent = S.videos && S.videos.updated
     ? "数据更新于 " + new Date(S.videos.updated).toLocaleString("zh-CN") : "";
