@@ -39,7 +39,17 @@ jobs:
           git add -A data thumbs
           if git diff --cached --quiet; then
             echo "no changes"
-          else
-            git commit -m "chore: update feed [skip ci]"
-            git push
+            exit 0
           fi
+          git commit -m "chore: update feed [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin main
+            if git push; then
+              echo "pushed on attempt $i"
+              exit 0
+            fi
+            echo "push failed, retry $i"
+            sleep 5
+          done
+          echo "::error::could not push after 4 attempts"
+          exit 1
