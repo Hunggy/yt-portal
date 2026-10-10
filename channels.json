@@ -1,0 +1,6 @@
+{
+  "_说明": "把你想追的频道加进 channels 数组即可。三种写法都支持：id（UC 开头）、handle（@ 开头）、url（任意 YouTube 频道链接）。name 可以省略，脚本会自动用频道名。改完 commit 推送，Actions 会自动更新，也可以到 Actions → Update feed → Run workflow 手动跑。",
+  "channels": [
+    { "name": "示例频道", "handle": "@YouTube" }
+  ]
+}

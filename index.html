@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YT Portal</title>
+<style>
+  :root{
+    --bg:#0f0f10; --surface:#18181b; --surface2:#212125; --border:#2c2c31;
+    --text:#e9e9ec; --muted:#9b9ba3; --accent:#5b8cff; --danger:#e05252; --ok:#3fb27f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Roboto,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+
+  header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
+  .bar{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;white-space:nowrap}
+  .dot{width:14px;height:14px;border-radius:4px;background:#ff0033;flex:none}
+  .search{flex:1;min-width:180px;display:flex;gap:8px}
+  input[type=text],select{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+    border-radius:8px;padding:8px 11px;font-size:13px;font-family:inherit;outline:none}
+  input[type=text]{flex:1}
+  input[type=text]:focus,select:focus{border-color:var(--accent)}
+  select{max-width:230px}
+  button{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+    border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;cursor:pointer}
+  button:hover{border-color:var(--accent);color:#fff}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .status{max-width:1100px;margin:0 auto;padding:8px 20px 0;color:var(--muted);font-size:12px;
+    display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:6px}
+  .led{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none}
+  .led.ok{background:var(--ok)} .led.bad{background:var(--danger)}
+
+  .panel{margin:16px 0;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+  .panel.warn{border-color:#5a3a3a;background:#1e1517}
+  .panel h3{margin:0 0 8px;font-size:14px;font-weight:600}
+  .panel p{margin:6px 0;color:var(--muted);font-size:13px}
+  .panel b{color:var(--text);font-weight:600}
+
+  h2.sec{margin:28px 0 12px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}
+  h2.sec span{color:var(--muted);font-weight:400;font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    transition:border-color .15s,transform .15s}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .thumb{aspect-ratio:16/9;background:var(--surface2);display:block;width:100%;object-fit:cover}
+  .card .body{padding:10px 12px 12px}
+  .card .t{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.1em}
+  .card .d{margin-top:6px;color:var(--muted);font-size:12px}
+
+  .empty{padding:60px 20px;text-align:center;color:var(--muted)}
+  .empty code{background:var(--surface2);padding:2px 6px;border-radius:5px;color:var(--text)}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;
+    display:flex;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--accent)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<h1 class="sr">YT Portal — YouTube 频道更新聚合页，自动选择可用的播放入口</h1>
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="dot"></span>YT Portal</div>
+    <div class="search">
+      <input id="q" type="text" placeholder="搜索视频 / 频道…" autocomplete="off">
+      <button id="go" class="primary">搜索</button>
+    </div>
+    <select id="inst" title="播放入口"></select>
+    <button id="repick" title="重新探测哪个入口能用">重新探测</button>
+  </div>
+  <div class="status">
+    <span class="badge"><span id="led" class="led"></span><span id="ledText">正在探测入口…</span></span>
+    <span id="updated"></span>
+    <span id="repoLine"></span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="warn"></div>
+  <div id="main"><div class="empty">正在加载…</div></div>
+
+  <footer>
+    <a id="addCh" href="#" target="_blank" rel="noopener">＋ 添加频道</a>
+    <a id="runAction" href="#" target="_blank" rel="noopener">立即刷新数据</a>
+    <a id="editInst" href="#" target="_blank" rel="noopener">编辑备选入口</a>
+    <span>把这个页面设为浏览器首页，以后就不用记任何东西了。</span>
+  </footer>
+</div>
+
+<script>
+const LS_KEY = "ytp.instance";
+const S = { instances: [], picked: null, meta: {}, videos: null };
+const $ = id => document.getElementById(id);
+
+const jget = async (p) => {
+  const r = await fetch(p, { cache: "no-store" });
+  if (!r.ok) throw new Error(p + " " + r.status);
+  return r.json();
+};
+
+function repoBase(meta){
+  if (meta && meta.repo && meta.server_url) return meta.server_url + "/" + meta.repo;
+  return "https://github.com/";
+}
+
+function relTime(iso){
+  if (!iso) return "";
+  const t = Date.parse(iso);
+  if (isNaN(t)) return "";
+  const d = (Date.now() - t) / 1000;
+  if (d < 3600) return Math.max(1, Math.round(d/60)) + " 分钟前";
+  if (d < 86400) return Math.round(d/3600) + " 小时前";
+  if (d < 86400*30) return Math.round(d/86400) + " 天前";
+  return new Date(t).toLocaleDateString("zh-CN");
+}
+
+function probe(url, ms = 6000){
+  return new Promise(resolve => {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => { ctl.abort(); resolve(false); }, ms);
+    fetch(url, { mode: "no-cors", cache: "no-store", signal: ctl.signal, redirect: "follow" })
+      .then(() => { clearTimeout(timer); resolve(true); })
+      .catch(() => { clearTimeout(timer); resolve(false); });
+  });
+}
+
+function setLed(ok, text){
+  $("led").className = "led " + (ok === null ? "" : ok ? "ok" : "bad");
+  $("ledText").textContent = text;
+}
+
+function watchUrl(id){
+  return (S.picked || "https://www.youtube.com") + "/watch?v=" + id;
+}
+
+async function pickInstance(force){
+  const saved = localStorage.getItem(LS_KEY);
+  const list = S.instances.filter(i => i.ok).map(i => i.url);
+
+  if (!force && saved){
+    setLed(null, "正在验证 " + hostOf(saved) + " …");
+    if (await probe(saved)) return saved;
+  }
+  const first = saved && list.includes(saved) ? [saved] : [];
+  const rest = list.filter(u => u !== saved).slice(0, 7);
+  const order = first.concat(rest);
+  if (!order.length) return null;
+
+  setLed(null, "正在从 " + order.length + " 个入口里挑一个能用的…");
+  const results = await Promise.all(order.map(async u => ({ u, ok: await probe(u) })));
+  const hit = results.find(r => r.ok);
+  return hit ? hit.u : null;
+}
+
+const hostOf = u => { try { return new URL(u).host; } catch(e){ return u; } };
+
+function renderSelect(){
+  const sel = $("inst");
+  sel.innerHTML = "";
+  const add = (label, url, disabled) => {
+    const o = document.createElement("option");
+    o.textContent = label; o.value = url; o.disabled = !!disabled;
+    sel.appendChild(o);
+  };
+  const ok = S.instances.filter(i => i.ok);
+  ok.forEach(i => add(hostOf(i.url) + "  · " + i.ms + "ms", i.url));
+  S.instances.filter(i => !i.ok).forEach(i => add(hostOf(i.url) + "  · 不可用", i.url, true));
+  add("youtube.com（官方直连）", "https://www.youtube.com");
+  if (S.picked) sel.value = S.picked;
+}
+
+function renderVideos(){
+  const data = S.videos;
+  const main = $("main");
+  if (!data || !data.channels || !data.channels.length){
+    main.innerHTML = '<div class="empty">还没有抓取到频道。<br><br>' +
+      '点下面的「＋ 添加频道」，把你想追的频道地址 <code>@handle</code> 或 <code>UC…</code> 粘进去保存即可。<br>' +
+      '或者到 <b>Actions → Update feed → Run workflow</b> 手动跑一次。</div>';
+    return;
+  }
+  let html = "";
+  data.channels.forEach(ch => {
+    html += '<h2 class="sec">' + esc(ch.name) + '<span>' + ch.videos.length + ' 条最新</span></h2>';
+    html += '<div class="grid">';
+    ch.videos.forEach(v => {
+      html += '<a class="card" href="' + watchUrl(v.id) + '" target="_blank" rel="noopener">' +
+        '<img class="thumb" loading="lazy" src="thumbs/' + v.id + '.jpg" ' +
+        'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg\'">' +
+        '<div class="body"><div class="t">' + esc(v.title) + '</div>' +
+        '<div class="d">' + relTime(v.published) + '</div></div></a>';
+    });
+    html += '</div>';
+  });
+  main.innerHTML = html;
+}
+
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+function renderWarn(){
+  const el = $("warn");
+  if (S.picked){
+    el.innerHTML = "";
+    return;
+  }
+  el.innerHTML =
+    '<div class="panel warn"><h3>所有备选入口都连不上</h3>' +
+    '<p>说明你当前的网络在连接层做了拦截，换前端域名也绕不过去。按顺序试一次，之后就不用再管了：</p>' +
+    '<p><b>1.</b> 浏览器打开 <b>安全 DNS（DoH）</b>：Chrome / Edge → 设置 → 隐私和安全 → 安全 → 使用安全 DNS → 选 Cloudflare；' +
+    'Firefox → 设置 → 隐私与安全 → DNS over HTTPS。设一次就永久生效。</p>' +
+    '<p><b>2.</b> 换一张网络（手机热点）确认是不是这个 Wi-Fi 在拦。</p>' +
+    '<p><b>3.</b> 如果是校园网 / 公司网，找网管开白名单是正规途径。</p></div>';
+}
+
+async function boot(){
+  try { S.meta = await jget("data/meta.json"); } catch(e){ S.meta = {}; }
+  try { S.videos = await jget("data/videos.json"); } catch(e){ S.videos = null; }
+  try {
+    const st = await jget("data/status.json");
+    S.instances = (st.instances || []).filter(i => i.url);
+  } catch(e){ S.instances = []; }
+
+  $("updated").textContent = S.videos && S.videos.updated
+    ? "数据更新于 " + new Date(S.videos.updated).toLocaleString("zh-CN") : "";
+
+  const base = repoBase(S.meta);
+  $("addCh").href = base + "/edit/main/channels.json";
+  $("editInst").href = base + "/edit/main/instances.json";
+  $("runAction").href = base + "/actions/workflows/update.yml";
+  $("repoLine").innerHTML = S.meta.repo ? '<a href="' + base + '" target="_blank" rel="noopener">' + S.meta.repo + '</a>' : "";
+
+  renderSelect();
+  renderVideos();
+
+  S.picked = await pickInstance(false);
+  if (S.picked){
+    localStorage.setItem(LS_KEY, S.picked);
+    setLed(true, "当前入口 " + hostOf(S.picked));
+  } else {
+    setLed(false, "没有可用入口");
+  }
+  renderSelect();
+  renderWarn();
+  renderVideos();
+}
+
+$("inst").addEventListener("change", e => {
+  S.picked = e.target.value;
+  localStorage.setItem(LS_KEY, S.picked);
+  setLed(true, "当前入口 " + hostOf(S.picked));
+  renderWarn();
+  renderVideos();
+});
+
+$("repick").addEventListener("click", async () => {
+  setLed(null, "重新探测中…");
+  S.picked = await pickInstance(true);
+  if (S.picked){
+    localStorage.setItem(LS_KEY, S.picked);
+    setLed(true, "当前入口 " + hostOf(S.picked));
+  } else {
+    setLed(false, "没有可用入口");
+  }
+  renderSelect(); renderWarn(); renderVideos();
+});
+
+$("go").addEventListener("click", () => {
+  const q = $("q").value.trim();
+  if (!q) return;
+  window.open((S.picked || "https://www.youtube.com") + "/search?q=" + encodeURIComponent(q), "_blank", "noopener");
+});
+$("q").addEventListener("keydown", e => { if (e.key === "Enter") $("go").click(); });
+
+boot();
+</script>
+</body>
+</html>
