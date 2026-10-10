@@ -1,82 +1,82 @@
 {
- "updated": "2026-10-10T20:06:45Z",
+ "updated": "2026-10-10T20:07:08Z",
  "instances": [
-  {
-   "url": "https://piped.video",
-   "ok": true,
-   "ms": 90,
-   "code": 200,
-   "type": "piped"
-  },
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 162,
+   "ms": 174,
    "code": 200,
    "type": "invidious"
   },
   {
+   "url": "https://piped.video",
+   "ok": true,
+   "ms": 336,
+   "code": 200,
+   "type": "piped"
+  },
+  {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 223,
+   "ms": 373,
    "code": 200,
    "type": "piped"
   },
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 461,
-   "code": 200,
-   "type": "invidious"
-  },
-  {
-   "url": "https://invidious.tiekoetter.com",
-   "ok": true,
-   "ms": 582,
+   "ms": 439,
    "code": 200,
    "type": "invidious"
   },
   {
    "url": "https://invidious.nerdvpn.de",
    "ok": true,
-   "ms": 599,
+   "ms": 451,
    "code": 403,
    "type": "invidious"
   },
   {
-   "url": "https://piped.private.coffee",
+   "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 652,
-   "code": 200,
-   "type": "piped"
-  },
-  {
-   "url": "https://invidious.privacyredirect.com",
-   "ok": true,
-   "ms": 740,
+   "ms": 800,
    "code": 200,
    "type": "invidious"
   },
   {
-   "url": "https://inv.nadeko.net",
+   "url": "https://invidious.privacyredirect.com",
    "ok": true,
-   "ms": 791,
+   "ms": 867,
    "code": 200,
    "type": "invidious"
   },
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 966,
+   "ms": 953,
    "code": 200,
    "type": "invidious"
   },
   {
-   "url": "https://piped.adminforge.de",
+   "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 990,
+   "ms": 1075,
    "code": 200,
    "type": "piped"
+  },
+  {
+   "url": "https://piped.adminforge.de",
+   "ok": true,
+   "ms": 1398,
+   "code": 200,
+   "type": "piped"
+  },
+  {
+   "url": "https://inv.nadeko.net",
+   "ok": true,
+   "ms": 1901,
+   "code": 200,
+   "type": "invidious"
   },
   {
    "url": "https://inv-ygg.nadeko.net",
