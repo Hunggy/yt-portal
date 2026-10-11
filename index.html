@@ -82,6 +82,9 @@
   a.btn,button.btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);
     border-radius:8px;padding:7px 11px;font-size:12px;font-family:inherit;cursor:pointer;display:inline-block}
   a.btn:hover,button.btn:hover{border-color:var(--accent);color:#fff}
+  .notice{padding:52px 24px;text-align:center;color:var(--muted);font-size:13px;line-height:1.8}
+  .notice b{color:var(--text);font-size:14px;display:block;margin-bottom:10px}
+  .notice .nact{margin-top:18px}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 </head>
@@ -129,6 +132,12 @@
       <button id="mClose" class="btn">关闭</button>
     </div>
     <iframe id="mFrame" class="mframe" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <div id="mNotice" class="notice" hidden>
+      <b>youtube.com 不允许被其它网站嵌入</b>
+      <div>它的<b>视频页</b>可以内嵌（所以首页视频点开能在这里播），但<b>搜索结果页</b>不行。</div>
+      <div>在上面下拉里换个前端入口，就能在框里直接搜、直接播；或者去官方搜。</div>
+      <div class="nact"><a id="mNoticeGo" class="btn" target="_blank" rel="noopener">在 youtube.com 搜索</a></div>
+    </div>
     <div class="mfoot">
       <span>放不出来？在上面下拉里换个入口，或者点「新标签打开」。</span>
       <span>直播 / 长视频出问题的话，优先试标了 piped 的入口。</span>
@@ -228,7 +237,7 @@ function fillInstSelect(sel, includeBad){
   const src = allInstances();
   src.filter(i => i.ok).forEach(i => mk(hostOf(i.url) + "  ·  " + (i.type || "-"), i.url));
   if (includeBad) src.filter(i => !i.ok).forEach(i => mk(hostOf(i.url) + "  ·  上次探测失败", i.url));
-  mk("youtube.com（官方直连）", "https://www.youtube.com");
+  mk(sel === $("mInst") ? "youtube.com（官方直连 · 不能内嵌搜索）" : "youtube.com（官方直连）", "https://www.youtube.com");
   if (prev) sel.value = prev;
   if (S.picked) sel.value = S.picked;
 }
@@ -297,14 +306,41 @@ function urlsFor(inst){
   };
 }
 
+function isOfficial(inst){
+  return /^https?:\/\/(www\.)?youtube\.com\/?$/i.test(String(inst || "").trim());
+}
+
+function ytSearchUrl(q){
+  return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+}
+
+function currentInst(){
+  let inst = $("mInst").value;
+  if (!inst) inst = S.picked || (allInstances().filter(i => i.ok)[0] || {}).url || "https://www.youtube.com";
+  return inst;
+}
+
 function loadFrame(){
-  const inst = $("mInst").value || "https://www.youtube.com";
+  const inst = currentInst();
+  const notice = $("mNotice");
+  const search = S.cur.kind === "search";
+
+  if (search && isOfficial(inst)){
+    $("mFrame").hidden = true;
+    $("mFrame").src = "about:blank";
+    notice.hidden = false;
+    $("mNoticeGo").href = ytSearchUrl(S.cur.q);
+    $("mNewTab").href = ytSearchUrl(S.cur.q);
+    $("mOfficial").href = ytSearchUrl(S.cur.q);
+    return;
+  }
+
+  notice.hidden = true;
+  $("mFrame").hidden = false;
   const u = urlsFor(inst);
   $("mFrame").src = u.frame;
   $("mNewTab").href = u.tab;
-  $("mOfficial").href = S.cur.kind === "search"
-    ? "https://www.youtube.com/results?search_query=" + encodeURIComponent(S.cur.q)
-    : "https://www.youtube.com/watch?v=" + S.cur.id;
+  $("mOfficial").href = search ? ytSearchUrl(S.cur.q) : "https://www.youtube.com/watch?v=" + S.cur.id;
 }
 
 function closePlayer(){
