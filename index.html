@@ -54,6 +54,10 @@
   .row.bad{opacity:.5}
   .netVerdict{margin:10px 0 4px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:600;
     background:var(--surface2);border:1px solid var(--border);color:var(--text)}
+  .netHow{margin:6px 0 10px;padding:9px 12px;border-radius:9px;font-size:12.5px;
+    background:var(--surface2);border:1px dashed var(--border);color:var(--muted)}
+  .netNext{margin:8px 0 4px;padding:9px 12px;border-radius:9px;font-size:13px;
+    background:#1b2430;border:1px solid #2f4a6b;color:var(--text)}
   .netTips{margin:8px 0 0;padding-left:22px;color:var(--muted);font-size:13px}
   .netTips li{margin:5px 0}
 
@@ -687,39 +691,42 @@ async function doNetDiag(){
      只看两三个就下结论，会把「这个站本身没放 favicon」当成拦截 —— 之前就是这么误报的。 */
   const interceptAll = nxOk || (connCount >= 6 && fake.length >= Math.ceil(connCount * 0.7));
 
-  let verdict, tips, fakeVerdict = false, fakeMentioned = false;
+  let verdict, next, tips, fakeVerdict = false, fakeMentioned = false;
   if (baseAll - baseBad <= 1){
     verdict = "这个网络基本不可用 —— 连百度 / 腾讯 / 淘宝都打不开。";
-    tips = ["先确认能正常上网：换个 App 或换张网络试一次。",
-            "如果别的 App 能上网只有浏览器不行，多半是本机的代理 / 安全 DNS 配置坏了，去浏览器设置里关掉代理和 DoH。",
-            "如果是公司电脑，公司策略可能只放行了少数白名单站点，找 IT 确认。"];
+    next = "先确认这台机器能不能正常上网（换个 App、换张网络试一次），这不是入口能救的。";
+    tips = ["如果别的 App 能上网、只有浏览器不行，多半是本机的代理 / 安全 DNS 配置坏了，去浏览器设置里关掉代理和 DoH。",
+            "如果是公司电脑，策略可能只放行了少数白名单站点，找 IT 确认。"];
   } else if (videoBad >= 3){
     verdict = "这是按「网站类别」过滤的网络 —— 视频 / 游戏直播整类被拦，不分国内国外。";
+    next = "换一张网络（手机热点 / 家里宽带）。<b>别再换入口域名了</b> —— 这个网按类别拦，换域名和改 DNS 都没用。";
     tips = ["B 站、优酷、虎牙、斗鱼、KPL 官网这些国内站都进不去，说明拦的规则不是「境外」而是「内容类别」。",
-            "这种情况改 DNS、换入口域名全都无效，因为拦的不是解析结果也不是某个域名。",
-            "最直接的办法：换一张网络（手机热点 / 家里宽带）——同一台机器立刻就能用。",
             "如果是校园网 / 公司网 / 家长管控路由器，找管理方加白名单是正规途径；自己改设置是改不动的。"];
   } else if (foreignBad >= 4 && cnBad <= 1){
     verdict = "国内站点全通，境外站点基本全不通 —— 典型的「只挡境外」。";
-    tips = ["这类拦截做在网络出口，本页能做的就是帮你把还能连上的入口挑出来（上面「本机实测所有入口」）。",
+    next = "点上面的「本机实测所有入口」，让页面把还能连上的入口挑出来 —— 这一条有救。";
+    tips = ["这类拦截做在网络出口，本页能做的就是帮你把还能连上的入口挑出来。",
             "播放仍走 YouTube 官方 embed；如果官方也进不去，就切到下面的国内平台直播源看比赛。"];
   } else if (cnBad + foreignBad >= 2){
     verdict = "零散封禁 —— 有个别站点不通，但没到整类的程度。";
+    next = "重跑一次确认是不是偶发；反复不通就把那个入口划掉，用还能用的。";
     tips = ["把打不通的域名单独记下来，大多是这个站自己挂了或临时抽风，过一阵再试。",
             "如果反复不通，把它从「本机实测所有入口」里划掉，用还能用的那些。"];
   } else if (interceptAll){
     fakeVerdict = true;
     verdict = "这个网络在做统一拦截 —— 站点都「能应答」，但返回的不是它自己的内容。";
+    next = "先在浏览器里把网关的登录页走完；走完还是这样，找网管开权限。";
     tips = ["典型形态是透明代理 / 认证网关：请求被拦下来换成一个拦截页或登录页。",
-            "这种情况下所有站点看起来都「连得上」，其实一个都没真正打开，别被「连得上」骗了。",
-            "如果是需要认证的网关，先在浏览器里把那页登录一下；否则找网管开权限。"];
+            "这种情况下所有站点看起来都「连得上」，其实一个都没真正打开，别被「连得上」骗了。"];
     if (nxOk){
       tips.push("硬证据：<b>" + nxHost + "</b> 这个根本不存在的主机名也「连上了」。" +
         "正常网络对不存在的域名返回 NXDOMAIN（解析直接失败），能被应答说明所有域名被劫持到了同一处。");
     }
   } else {
     verdict = "这个网络没有做任何拦截，站点基本全通。";
-    tips = ["那问题只可能在浏览器或本机设置上，不用再折腾网络。"];
+    next = "不是网络的问题。<b>YouTube 打不开是它自己的 bot 风控</b>（匿名播放被拒），" +
+           "跟这个网络无关 —— 去看上方的入口选择和平台直播源，别再折腾网络。";
+    tips = ["这条结论的含义是：<b>不值得再花时间在网络上做调整</b>，方向不在这。"];
     fakeMentioned = true;
     if (fake.length){
       tips.push("有 " + fake.length + " 个站点显示「内容未验证」（" + fake.map(f => f.name).join(" / ") +
@@ -741,13 +748,12 @@ async function doNetDiag(){
     : (!f.real ? ["warn", "未验证"] : ["ok", "已验证"]);
 
   let html = '<div class="panel"><h3>网络诊断结果</h3>' +
-    '<p>下面全部是<b>你这台机器、当前网络</b>直连测出来的，分三步：① 连不连得上　② ' +
-    '应答的是不是它自己的内容　③ DNS 对照。' +
-    '<b>三档判定</b>：<b>已验证</b> = 连得上且能读出它自己的图标；' +
-    '<b>未验证</b> = 连得上但读不到图标 —— <b>这一档不能单看</b>，很多正常站点也这样' +
-    '（github.com 的 /favicon.ico 返回 403、kpl.qq.com 返回 404），只有' +
-    '<b>大面积</b>未验证才说明是拦截页顶替；<b>不通</b> = 完全连不上。</p>' +
+    '<div class="netHow"><b>怎么读</b>：只需看两档 —— <b>已验证</b>（好）和 <b>不通</b>（坏）。' +
+    '<b>未验证</b>不用管，正常站点也常这样（实测 github.com 返回 403、kpl.qq.com 返回 404）。' +
+    '下面的结论才是定性，然后照<b>下一步</b>做。</div>' +
     '<div class="netVerdict">' + esc(verdict) + '</div>' +
+    '<div class="netNext">下一步：' +
+      esc(next).replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>") + '</div>' +
     '<ul class="netTips">' + tips.map(t =>
       "<li>" + esc(t).replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>") + "</li>").join("") + "</ul>";
 
