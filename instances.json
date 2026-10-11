@@ -1,14 +1,21 @@
 {
-  "_说明": "备选入口清单。脚本每次运行时还会自动去 Piped / Invidious 官方实例列表抓取最新的，所以这份只需要放你信得过的几个常驻入口，失效的会被自动探测掉。",
+  "_说明": "备选入口清单。脚本每次运行时还会自动去 Invidious 官方实例列表抓取最新的合并进来，所以这份只需要放你信得过的几个常驻入口，失效的会被自动探测掉。",
   "instances": [
     { "url": "https://piped.video", "type": "piped" },
+    { "url": "https://piped.kavin.rocks", "type": "piped" },
     { "url": "https://piped.adminforge.de", "type": "piped" },
     { "url": "https://piped.private.coffee", "type": "piped" },
     { "url": "https://piped.mha.fi", "type": "piped" },
+    { "url": "https://piped.smnz.de", "type": "piped" },
+    { "url": "https://piped.leptons.xyz", "type": "piped" },
+    { "url": "https://piped.drgns.space", "type": "piped" },
     { "url": "https://yewtu.be", "type": "invidious" },
     { "url": "https://invidious.nerdvpn.de", "type": "invidious" },
-    { "url": "https://iv.melmac.space", "type": "invidious" },
-    { "url": "https://inv.nadeko.net", "type": "invidious" },
-    { "url": "https://invidious.privacyredirect.com", "type": "invidious" }
+    { "url": "https://invidious.tiekoetter.com", "type": "invidious" },
+    { "url": "https://invidious.f5.si", "type": "invidious" },
+    { "url": "https://invidious.privacyredirect.com", "type": "invidious" },
+    { "url": "https://invidious.jing.rocks", "type": "invidious" },
+    { "url": "https://inv.tux.pizza", "type": "invidious" },
+    { "url": "https://iv.melmac.space", "type": "invidious" }
   ]
 }
