@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T14:47:29Z",
+ "updated": "2026-10-11T21:59:57Z",
  "live": [],
  "channels": [
   {
@@ -7,9 +7,15 @@
    "name": "KPL 王者荣耀职业联赛",
    "videos": [
     {
+     "id": "SAcpkmN7JhA",
+     "title": "【2026 KPL】KSG vs 南通Hero久競 | 北京WB vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-11T16:32:40+00:00",
+     "author": "KPL聯盟"
+    },
+    {
      "id": "Fgm5kUWBB7c",
      "title": "【2026 KPL】廣州TTG vs 上海EDG.M |  成都AG超玩會 vs 長沙TES.A | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-10T16:07:14+00:00",
+     "published": "2026-10-11T16:16:16+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -70,12 +76,6 @@
      "id": "EWpsc8jal_w",
      "title": "【2027 KPL】石家莊WLT vs 上海SYG | 敗者組 | BO7 | 春季資格賽 | 王者榮耀",
      "published": "2026-09-18T14:19:13+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "CxN5pGxx_bY",
-     "title": "【2027 KPL】上海SYG vs 常山UUG | 武漢WST vs 石家莊WLT | BO7 | 春季資格賽 | 王者榮耀",
-     "published": "2026-09-17T13:53:09+00:00",
      "author": "KPL聯盟"
     }
    ]
@@ -163,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "q4-rVbyEmrc",
+     "title": "one year married and 5 full-length episodes, exclusively on YouTube on @DorothyWang’s channel 💍",
+     "published": "2026-10-11T20:00:27+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "9HJrossmW1c",
      "title": "no dish like abuela’s ❤️ @AbueAngieRecetas",
      "published": "2026-10-09T21:00:28+00:00",
@@ -226,12 +232,6 @@
      "id": "N_VgKiJqRIM",
      "title": "with Ask YouTube, search for exactly what you want, in your own words 🔎 @gremlita #MadeOnYouTube",
      "published": "2026-10-02T16:25:26+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "_wogmiwYknY",
-     "title": "refusing to lose to the blue creeper, wbu? #YouTubePartner",
-     "published": "2026-10-01T19:00:23+00:00",
      "author": "YouTube"
     }
    ]
