@@ -124,13 +124,15 @@
     <div class="mhead">
       <div id="mTitle" class="mtitle"></div>
       <select id="mInst" title="换入口重试"></select>
+      <a id="mNewTab" class="btn" target="_blank" rel="noopener">新标签打开</a>
       <a id="mOfficial" class="btn" target="_blank" rel="noopener">官方打开</a>
       <button id="mClose" class="btn">关闭</button>
     </div>
     <iframe id="mFrame" class="mframe" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     <div class="mfoot">
-      <span>放不出来？在上面下拉里换个入口，或者点「官方打开」。</span>
+      <span>放不出来？在上面下拉里换个入口，或者点「新标签打开」。</span>
       <span>直播 / 长视频出问题的话，优先试标了 piped 的入口。</span>
+      <span>这里如果是空白页，说明该入口不允许被嵌入，用「新标签打开」。</span>
     </div>
   </div>
 </div>
@@ -274,19 +276,35 @@ function renderDiag(){
     '<p><b>3.</b> 如果是校园网 / 公司网，找网管开白名单是正规途径。</p></div>';
 }
 
-function openPlayer(id, title){
-  S.cur = { id: id, title: title };
-  $("mTitle").textContent = title || id;
+function openInModal(spec){
+  S.cur = spec;
+  $("mTitle").textContent = spec.title || "";
   fillInstSelect($("mInst"), true);
   loadFrame();
   $("modal").hidden = false;
   document.body.style.overflow = "hidden";
 }
 
+function urlsFor(inst){
+  inst = inst || "https://www.youtube.com";
+  if (S.cur.kind === "search"){
+    const u = inst + "/search?q=" + encodeURIComponent(S.cur.q);
+    return { frame: u, tab: u };
+  }
+  return {
+    frame: inst + "/embed/" + S.cur.id + "?autoplay=1",
+    tab: inst + "/watch?v=" + S.cur.id
+  };
+}
+
 function loadFrame(){
   const inst = $("mInst").value || "https://www.youtube.com";
-  $("mFrame").src = inst + "/embed/" + S.cur.id + "?autoplay=1";
-  $("mOfficial").href = "https://www.youtube.com/watch?v=" + S.cur.id;
+  const u = urlsFor(inst);
+  $("mFrame").src = u.frame;
+  $("mNewTab").href = u.tab;
+  $("mOfficial").href = S.cur.kind === "search"
+    ? "https://www.youtube.com/results?search_query=" + encodeURIComponent(S.cur.q)
+    : "https://www.youtube.com/watch?v=" + S.cur.id;
 }
 
 function closePlayer(){
@@ -410,7 +428,7 @@ $("main").addEventListener("click", e => {
   if (!card) return;
   if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
   e.preventDefault();
-  openPlayer(card.getAttribute("data-id"), card.getAttribute("data-title"));
+  openInModal({ kind: "video", id: card.getAttribute("data-id"), title: card.getAttribute("data-title") });
 });
 
 $("mInst").addEventListener("change", loadFrame);
@@ -421,7 +439,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("modal"
 $("go").addEventListener("click", () => {
   const q = $("q").value.trim();
   if (!q) return;
-  window.open((S.picked || "https://www.youtube.com") + "/search?q=" + encodeURIComponent(q), "_blank", "noopener");
+  openInModal({ kind: "search", q: q, title: "搜索：" + q });
 });
 $("q").addEventListener("keydown", e => { if (e.key === "Enter") $("go").click(); });
 
