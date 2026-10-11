@@ -300,7 +300,7 @@ def oembed_title(video_id):
         return ""
 
 
-def check_live(channel_id):
+def check_live(channel_id, tag=""):
     """现在真的在直播就返回 {"id", "title"}，否则 None。
 
     注意 /live 的 canonical 对「已结束的直播回放」也成立，必须用
@@ -308,11 +308,18 @@ def check_live(channel_id):
     """
     vid = channel_live_video(channel_id)
     if not vid:
+        print("  livecheck %s: no canonical video" % tag)
         return None
-    d = player_info(vid) or {}
+    d = player_info(vid)
+    if d is None:
+        print("  livecheck %s: player api unreachable (vid=%s)" % (tag, vid))
+        return None
     vd = d.get("videoDetails") or {}
     lb = (((d.get("microformat") or {}).get("playerMicroformatRenderer") or {})
           .get("liveBroadcastDetails") or {})
+    print("  livecheck %s: vid=%s status=%s isLiveNow=%s isLive=%s end=%s"
+          % (tag, vid, (d.get("playabilityStatus") or {}).get("status"),
+             lb.get("isLiveNow"), vd.get("isLive"), lb.get("endTimestamp")))
     if not (lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp"))):
         return None
     title = (vd.get("title") or "").strip() or oembed_title(vid)
@@ -434,7 +441,7 @@ def main():
         print("ok: %s (%d videos)" % (name, len(videos)))
 
     def find_live(ch):
-        info = check_live(ch["id"])
+        info = check_live(ch["id"], ch["name"])
         if not info:
             return None
         info["channelId"] = ch["id"]
