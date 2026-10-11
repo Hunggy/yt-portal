@@ -290,26 +290,37 @@ def oembed_title(video_id):
         return ""
 
 
-def live_thumb(video_id):
-    """直播中的视频有专属缩略图 hqdefault_live.jpg，普通视频/已结束的回放没有。"""
-    req = urllib.request.Request(
-        "https://i.ytimg.com/vi/%s/hqdefault_live.jpg" % video_id,
-        headers={"User-Agent": UA}, method="HEAD")
+def yt_api_live(channel_id, key):
+    """用 YouTube Data API 查是否正在直播。返回 dict=在播，False=没播，None=查询失败。
+
+    这是唯一靠谱的途径：云服务器 IP 调 innertube player 一律被风控
+    （LOGIN_REQUIRED，拿不到 isLiveNow），hqdefault_live.jpg 也已失效。
+    """
+    url = ("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video"
+           "&eventType=live&maxResults=1&channelId=%s&key=%s"
+           % (urllib.parse.quote(channel_id), urllib.parse.quote(key)))
     try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return r.status == 200
-    except urllib.error.HTTPError:
-        return False
-    except Exception:
+        d = json.loads(http_get(url, timeout=25))
+    except Exception as e:
+        print("  ytapi error: %s %s" % (type(e).__name__, e), file=sys.stderr)
         return None
+    if not isinstance(d, dict) or d.get("error"):
+        print("  ytapi error: %s" % str(d.get("error"))[:200], file=sys.stderr)
+        return None
+    items = d.get("items") or []
+    if not items:
+        return False
+    it = items[0]
+    vid = ((it.get("id") or {}).get("videoId") or "")
+    title = ((it.get("snippet") or {}).get("title") or "")
+    return {"id": vid, "title": title} if vid else False
 
 
 def live_probe(video_ids):
-    """在一组候选视频里找真正在直播的那个，返回 (info, 诊断字符串)。
+    """在候选视频里找真正在直播的那个，返回 (info, 诊断字符串)。
 
-    直播开始时就会出现在频道 RSS 的最新条目里，所以拿最新的几条逐个验即可。
-    player 接口的 isLiveNow 最准，但云服务器 IP 常被风控（LOGIN_REQUIRED），
-    所以同时用 hqdefault_live.jpg 是否存在做兜底判据。
+    只在运行环境没被 YouTube 风控时才有效（例如本机跑）。云服务器上
+    player 接口会返回 LOGIN_REQUIRED，此时拿不到 isLiveNow。
     """
     diag = []
     for vid in video_ids:
@@ -318,13 +329,8 @@ def live_probe(video_ids):
         lb = ((((d or {}).get("microformat") or {}).get("playerMicroformatRenderer") or {})
               .get("liveBroadcastDetails") or {})
         status = ((d or {}).get("playabilityStatus") or {}).get("status")
-        thumb = live_thumb(vid)
-        diag.append("%s[%s,now=%s,live=%s]" % (vid, status, lb.get("isLiveNow"), thumb))
-
+        diag.append("%s[%s,now=%s]" % (vid, status, lb.get("isLiveNow")))
         if lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp")):
-            title = (vd.get("title") or "").strip() or oembed_title(vid)
-            return {"id": vid, "title": title or "（直播中）"}, " ".join(diag)
-        if thumb is True:
             title = (vd.get("title") or "").strip() or oembed_title(vid)
             return {"id": vid, "title": title or "（直播中）"}, " ".join(diag)
     return None, " ".join(diag)
@@ -444,7 +450,20 @@ def main():
         channels_out.append({"id": cid, "name": name, "videos": videos})
         print("ok: %s (%d videos)" % (name, len(videos)))
 
+    api_key = (os.environ.get("YT_API_KEY") or "").strip()
+
     def find_live(ch):
+        if api_key:
+            r = yt_api_live(ch["id"], api_key)
+            if isinstance(r, dict):
+                r["channelId"] = ch["id"]
+                r["channel"] = ch["name"]
+                print("LIVE(api): %s -> %s %s" % (ch["name"], r["id"], r["title"]))
+                return r
+            if r is False:
+                return None
+            print("  livecheck %s: ytapi failed, trying innertube" % ch["name"], file=sys.stderr)
+
         cands = [v["id"] for v in ch.get("videos", [])][:LIVE_SCAN]
         info, diag = live_probe(cands)
         if not info:
@@ -499,6 +518,7 @@ def main():
                 "updated": now_iso(),
                 "repo": os.environ.get("GITHUB_REPOSITORY", ""),
                 "server_url": os.environ.get("GITHUB_SERVER_URL", "https://github.com"),
+                "ytApi": bool(api_key),
             },
             f,
             ensure_ascii=False,

@@ -31,6 +31,27 @@
 
 `instances.json` 里放的是常驻清单。每次运行时脚本还会自动去 Invidious 官方实例列表拉最新的合并进来，失效的会被探测剔除，不用手动维护。
 
+## 直播板块
+
+首页顶部的「直播」板块有两层：
+
+1. **频道直播入口**（一直可用，不需要配置）：每个订阅频道一个 chip，点开就是该频道的直播页——在播就直接进直播，没播就落在频道主页。
+2. **「正在直播」自动检测**（需要配置）：开赛时自动在首页列出正在直播的流。
+
+第 2 项必须走官方接口，因为**云服务器 IP 做不了直播检测**：实测 YouTube 从 GitHub
+runner 调 innertube player 一律返回 `LOGIN_REQUIRED`（拿不到 `isLiveNow`），
+`hqdefault_live.jpg` 这个老判据也已经失效（普通视频同样返回 200、内容完全一样）。
+
+启用方法（免费，两分钟）：
+
+1. 到 [Google Cloud Console](https://console.cloud.google.com/) 建一个项目，启用 **YouTube Data API v3**。
+2. 「凭据」→ 创建 **API 密钥**，复制。
+3. 到仓库 `Settings → Secrets and variables → Actions → New repository secret`，
+   名称填 `YT_API_KEY`，值粘贴密钥。
+4. 下次运行（或手动 `Run workflow`）生效，首页 `data/meta.json` 里的 `ytApi` 会变成 `true`。
+
+配额够用：`search.list` 每次 100 单位，免费额度每天 10000 单位，即每天 100 次查询。
+
 ## 说明
 
 - 仓库需要是 **public**，GitHub Free 才能开 Pages。有 Pro 的话可以转 private。

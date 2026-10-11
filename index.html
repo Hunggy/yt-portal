@@ -76,6 +76,15 @@
   .liveCard .t{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;
     -webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
   .liveCard .d{margin-top:6px;color:var(--muted);font-size:12px}
+  .liveHead .cnt{font-weight:400;font-size:12px;color:var(--muted)}
+  .liveHint{margin:0 0 2px;color:var(--muted);font-size:12px}
+  .liveHint a{color:var(--accent)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);
+    border-radius:999px;padding:6px 13px;font-size:12px;color:var(--text);transition:border-color .15s,color .15s}
+  .chip:hover{border-color:#ff0033;color:#fff}
+  .chip b{font-weight:500}
+  .chip span{color:var(--muted);font-size:11px}
   @media (prefers-reduced-motion: no-preference){
     .livedot{animation:lpulse 1.7s ease-in-out infinite}
     @keyframes lpulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -273,19 +282,43 @@ function fillInstSelect(sel, includeBad){
 function renderLive(){
   const el = $("live");
   const items = (S.videos && S.videos.live) || [];
-  if (!items.length){ el.innerHTML = ""; return; }
-  let html = '<div class="liveSec"><div class="liveHead"><span class="livedot"></span>正在直播' +
-    '<span style="font-weight:400;font-size:12px;color:var(--muted)">' + items.length + ' 个频道</span></div><div class="liveGrid">';
-  items.forEach(v => {
-    html += '<a class="liveCard" href="https://www.youtube.com/watch?v=' + v.id +
-      '" data-id="' + v.id + '" data-title="' + esc(v.title) + '" target="_blank" rel="noopener">' +
-      '<span class="liveTag">LIVE</span>' +
-      '<img class="thumb" loading="lazy" src="thumbs/' + v.id + '.jpg" ' +
-      'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg\'">' +
-      '<div class="body"><div class="t">' + esc(v.title) + '</div>' +
-      '<div class="d">' + esc(v.channel || "") + '</div></div></a>';
-  });
-  el.innerHTML = html + '</div></div>';
+  const chs = (S.videos && S.videos.channels) || [];
+  if (!items.length && !chs.length){ el.innerHTML = ""; return; }
+
+  let html = '<div class="liveSec"><div class="liveHead"><span class="livedot"></span>直播';
+  if (items.length) html += '<span class="cnt">' + items.length + ' 个正在直播</span>';
+  html += '</div>';
+
+  if (items.length){
+    html += '<div class="liveGrid">';
+    items.forEach(v => {
+      html += '<a class="liveCard" href="https://www.youtube.com/watch?v=' + v.id +
+        '" data-id="' + v.id + '" data-title="' + esc(v.title) + '" target="_blank" rel="noopener">' +
+        '<span class="liveTag">LIVE</span>' +
+        '<img class="thumb" loading="lazy" src="thumbs/' + v.id + '.jpg" ' +
+        'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg\'">' +
+        '<div class="body"><div class="t">' + esc(v.title) + '</div>' +
+        '<div class="d">' + esc(v.channel || "") + '</div></div></a>';
+    });
+    html += '</div>';
+  } else if (chs.length){
+    html += '<p class="liveHint">现在没有检测到正在直播的频道。' +
+      (S.meta && S.meta.ytApi
+        ? '开赛时会自动出现在这里。'
+        : '想让这里自动显示直播，需要给仓库配一个免费的 YouTube Data API key（见 README）。') +
+      '</p>';
+  }
+
+  if (chs.length){
+    html += '<div class="chips">';
+    chs.forEach(c => {
+      html += '<a class="chip" href="https://www.youtube.com/channel/' + c.id + '/live" ' +
+        'target="_blank" rel="noopener"><b>▸ ' + esc(c.name) + '</b><span>看直播</span></a>';
+    });
+    html += '</div>';
+  }
+
+  el.innerHTML = html + '</div>';
 }
 
 function renderVideos(){

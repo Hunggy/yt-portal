@@ -30,6 +30,8 @@ jobs:
           python-version: "3.12"
 
       - name: Fetch feeds and probe instances
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
         run: python scripts/fetch_feed.py
 
       - name: Commit results
