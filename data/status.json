@@ -1,145 +1,189 @@
 {
- "updated": "2026-10-11T13:37:59Z",
+ "updated": "2026-10-11T14:10:48Z",
  "instances": [
-  {
-   "url": "https://yt.chocolatemoo53.com",
-   "ok": true,
-   "ms": 163,
-   "code": 200,
-   "type": "invidious"
-  },
   {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 254,
+   "ms": 188,
    "code": 200,
-   "type": "piped"
+   "type": "piped",
+   "play": "unknown",
+   "note": "URLError"
   },
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 297,
-   "code": 502,
-   "type": "invidious"
-  },
-  {
-   "url": "https://piped.video",
-   "ok": true,
-   "ms": 328,
+   "ms": 722,
    "code": 200,
-   "type": "piped"
-  },
-  {
-   "url": "https://piped.kavin.rocks",
-   "ok": true,
-   "ms": 389,
-   "code": 200,
-   "type": "piped"
-  },
-  {
-   "url": "https://yewtu.be",
-   "ok": true,
-   "ms": 464,
-   "code": 200,
-   "type": "invidious"
-  },
-  {
-   "url": "https://invidious.nerdvpn.de",
-   "ok": true,
-   "ms": 542,
-   "code": 403,
-   "type": "invidious"
-  },
-  {
-   "url": "https://invidious.tiekoetter.com",
-   "ok": true,
-   "ms": 836,
-   "code": 200,
-   "type": "invidious"
-  },
-  {
-   "url": "https://invidious.privacyredirect.com",
-   "ok": true,
-   "ms": 982,
-   "code": 200,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": "",
+   "ratio": 1.0
   },
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 1058,
+   "ms": 871,
    "code": 200,
-   "type": "piped"
+   "type": "piped",
+   "play": "unknown",
+   "note": "URLError"
   },
   {
-   "url": "https://piped.adminforge.de",
+   "url": "https://piped.kavin.rocks",
    "ok": true,
-   "ms": 1086,
+   "ms": 151,
    "code": 200,
-   "type": "piped"
+   "type": "piped",
+   "play": "err",
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://yt.chocolatemoo53.com",
+   "ok": true,
+   "ms": 230,
+   "code": 200,
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://invidious.nerdvpn.de",
+   "ok": true,
+   "ms": 436,
+   "code": 403,
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 401",
+   "ratio": 0.0
+  },
+  {
+   "url": "https://yewtu.be",
+   "ok": true,
+   "ms": 448,
+   "code": 200,
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://piped.video",
+   "ok": true,
+   "ms": 457,
+   "code": 200,
+   "type": "piped",
+   "play": "err",
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://invidious.tiekoetter.com",
+   "ok": true,
+   "ms": 867,
+   "code": 200,
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 403",
+   "ratio": 0.0
   },
   {
    "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 1636,
+   "ms": 944,
    "code": 200,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 403",
+   "ratio": 0.0
+  },
+  {
+   "url": "https://invidious.privacyredirect.com",
+   "ok": true,
+   "ms": 990,
+   "code": 200,
+   "type": "invidious",
+   "play": "err",
+   "note": "HTTP 404"
+  },
+  {
+   "url": "https://piped.adminforge.de",
+   "ok": true,
+   "ms": 1029,
+   "code": 200,
+   "type": "piped",
+   "play": "err",
+   "note": "HTTP 403"
   },
   {
    "url": "https://inv-ygg.nadeko.net",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://inv.nadeko.ygg",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://inv.tux.pizza",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://invidious.jing.rocks",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://iv.melmac.space",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "invidious"
+   "type": "invidious",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://piped.drgns.space",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "piped"
+   "type": "piped",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://piped.leptons.xyz",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "piped"
+   "type": "piped",
+   "play": "unknown",
+   "note": ""
   },
   {
    "url": "https://piped.smnz.de",
    "ok": false,
    "ms": 0,
    "code": 0,
-   "type": "piped"
+   "type": "piped",
+   "play": "unknown",
+   "note": ""
   }
  ]
 }
