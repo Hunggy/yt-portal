@@ -50,7 +50,12 @@
   .row .tag{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:1px 6px}
   .row .ms{color:var(--muted);font-size:12px;min-width:56px;text-align:right}
   .row.ok{border-color:#2c4b3c}
+  .row.warn{border-color:#5a4a2c}
   .row.bad{opacity:.5}
+  .netVerdict{margin:10px 0 4px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:600;
+    background:var(--surface2);border:1px solid var(--border);color:var(--text)}
+  .netTips{margin:8px 0 0;padding-left:22px;color:var(--muted);font-size:13px}
+  .netTips li{margin:5px 0}
 
   h2.sec{margin:28px 0 12px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}
   h2.sec span{color:var(--muted);font-weight:400;font-size:12px}
@@ -134,6 +139,7 @@
   <div class="status">
     <span class="badge"><span id="led" class="led"></span><span id="ledText">正在探测入口…</span></span>
     <span id="updated"></span>
+    <button id="netBtn" class="linkish">网络诊断</button>
     <button id="scanBtn" class="linkish">本机实测所有入口</button>
     <span id="repoLine"></span>
   </div>
@@ -141,6 +147,7 @@
 
 <div class="wrap">
   <div id="diag"></div>
+  <div id="netBox"></div>
   <div id="scanBox"></div>
   <div id="live"></div>
   <div id="main"><div class="empty">正在加载…</div></div>
@@ -219,14 +226,37 @@ function relTime(iso){
   return new Date(t).toLocaleDateString("zh-CN");
 }
 
-function probe(url, ms){
+function probe(url, ms, redirect){
   ms = ms || 6000;
   return new Promise(resolve => {
     const ctl = new AbortController();
     const timer = setTimeout(() => { ctl.abort(); resolve(false); }, ms);
-    fetch(url, { mode: "no-cors", cache: "no-store", signal: ctl.signal, redirect: "follow" })
+    fetch(url, { mode: "no-cors", cache: "no-store", signal: ctl.signal, redirect: redirect || "follow" })
       .then(() => { clearTimeout(timer); resolve(true); })
       .catch(() => { clearTimeout(timer); resolve(false); });
+  });
+}
+
+/* 用 <img> 加载 favicon：能读字节但不需要 CORS，用来判断「应答的是不是原站」。
+   连不上 或 返回的是 HTML 拦截页 / 被顶替的内容 都会触发 onerror。 */
+function imgTest(url, ms){
+  ms = ms || 5000;
+  return new Promise(resolve => {
+    const im = new Image();
+    let done = false;
+    const fin = ok => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      im.onload = im.onerror = null;
+      im.src = "";
+      resolve(ok);
+    };
+    const timer = setTimeout(() => fin(false), ms);
+    im.onload = () => fin(true);
+    im.onerror = () => fin(false);
+    im.referrerPolicy = "no-referrer";
+    im.src = url;
   });
 }
 
@@ -536,6 +566,177 @@ async function doScan(){
   renderDiag(); renderVideos();
 }
 
+/* ── 网络诊断 ───────────────────────────────────────────────
+   目的：判断这个网络「允许什么」，而不是「怎么绕」。
+   只做两件事：能不能连上（fetch），应答的是不是原站（img 读 favicon 字节）。
+   全部是本机直连测出来的，没有任何第三方参与。 */
+const DIAG_GROUPS = [
+  { g: "基线 · 这几条都不通说明网本身有问题", list: [
+    ["百度", "www.baidu.com"],
+    ["腾讯网", "www.qq.com"],
+    ["淘宝", "www.taobao.com"]
+  ]},
+  { g: "视频", list: [
+    ["哔哩哔哩", "www.bilibili.com"],
+    ["优酷", "www.youku.com"],
+    ["爱奇艺", "www.iqiyi.com"],
+    ["YouTube", "www.youtube.com"]
+  ]},
+  { g: "游戏 / 直播", list: [
+    ["KPL 官网", "kpl.qq.com"],
+    ["虎牙", "www.huya.com"],
+    ["斗鱼", "www.douyu.com"],
+    ["Twitch", "www.twitch.tv"]
+  ]},
+  { g: "社交", list: [
+    ["微博", "m.weibo.cn"],
+    ["抖音", "www.douyin.com"],
+    ["X / Twitter", "x.com"],
+    ["Instagram", "www.instagram.com"]
+  ]},
+  { g: "开发 / 境外常用", list: [
+    ["GitHub", "github.com"],
+    ["Cloudflare", "one.one.one.one"]
+  ]}
+];
+
+/* 同一条服务，域名 vs 直连 IP：用来区分「DNS 被改」和「连接被拦」 */
+const DNS_PAIRS = [
+  ["Cloudflare", "one.one.one.one", "1.1.1.1"],
+  ["阿里 DNS", "dns.alidns.com", "223.5.5.5"]
+];
+
+const DIAG_CN = ["www.baidu.com","www.qq.com","www.taobao.com","www.bilibili.com",
+  "www.youku.com","www.iqiyi.com","kpl.qq.com","www.huya.com","www.douyu.com",
+  "m.weibo.cn","www.douyin.com"];
+const DIAG_VIDEO = ["www.bilibili.com","www.youku.com","www.iqiyi.com",
+  "kpl.qq.com","www.huya.com","www.douyu.com"];
+
+async function doNetDiag(){
+  const box = $("netBox");
+  const flat = [];
+  DIAG_GROUPS.forEach(gr => gr.list.forEach(([name, host]) => flat.push({ name, host, g: gr.g })));
+  const dns = DNS_PAIRS.map(p => ({ name: p[0], host: p[1], ip: p[2], g: "DNS 对照" }));
+  const total = flat.length * 2 + dns.length * 2;
+
+  let done = 0;
+  const bump = () => { done++; box.innerHTML = '<div class="panel"><h3>正在诊断… ' + done + '/' + total + '</h3>' +
+    '<p>正在从这台机器直连测试，全部在本地完成。</p></div>'; };
+  box.innerHTML = '<div class="panel"><h3>正在诊断… 0/' + total + '</h3>' +
+    '<p>正在从这台机器直连测试，全部在本地完成。</p></div>';
+
+  await Promise.all(flat.map(async it => {
+    const t0 = Date.now();
+    const conn = await probe("https://" + it.host + "/", 5000); bump();
+    const real = conn ? await imgTest("https://" + it.host + "/favicon.ico", 5000) : false; bump();
+    it.conn = conn; it.real = real; it.ms = Date.now() - t0;
+  }));
+
+  const dnsRes = DNS_PAIRS.map(() => null);
+  await Promise.all(dns.map(async (it, idx) => {
+    const d = await probe("https://" + it.host + "/", 5000); bump();
+    /* IP 直连必须用 manual：1.1.1.1 会 301 跳回 one.one.one.one，
+       follow 的话 DNS 一被污染就连跳转目标都取不到，会把「IP 通」误判成「不通」 */
+    const i = await probe("https://" + it.ip + "/", 5000, "manual"); bump();
+    dnsRes[idx] = { name: it.name, domain: d, ip: i };
+  }));
+
+  const byHost = {};
+  flat.forEach(f => { byHost[f.host] = f; });
+  const okOf = h => byHost[h] && byHost[h].conn;
+
+  const baseBad = DIAG_GROUPS[0].list.filter(([, h]) => !okOf(h)).length;
+  const baseAll = DIAG_GROUPS[0].list.length;
+  const cnBad = DIAG_CN.filter(h => !okOf(h)).length;
+  const videoBad = DIAG_VIDEO.filter(h => !okOf(h)).length;
+  const foreign = flat.filter(f => DIAG_CN.indexOf(f.host) < 0);
+  const foreignBad = foreign.filter(f => !f.conn).length;
+  const fake = flat.filter(f => f.conn && !f.real);
+  const dnsHijack = dnsRes.filter(d => d.ip && !d.domain);
+
+  let verdict, tips, fakeVerdict = false;
+  if (baseAll - baseBad <= 1){
+    verdict = "这个网络基本不可用 —— 连百度 / 腾讯 / 淘宝都打不开。";
+    tips = ["先确认能正常上网：换个 App 或换张网络试一次。",
+            "如果别的 App 能上网只有浏览器不行，多半是本机的代理 / 安全 DNS 配置坏了，去浏览器设置里关掉代理和 DoH。",
+            "如果是公司电脑，公司策略可能只放行了少数白名单站点，找 IT 确认。"];
+  } else if (videoBad >= 3){
+    verdict = "这是按「网站类别」过滤的网络 —— 视频 / 游戏直播整类被拦，不分国内国外。";
+    tips = ["B 站、优酷、虎牙、斗鱼、KPL 官网这些国内站都进不去，说明拦的规则不是「境外」而是「内容类别」。",
+            "这种情况改 DNS、换入口域名全都无效，因为拦的不是解析结果也不是某个域名。",
+            "最直接的办法：换一张网络（手机热点 / 家里宽带）——同一台机器立刻就能用。",
+            "如果是校园网 / 公司网 / 家长管控路由器，找管理方加白名单是正规途径；自己改设置是改不动的。"];
+  } else if (foreignBad >= 4 && cnBad <= 1){
+    verdict = "国内站点全通，境外站点基本全不通 —— 典型的「只挡境外」。";
+    tips = ["这类拦截做在网络出口，本页能做的就是帮你把还能连上的入口挑出来（上面「本机实测所有入口」）。",
+            "播放仍走 YouTube 官方 embed；如果官方也进不去，就切到下面的国内平台直播源看比赛。"];
+  } else if (cnBad + foreignBad >= 2){
+    verdict = "零散封禁 —— 有个别站点不通，但没到整类的程度。";
+    tips = ["把打不通的域名单独记下来，大多是这个站自己挂了或临时抽风，过一阵再试。",
+            "如果反复不通，把它从「本机实测所有入口」里划掉，用还能用的那些。"];
+  } else if (fake.length >= 3){
+    fakeVerdict = true;
+    verdict = "这个网络在做统一拦截 —— 站点都「能应答」，但返回的不是它自己的内容。";
+    tips = ["典型形态是透明代理 / 认证网关：请求被拦下来换成一个拦截页或登录页。",
+            "这种情况下所有站点看起来都「连得上」，其实一个都没真正打开，别被「连得上」骗了。",
+            "如果是需要认证的网关，先在浏览器里把那页登录一下；否则找网管开权限。"];
+  } else {
+    verdict = "这个网络没有做任何拦截，所有测试站点都正常。";
+    tips = ["那问题只可能在浏览器或本机设置上，不用再折腾网络。"];
+  }
+  if (dnsHijack.length){
+    tips.push("另外：域名连不上但直连 IP 能连的是「" +
+      dnsHijack.map(d => d.name).join(" / ") + "」，说明这些域名的解析结果被改过（DNS 污染 / 劫持）。");
+  }
+  if (fake.length >= 2 && !fakeVerdict){
+    tips.push("还有 " + fake.length + " 个站点能应答、但返回的内容不是它自己的页面（疑似拦截页顶替）。");
+  }
+
+  const state = f => !f.conn ? ["bad", "不通"]
+    : (!f.real ? ["warn", "可疑"] : ["ok", "正常"]);
+
+  let html = '<div class="panel"><h3>网络诊断结果</h3>' +
+    '<p>下面全部是<b>你这台机器、当前网络</b>直连测出来的：先看「能不能连上」（fetch），' +
+    '再看「应答的是不是它自己的页面」（读取 favicon 字节）。两列合起来才定性。' +
+    '<b>判定标准</b>：正常 = 连得上且返回自己的内容；可疑 = 连得上但读不到图标，' +
+    '多半是拦截页顶替，也可能只是这个站本来没 favicon；不通 = 完全连不上。</p>' +
+    '<div class="netVerdict">' + esc(verdict) + '</div>' +
+    '<ul class="netTips">' + tips.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul>";
+
+  DIAG_GROUPS.forEach(gr => {
+    const rows = flat.filter(f => f.g === gr.g);
+    const pass = rows.filter(r => r.conn).length;
+    html += '<div class="subHead">' + esc(gr.g) + '　' + pass + ' / ' + rows.length + ' 可访问</div><div class="rows">';
+    rows.forEach(r => {
+      const [cls, label] = state(r);
+      html += '<div class="row ' + cls + '">' +
+        '<span class="h">' + esc(r.name) + '</span>' +
+        '<span class="tag">' + esc(r.host) + '</span>' +
+        '<span class="tag">' + label + '</span>' +
+        '<span class="ms">' + (r.conn ? r.ms + "ms" : "连不上") + '</span>' +
+        '</div>';
+    });
+    html += '</div>';
+  });
+
+  html += '<div class="subHead">DNS 对照 · 域名 vs 直连 IP</div><div class="rows">';
+  dnsRes.forEach(d => {
+    const v = (!d.ip && !d.domain) ? "两个都不通 —— 整条路径被拦"
+      : (d.ip && !d.domain) ? "域名被拦 / 解析被改 —— DNS 问题"
+      : (!d.ip && d.domain) ? "挂域名可以，正常"
+      : "正常";
+    const cls = (!d.ip && !d.domain) ? "bad" : (d.ip && !d.domain) ? "warn" : "ok";
+    html += '<div class="row ' + cls + '">' +
+      '<span class="h">' + esc(d.name) + '</span>' +
+      '<span class="tag">域名 ' + (d.domain ? "通" : "不通") + '</span>' +
+      '<span class="tag">IP ' + (d.ip ? "通" : "不通") + '</span>' +
+      '<span class="tag">' + esc(v) + '</span>' +
+      '</div>';
+  });
+  html += '</div></div>';
+  box.innerHTML = html;
+}
+
 async function boot(){
   try { S.videos = await jget("data/videos.json"); } catch(e){ S.videos = null; }
   try { S.meta = await jget("data/meta.json"); } catch(e){ S.meta = {}; }
@@ -594,8 +795,15 @@ $("repick").addEventListener("click", async () => {
   fillInstSelect($("inst"), false); renderDiag(); renderVideos();
 });
 
+$("netBtn").addEventListener("click", () => {
+  if ($("netBox").innerHTML) { $("netBox").innerHTML = ""; return; }
+  $("scanBox").innerHTML = "";
+  doNetDiag();
+});
+
 $("scanBtn").addEventListener("click", () => {
   if ($("scanBox").innerHTML) { $("scanBox").innerHTML = ""; return; }
+  $("netBox").innerHTML = "";
   doScan();
 });
 
