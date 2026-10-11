@@ -45,6 +45,8 @@ BOT_MARKERS = (
     "sign in to continue",
     "bot check",
 )
+# 这些状态码说明实例关掉了 API 或拒绝云服务器 IP，不能据此判断播放能力
+API_CLOSED_CODES = (401, 403, 404, 405, 429)
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 YTNS = "{http://www.youtube.com/xml/schemas/2015}"
@@ -103,6 +105,8 @@ def check_invidious(base):
         try:
             raw = http_get(base + "/api/v1/videos/" + PROBE_VIDEO + q, timeout=30)
         except urllib.error.HTTPError as e:
+            if e.code in API_CLOSED_CODES:
+                return "unknown", "API 未开放 (HTTP %s)" % e.code
             return "err", "HTTP %s" % e.code
         except Exception as e:
             last = type(e).__name__
@@ -136,9 +140,26 @@ def check_piped(frontend, api):
         raw = http_get(api.rstrip("/") + "/streams/" + PROBE_VIDEO, timeout=30)
         return classify(json.loads(raw))
     except urllib.error.HTTPError as e:
+        if e.code in API_CLOSED_CODES:
+            return "unknown", "API 未开放 (HTTP %s)" % e.code
         return "err", "HTTP %s" % e.code
     except Exception as e:
         return "unknown", type(e).__name__
+
+
+def ratio_verdict(item):
+    """用官方实例清单自报的播放成功率做旁证。"""
+    ratio = item.get("ratio")
+    total = item.get("ratioTotal")
+    if ratio is None or not total or total < 3:
+        return None, ""
+    succ = item.get("ratioSuccess") or 0
+    txt = "官方统计 %d/%d 成功" % (succ, total)
+    if ratio <= 0:
+        return "bot", txt
+    if ratio >= 1:
+        return "ok", txt
+    return None, txt
 
 
 def check_one(item):
@@ -151,11 +172,21 @@ def check_one(item):
         play, note = check_piped(url, piped_api_for(url, item.get("api")))
     else:
         play, note = check_invidious(url)
+
+    if play == "unknown":
+        verdict, txt = ratio_verdict(item)
+        if verdict:
+            play = verdict
+        if txt:
+            note = txt
+
     r["type"] = item.get("type", "unknown")
     r["play"] = play
     r["note"] = note
     if item.get("ratio") is not None:
         r["ratio"] = item["ratio"]
+        r["ratioTotal"] = item.get("ratioTotal")
+        r["ratioSuccess"] = item.get("ratioSuccess")
     return r
 
 
@@ -245,7 +276,13 @@ def discover_invidious():
         if not uri.startswith("http"):
             uri = "https://" + uri
         pb = ((meta.get("stats") or {}).get("playback") or {})
-        out.append({"url": uri.rstrip("/"), "type": "invidious", "ratio": pb.get("ratio")})
+        out.append({
+            "url": uri.rstrip("/"),
+            "type": "invidious",
+            "ratio": pb.get("ratio"),
+            "ratioTotal": pb.get("totalRequests"),
+            "ratioSuccess": pb.get("successfulRequests"),
+        })
     return out
 
 

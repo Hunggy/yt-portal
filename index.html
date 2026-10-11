@@ -322,6 +322,11 @@ function playRank(url){
   return 2;
 }
 
+function ratioTxt(m){
+  if (m.ratio === undefined || m.ratio === null) return "";
+  return "官方 " + (m.ratioSuccess || 0) + "/" + (m.ratioTotal || 0) + " 成功";
+}
+
 function isOfficial(inst){
   return /^https?:\/\/(www\.)?youtube\.com\/?$/i.test(String(inst || "").trim());
 }
@@ -399,16 +404,19 @@ async function doScan(){
   const botblock = rows.filter(r => r.ok && instMeta(r.url).play === "bot").length;
 
   let html = '<div class="panel"><h3>本机实测：' + rows.filter(r => r.ok).length + ' / ' + rows.length + ' 可访问' +
-    (playable || botblock ? '　（其中 ' + playable + ' 个能播放，' + botblock + ' 个被 bot 检查挡住）' : '') + '</h3>' +
-    '<p>「可访问」是在<b>你这台机器 + 当前网络</b>上测的；「可播放」是 GitHub 那边实测提取视频流的结果。</p>' +
-    '<p>被 bot 检查挡住的入口，搜索还能用，但播不了——把播放改成「官方 embed」即可。</p><div class="rows">';
+    (playable || botblock ? '　（其中 ' + playable + ' 个能播放，' + botblock + ' 个播放被挡）' : '') + '</h3>' +
+    '<p>「可访问」是在<b>你这台机器 + 当前网络</b>上测的，这个才决定你能不能打开它。</p>' +
+    '<p>「能不能播放」主要看 YouTube 有没有封该实例的服务器 IP——被挡住时搜索照样能用，但播不了，' +
+    '所以播放默认走官方 embed。</p><div class="rows">';
   rows.forEach(r => {
     const m = instMeta(r.url);
     const pl = playLabel(m);
+    const rt = ratioTxt(m);
     html += '<div class="row ' + (r.ok ? "ok" : "bad") + '">' +
       '<span class="tag">' + esc(r.type) + '</span>' +
       '<span class="h">' + esc(hostOf(r.url)) + '</span>' +
       '<span class="tag">' + (r.ok ? (pl || "播放状态未知") : "连不上") + '</span>' +
+      (rt ? '<span class="tag">' + esc(rt) + '</span>' : '') +
       '<span class="ms">' + (r.ok ? r.ms + "ms" : "-") + '</span>' +
       (r.ok ? '<button class="btn" data-use="' + esc(r.url) + '">用它</button>' : '') +
       '</div>';
