@@ -54,6 +54,11 @@
   .row.bad{opacity:.5}
   .netVerdict{margin:10px 0 4px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:600;
     background:var(--surface2);border:1px solid var(--border);color:var(--text)}
+  .pinNote{margin:14px 0 0;padding:9px 12px;border-radius:9px;font-size:12.5px;
+    background:#16211a;border:1px solid #2c4b3c;color:var(--muted)}
+  #pinNote:empty{display:none}
+  .pinNote b{color:var(--text)}
+  .pinNote .linkish{margin-left:10px}
   .netHow{margin:6px 0 10px;padding:9px 12px;border-radius:9px;font-size:12.5px;
     background:var(--surface2);border:1px dashed var(--border);color:var(--muted)}
   .netNext{margin:8px 0 4px;padding:9px 12px;border-radius:9px;font-size:13px;
@@ -143,6 +148,7 @@
   <div class="status">
     <span class="badge"><span id="led" class="led"></span><span id="ledText">正在探测入口…</span></span>
     <span id="updated"></span>
+    <button id="shareBtn" class="linkish" title="把当前入口和播放方式编进链接，发给别人打开就是这套配置">复制配置链接</button>
     <button id="netBtn" class="linkish">网络诊断</button>
     <button id="scanBtn" class="linkish">本机实测所有入口</button>
     <span id="repoLine"></span>
@@ -150,6 +156,7 @@
 </header>
 
 <div class="wrap">
+  <div id="pinNote"></div>
   <div id="diag"></div>
   <div id="netBox"></div>
   <div id="scanBox"></div>
@@ -201,8 +208,18 @@ const FALLBACK = [
   "https://piped.mha.fi", "https://yewtu.be", "https://invidious.nerdvpn.de",
   "https://invidious.tiekoetter.com", "https://invidious.f5.si", "https://invidious.privacyredirect.com"
 ];
+/* URL 参数：把「哪个入口能用 + 播放走哪」编进链接里，换台机器 / 换个人打开就是对的配置。
+   这是整套东西唯一需要「记」的地方的解药 —— 你只要把链接发出去，对方不用试也不用记。
+     ?inst=https://xxx  固定入口（跳过自动探测）
+     ?play=official|instance  固定播放方式 */
+const QS = new URLSearchParams(location.search);
+const PIN_INST = (QS.get("inst") || "").trim();
+const PIN_PLAY = (QS.get("play") || "").trim();
+
 const S = { instances: [], sources: [], picked: null, meta: {}, videos: null, cur: null,
-            play: localStorage.getItem("ytp.playmode") || "official" };
+            pinned: false,
+            play: (PIN_PLAY === "official" || PIN_PLAY === "instance")
+              ? PIN_PLAY : (localStorage.getItem(PLAY_KEY) || "official") };
 const $ = id => document.getElementById(id);
 const uniq = a => Array.from(new Set(a.filter(Boolean)));
 const hostOf = u => { try { return new URL(u).host; } catch(e){ return u; } };
@@ -292,6 +309,17 @@ function cachedWorking(){
 }
 
 async function pickInstance(force){
+  /* 链接里固定了入口就用它，一秒钟都不浪费在探测上。
+     探不通才退回自动模式（并告诉用户），免得链接过期后白屏。 */
+  if (PIN_INST && !force){
+    setLed(null, "正在验证链接里固定的入口 " + hostOf(PIN_INST) + " …");
+    if (await probe(PIN_INST, 6000)){
+      S.pinned = true;
+      return PIN_INST;
+    }
+    S.pinned = false;
+    setLed(false, "链接固定的入口已失效，改为自动探测…");
+  }
   const saved = (localStorage.getItem(LS_KEY) || "").trim();
   if (!force && saved){
     setLed(null, "正在验证 " + hostOf(saved) + " …");
@@ -309,6 +337,39 @@ async function pickInstance(force){
   if (hits.length) localStorage.setItem(WORKING_KEY, JSON.stringify(hits));
   hits.sort((a, b) => (playRank(a) - playRank(b)) || (order.indexOf(a) - order.indexOf(b)));
   return hits[0] || null;
+}
+
+/* 生成「打开就是当前配置」的链接。这是整个方案里唯一需要传递的东西。 */
+function shareUrl(){
+  const p = new URLSearchParams();
+  if (S.picked) p.set("inst", S.picked);
+  p.set("play", S.play);
+  return location.origin + location.pathname + "?" + p.toString();
+}
+
+async function copyShareUrl(){
+  const url = shareUrl();
+  const btn = $("shareBtn");
+  let ok = false;
+  try {
+    await navigator.clipboard.writeText(url);
+    ok = true;
+  } catch(e){
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+    } catch(e2){ ok = false; }
+  }
+  const old = btn.textContent;
+  btn.textContent = ok ? "已复制 ✓ 发给对方即可" : "复制失败，请手动复制";
+  if (!ok) window.prompt("手动复制这个链接：", url);
+  setTimeout(() => { btn.textContent = old; }, 2600);
 }
 
 function fillInstSelect(sel, includeBad){
@@ -835,8 +896,31 @@ async function boot(){
     setLed(false, "没有可用入口");
   }
   fillInstSelect($("inst"), false);
+  renderPinNote();
   renderDiag();
   renderVideos();
+}
+
+/* 链接固定过配置时，在顶部说明白 —— 免得用户以为「又要我自己挑」 */
+function renderPinNote(){
+  const el = $("pinNote");
+  if (!PIN_INST && !PIN_PLAY){ el.innerHTML = ""; return; }
+  const playTxt = S.play === "official" ? "官方 embed" : "当前入口";
+  let html = '<div class="pinNote">这个链接已固定配置：';
+  if (PIN_INST){
+    html += "入口 <b>" + esc(hostOf(PIN_INST)) + "</b>" +
+      (S.pinned ? "（可用 ✓）" : "（<b>已失效</b>，已自动改选可用入口）");
+    if (!S.pinned){
+      html += '　<a href="' + esc(location.pathname) + '?play=' + esc(S.play) +
+        '" class="btn" style="margin-left:8px">改用自动探测</a>';
+    }
+  }
+  html += "　播放走 <b>" + playTxt + "</b>";
+  html += '　<button class="linkish" id="pinClear">清除固定</button>';
+  html += '</div>';
+  el.innerHTML = html;
+  const c = $("pinClear");
+  if (c) c.addEventListener("click", () => { location.href = location.pathname; });
 }
 
 $("inst").addEventListener("change", e => {
@@ -857,6 +941,8 @@ $("repick").addEventListener("click", async () => {
   }
   fillInstSelect($("inst"), false); renderDiag(); renderVideos();
 });
+
+$("shareBtn").addEventListener("click", copyShareUrl);
 
 $("netBtn").addEventListener("click", () => {
   if ($("netBox").innerHTML) { $("netBox").innerHTML = ""; return; }
