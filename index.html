@@ -237,10 +237,14 @@ function probe(url, ms, redirect){
   });
 }
 
-/* 用 <img> 加载 favicon：能读字节但不需要 CORS，用来判断「应答的是不是原站」。
-   连不上 或 返回的是 HTML 拦截页 / 被顶替的内容 都会触发 onerror。 */
+/* 用 <img> 加载图标：能读到字节但不需要 CORS，用来判断「应答的是不是原站」。
+   连不上、返回 HTML 拦截页、返回 403/404 都会触发 onerror。
+
+   ⚠️ 这个判据很弱，单独看会误判 —— 实测：github.com/favicon.ico 返回 403、
+   kpl.qq.com/favicon.ico 返回 404，站点本身都是好的。所以它只作参考，
+   绝不用来单独定性；只有「大面积读不到」才说明是拦截页顶替。 */
 function imgTest(url, ms){
-  ms = ms || 5000;
+  ms = ms || 7000;
   return new Promise(resolve => {
     const im = new Image();
     let done = false;
@@ -258,6 +262,15 @@ function imgTest(url, ms){
     im.referrerPolicy = "no-referrer";
     im.src = url;
   });
+}
+
+/* 两个常见图标位并行试，任一个能读出图片就算这个站是「真身」。
+   多试一个位是为了少误判 —— 有些站只有 apple-touch-icon。 */
+function iconTest(host, ms){
+  return Promise.all([
+    imgTest("https://" + host + "/favicon.ico", ms),
+    imgTest("https://" + host + "/apple-touch-icon.png", ms)
+  ]).then(r => r[0] || r[1]);
 }
 
 function setLed(ok, text){
@@ -616,28 +629,42 @@ async function doNetDiag(){
   const box = $("netBox");
   const flat = [];
   DIAG_GROUPS.forEach(gr => gr.list.forEach(([name, host]) => flat.push({ name, host, g: gr.g })));
-  const dns = DNS_PAIRS.map(p => ({ name: p[0], host: p[1], ip: p[2], g: "DNS 对照" }));
-  const total = flat.length * 2 + dns.length * 2;
+  const dns = DNS_PAIRS.map(p => ({ name: p[0], host: p[1], ip: p[2] }));
 
+  /* 不存在的主机名。正常网络返回 NXDOMAIN → 连不上；如果它「能连上」，
+     说明所有域名都被劫持到同一个应答上 —— 这是拦截的硬证据，且几乎不会误报。 */
+  const nxHost = "nx-" + Math.random().toString(36).slice(2, 10) + ".example.com";
+
+  const total = flat.length * 2 + dns.length * 2 + 1;
   let done = 0;
-  const bump = () => { done++; box.innerHTML = '<div class="panel"><h3>正在诊断… ' + done + '/' + total + '</h3>' +
-    '<p>正在从这台机器直连测试，全部在本地完成。</p></div>'; };
-  box.innerHTML = '<div class="panel"><h3>正在诊断… 0/' + total + '</h3>' +
-    '<p>正在从这台机器直连测试，全部在本地完成。</p></div>';
+  const draw = () => { box.innerHTML = '<div class="panel"><h3>正在诊断… ' + done + '/' + total + '</h3>' +
+    '<p>正在从这台机器直连测试，全部在本地完成。分三步：连通性 → 内容真实性 → DNS 对照。</p></div>'; };
+  const bump = () => { done++; draw(); };
+  draw();
 
+  /* 第一步：连通性。先单独跑完，不要和图片加载抢带宽 —— 挤在一起会把图片拖超时，
+     把「站点是好的」误判成「内容未验证」。 */
   await Promise.all(flat.map(async it => {
-    const t0 = Date.now();
-    const conn = await probe("https://" + it.host + "/", 5000); bump();
-    const real = conn ? await imgTest("https://" + it.host + "/favicon.ico", 5000) : false; bump();
-    it.conn = conn; it.real = real; it.ms = Date.now() - t0;
+    it.t0 = Date.now();
+    it.conn = await probe("https://" + it.host + "/", 6000);
+    bump();
   }));
+
+  /* 第二步：内容真实性 */
+  await Promise.all(flat.map(async it => {
+    it.real = it.conn ? await iconTest(it.host, 7000) : false;
+    it.ms = Date.now() - it.t0;
+    bump();
+  }));
+
+  const nxOk = await probe("https://" + nxHost + "/", 6000); bump();
 
   const dnsRes = DNS_PAIRS.map(() => null);
   await Promise.all(dns.map(async (it, idx) => {
-    const d = await probe("https://" + it.host + "/", 5000); bump();
+    const d = await probe("https://" + it.host + "/", 6000); bump();
     /* IP 直连必须用 manual：1.1.1.1 会 301 跳回 one.one.one.one，
        follow 的话 DNS 一被污染就连跳转目标都取不到，会把「IP 通」误判成「不通」 */
-    const i = await probe("https://" + it.ip + "/", 5000, "manual"); bump();
+    const i = await probe("https://" + it.ip + "/", 6000, "manual"); bump();
     dnsRes[idx] = { name: it.name, domain: d, ip: i };
   }));
 
@@ -651,10 +678,16 @@ async function doNetDiag(){
   const videoBad = DIAG_VIDEO.filter(h => !okOf(h)).length;
   const foreign = flat.filter(f => DIAG_CN.indexOf(f.host) < 0);
   const foreignBad = foreign.filter(f => !f.conn).length;
+  const connCount = flat.filter(f => f.conn).length;
   const fake = flat.filter(f => f.conn && !f.real);
   const dnsHijack = dnsRes.filter(d => d.ip && !d.domain);
 
-  let verdict, tips, fakeVerdict = false;
+  /* 拦截是「一视同仁」的：代理不会只拦 GitHub 不拦百度。所以只有当
+     读不到内容的站点占了绝大多数（≥70% 且 ≥6 个），才断定是拦截页顶替。
+     只看两三个就下结论，会把「这个站本身没放 favicon」当成拦截 —— 之前就是这么误报的。 */
+  const interceptAll = nxOk || (connCount >= 6 && fake.length >= Math.ceil(connCount * 0.7));
+
+  let verdict, tips, fakeVerdict = false, fakeMentioned = false;
   if (baseAll - baseBad <= 1){
     verdict = "这个网络基本不可用 —— 连百度 / 腾讯 / 淘宝都打不开。";
     tips = ["先确认能正常上网：换个 App 或换张网络试一次。",
@@ -674,39 +707,56 @@ async function doNetDiag(){
     verdict = "零散封禁 —— 有个别站点不通，但没到整类的程度。";
     tips = ["把打不通的域名单独记下来，大多是这个站自己挂了或临时抽风，过一阵再试。",
             "如果反复不通，把它从「本机实测所有入口」里划掉，用还能用的那些。"];
-  } else if (fake.length >= 3){
+  } else if (interceptAll){
     fakeVerdict = true;
     verdict = "这个网络在做统一拦截 —— 站点都「能应答」，但返回的不是它自己的内容。";
     tips = ["典型形态是透明代理 / 认证网关：请求被拦下来换成一个拦截页或登录页。",
             "这种情况下所有站点看起来都「连得上」，其实一个都没真正打开，别被「连得上」骗了。",
             "如果是需要认证的网关，先在浏览器里把那页登录一下；否则找网管开权限。"];
+    if (nxOk){
+      tips.push("硬证据：<b>" + nxHost + "</b> 这个根本不存在的主机名也「连上了」。" +
+        "正常网络对不存在的域名返回 NXDOMAIN（解析直接失败），能被应答说明所有域名被劫持到了同一处。");
+    }
   } else {
-    verdict = "这个网络没有做任何拦截，所有测试站点都正常。";
+    verdict = "这个网络没有做任何拦截，站点基本全通。";
     tips = ["那问题只可能在浏览器或本机设置上，不用再折腾网络。"];
+    fakeMentioned = true;
+    if (fake.length){
+      tips.push("有 " + fake.length + " 个站点显示「内容未验证」（" + fake.map(f => f.name).join(" / ") +
+        "）—— 这是正常的。很多站点本来就不往 /favicon.ico 放图片，或者会拒掉这种探测：" +
+        "实测 github.com 返回 403、kpl.qq.com 返回 404，站点本身都是好的。" +
+        "只有<b>大面积</b>未验证才说明是拦截。");
+    }
   }
   if (dnsHijack.length){
     tips.push("另外：域名连不上但直连 IP 能连的是「" +
       dnsHijack.map(d => d.name).join(" / ") + "」，说明这些域名的解析结果被改过（DNS 污染 / 劫持）。");
   }
-  if (fake.length >= 2 && !fakeVerdict){
-    tips.push("还有 " + fake.length + " 个站点能应答、但返回的内容不是它自己的页面（疑似拦截页顶替）。");
+  if (fake.length >= 2 && !fakeVerdict && !fakeMentioned){
+    tips.push("有 " + fake.length + " 个站点内容未验证，但占比不到 " +
+      "70%，不足以定性为拦截 —— 多半只是这些站没放 favicon。");
   }
 
   const state = f => !f.conn ? ["bad", "不通"]
-    : (!f.real ? ["warn", "可疑"] : ["ok", "正常"]);
+    : (!f.real ? ["warn", "未验证"] : ["ok", "已验证"]);
 
   let html = '<div class="panel"><h3>网络诊断结果</h3>' +
-    '<p>下面全部是<b>你这台机器、当前网络</b>直连测出来的：先看「能不能连上」（fetch），' +
-    '再看「应答的是不是它自己的页面」（读取 favicon 字节）。两列合起来才定性。' +
-    '<b>判定标准</b>：正常 = 连得上且返回自己的内容；可疑 = 连得上但读不到图标，' +
-    '多半是拦截页顶替，也可能只是这个站本来没 favicon；不通 = 完全连不上。</p>' +
+    '<p>下面全部是<b>你这台机器、当前网络</b>直连测出来的，分三步：① 连不连得上　② ' +
+    '应答的是不是它自己的内容　③ DNS 对照。' +
+    '<b>三档判定</b>：<b>已验证</b> = 连得上且能读出它自己的图标；' +
+    '<b>未验证</b> = 连得上但读不到图标 —— <b>这一档不能单看</b>，很多正常站点也这样' +
+    '（github.com 的 /favicon.ico 返回 403、kpl.qq.com 返回 404），只有' +
+    '<b>大面积</b>未验证才说明是拦截页顶替；<b>不通</b> = 完全连不上。</p>' +
     '<div class="netVerdict">' + esc(verdict) + '</div>' +
-    '<ul class="netTips">' + tips.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul>";
+    '<ul class="netTips">' + tips.map(t =>
+      "<li>" + esc(t).replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>") + "</li>").join("") + "</ul>";
 
   DIAG_GROUPS.forEach(gr => {
     const rows = flat.filter(f => f.g === gr.g);
     const pass = rows.filter(r => r.conn).length;
-    html += '<div class="subHead">' + esc(gr.g) + '　' + pass + ' / ' + rows.length + ' 可访问</div><div class="rows">';
+    const ver = rows.filter(r => r.conn && r.real).length;
+    html += '<div class="subHead">' + esc(gr.g) + '　' + pass + ' / ' + rows.length + ' 可访问' +
+      (pass ? '　·　' + ver + ' 已验证' : '') + '</div><div class="rows">';
     rows.forEach(r => {
       const [cls, label] = state(r);
       html += '<div class="row ' + cls + '">' +
@@ -719,7 +769,7 @@ async function doNetDiag(){
     html += '</div>';
   });
 
-  html += '<div class="subHead">DNS 对照 · 域名 vs 直连 IP</div><div class="rows">';
+  html += '<div class="subHead">DNS 对照 · 域名的解析有没有被动过手脚</div><div class="rows">';
   dnsRes.forEach(d => {
     const v = (!d.ip && !d.domain) ? "两个都不通 —— 整条路径被拦"
       : (d.ip && !d.domain) ? "域名被拦 / 解析被改 —— DNS 问题"
@@ -733,6 +783,13 @@ async function doNetDiag(){
       '<span class="tag">' + esc(v) + '</span>' +
       '</div>';
   });
+  /* 对照组：一个必定不存在的主机名。正常网络应当「不通」 */
+  html += '<div class="row ' + (nxOk ? "warn" : "ok") + '">' +
+    '<span class="h">不存在的主机名（对照）</span>' +
+    '<span class="tag">' + esc(nxHost) + '</span>' +
+    '<span class="tag">' + (nxOk ? "竟然能连上 —— 域名被劫持" : "不通，符合预期") + '</span>' +
+    '<span class="ms">' + (nxOk ? "异常" : "正常") + '</span>' +
+    '</div>';
   html += '</div></div>';
   box.innerHTML = html;
 }
