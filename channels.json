@@ -1,6 +1,8 @@
 {
-  "_说明": "把你想追的频道加进 channels 数组即可。三种写法都支持：id（UC 开头）、handle（@ 开头）、url（任意 YouTube 频道链接）。name 可以省略，脚本会自动用频道名。改完 commit 推送，Actions 会自动更新，也可以到 Actions → Update feed → Run workflow 手动跑。",
+  "_说明": "把你想追的频道加进 channels 数组。支持四种写法：id（UC 开头）、handle（@ 开头）、url（任意 YouTube 频道链接，/channel、/c、/user、@ 都认）、search（给个名字，脚本自己去 YouTube 搜频道）。name 可省略，脚本会自动填频道名。频道正在直播时，首页顶部会自动出现「正在直播」板块。改完 commit 推送，Actions 会在 6 小时内自动更新，也可以到 Actions → Update feed → Run workflow 手动跑。",
   "channels": [
+    { "search": "KPL王者荣耀职业联赛", "name": "KPL 王者荣耀职业联赛" },
+    { "search": "Honor of Kings Global Esports", "name": "Honor of Kings Global Esports" },
     { "name": "示例频道", "handle": "@YouTube" }
   ]
 }

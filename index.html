@@ -63,6 +63,24 @@
   .card .t{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.1em}
   .card .d{margin-top:6px;color:var(--muted);font-size:12px}
 
+  .liveSec{margin:24px 0 6px}
+  .liveHead{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;margin-bottom:12px}
+  .livedot{width:8px;height:8px;border-radius:50%;background:#ff0033;flex:none}
+  .liveGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .liveCard{background:var(--surface);border:1px solid #4a2226;border-radius:12px;overflow:hidden;
+    display:block;cursor:pointer;position:relative;transition:border-color .15s,transform .15s}
+  .liveCard:hover{border-color:#ff0033;transform:translateY(-2px)}
+  .liveTag{position:absolute;top:8px;left:8px;background:#ff0033;color:#fff;font-size:11px;
+    font-weight:600;padding:2px 7px;border-radius:5px;letter-spacing:.5px}
+  .liveCard .body{padding:10px 12px 12px}
+  .liveCard .t{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;
+    -webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
+  .liveCard .d{margin-top:6px;color:var(--muted);font-size:12px}
+  @media (prefers-reduced-motion: no-preference){
+    .livedot{animation:lpulse 1.7s ease-in-out infinite}
+    @keyframes lpulse{0%,100%{opacity:1}50%{opacity:.3}}
+  }
+
   .empty{padding:60px 20px;text-align:center;color:var(--muted)}
   .empty code{background:var(--surface2);padding:2px 6px;border-radius:5px;color:var(--text)}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;
@@ -112,6 +130,7 @@
 <div class="wrap">
   <div id="diag"></div>
   <div id="scanBox"></div>
+  <div id="live"></div>
   <div id="main"><div class="empty">正在加载…</div></div>
 
   <footer>
@@ -249,6 +268,24 @@ function fillInstSelect(sel, includeBad){
   mk(sel === $("mInst") ? "youtube.com（官方直连 · 不能内嵌搜索）" : "youtube.com（官方直连）", "https://www.youtube.com");
   if (prev) sel.value = prev;
   if (S.picked) sel.value = S.picked;
+}
+
+function renderLive(){
+  const el = $("live");
+  const items = (S.videos && S.videos.live) || [];
+  if (!items.length){ el.innerHTML = ""; return; }
+  let html = '<div class="liveSec"><div class="liveHead"><span class="livedot"></span>正在直播' +
+    '<span style="font-weight:400;font-size:12px;color:var(--muted)">' + items.length + ' 个频道</span></div><div class="liveGrid">';
+  items.forEach(v => {
+    html += '<a class="liveCard" href="https://www.youtube.com/watch?v=' + v.id +
+      '" data-id="' + v.id + '" data-title="' + esc(v.title) + '" target="_blank" rel="noopener">' +
+      '<span class="liveTag">LIVE</span>' +
+      '<img class="thumb" loading="lazy" src="thumbs/' + v.id + '.jpg" ' +
+      'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg\'">' +
+      '<div class="body"><div class="t">' + esc(v.title) + '</div>' +
+      '<div class="d">' + esc(v.channel || "") + '</div></div></a>';
+  });
+  el.innerHTML = html + '</div></div>';
 }
 
 function renderVideos(){
@@ -457,6 +494,7 @@ async function boot(){
 
   fillInstSelect($("inst"), false);
   renderVideos();
+  renderLive();
 
   S.picked = await pickInstance(false);
   if (S.picked){
@@ -505,7 +543,7 @@ $("scanBox").addEventListener("click", e => {
 });
 
 $("main").addEventListener("click", e => {
-  const card = e.target.closest ? e.target.closest("a.card") : null;
+  const card = e.target.closest ? e.target.closest("a.card, a.liveCard") : null;
   if (!card) return;
   if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
   e.preventDefault();

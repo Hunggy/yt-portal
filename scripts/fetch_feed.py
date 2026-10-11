@@ -190,11 +190,11 @@ def check_one(item):
     return r
 
 
-def resolve_handle(handle):
-    if not handle.startswith("@"):
-        handle = "@" + handle
+def resolve_page(path):
+    """打开 YouTube 上的任意频道页，抠出 channelId。"""
     try:
-        html = http_get("https://www.youtube.com/" + handle, timeout=25).decode("utf-8", "ignore")
+        html = http_get("https://www.youtube.com/" + str(path).lstrip("/"), timeout=25)
+        html = html.decode("utf-8", "ignore")
     except Exception:
         return None
     for pat in (r'"channelId":"(UC[\w-]{20,})"', r"/channel/(UC[\w-]{20,})", r'"externalId":"(UC[\w-]{20,})"'):
@@ -204,11 +204,38 @@ def resolve_handle(handle):
     return None
 
 
+def resolve_handle(handle):
+    if not handle.startswith("@"):
+        handle = "@" + handle
+    return resolve_page(handle)
+
+
+def resolve_by_search(query):
+    """按名字在 YouTube 里搜频道，返回 (channelId, 频道名)。"""
+    url = ("https://www.youtube.com/results?search_query="
+           + urllib.parse.quote(query) + "&sp=EgIQAg%3D%3D")
+    try:
+        html = http_get(url, timeout=25).decode("utf-8", "ignore")
+    except Exception:
+        return None, None
+    m = re.search(r'"channelRenderer":\{"channelId":"(UC[\w-]{20,})","title":\{"(?:simpleText|runs)":'
+                  r'(?:\[\{"text":)?"((?:[^"\\]|\\.)*)"', html)
+    if m:
+        cid = m.group(1)
+        try:
+            name = json.loads('"' + m.group(2) + '"')
+        except Exception:
+            name = None
+        return cid, name
+    m = re.search(r'"channelId":"(UC[\w-]{20,})"', html)
+    return (m.group(1), None) if m else (None, None)
+
+
 def to_channel_id(entry):
     cid = (entry.get("id") or "").strip()
     if cid.startswith("UC"):
         return cid
-    raw = (entry.get("handle") or entry.get("url") or entry.get("name") or "").strip()
+    raw = (entry.get("handle") or entry.get("url") or "").strip()
     if not raw:
         return None
     m = re.search(r"/channel/(UC[\w-]{20,})", raw)
@@ -217,11 +244,48 @@ def to_channel_id(entry):
     m = re.search(r"youtube\.com/(@[\w.\-]+)", raw)
     if m:
         return resolve_handle(m.group(1))
+    m = re.search(r"youtube\.com/(?:c|user)/([\w.\-%]+)", raw)
+    if m:
+        return resolve_page(raw.split("youtube.com", 1)[1].lstrip("/"))
     if raw.startswith("@"):
         return resolve_handle(raw)
     if raw.startswith("UC") and len(raw) > 20:
         return raw
     return None
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def check_live(channel_id):
+    """频道正在直播时，/live 会 302 到 /watch?v=ID。返回视频 ID 或 None。"""
+    url = "https://www.youtube.com/channel/%s/live" % channel_id
+    opener = urllib.request.build_opener(_NoRedirect)
+    loc = ""
+    try:
+        with opener.open(urllib.request.Request(url, headers=HEADERS), timeout=25) as r:
+            loc = r.headers.get("Location") or ""
+    except urllib.error.HTTPError as e:
+        loc = e.headers.get("Location") or ""
+    except Exception:
+        return None
+    m = re.search(r"[?&]v=([\w-]{11})", loc)
+    return m.group(1) if m else None
+
+
+def live_info(vid):
+    title = ""
+    try:
+        o = json.loads(http_get(
+            "https://www.youtube.com/oembed?url="
+            + urllib.parse.quote("https://www.youtube.com/watch?v=" + vid, safe="")
+            + "&format=json", timeout=20))
+        title = (o.get("title") or "").strip()
+    except Exception:
+        pass
+    return {"id": vid, "title": title or "（直播中）"}
 
 
 def parse_feed(xml_bytes):
@@ -313,7 +377,13 @@ def main():
 
     channels_out, keep_thumbs = [], set()
     for entry in cfg.get("channels", []):
+        name = (entry.get("name") or "").strip()
         cid = to_channel_id(entry)
+        if not cid and entry.get("search"):
+            cid, found = resolve_by_search(entry["search"])
+            if not name:
+                name = found or entry["search"]
+            print("search %r -> %s (%s)" % (entry["search"], cid, name))
         if not cid:
             print("skip (cannot resolve): %r" % entry, file=sys.stderr)
             continue
@@ -323,7 +393,6 @@ def main():
             print("feed failed %s: %s" % (cid, e), file=sys.stderr)
             continue
         videos = parse_feed(xml)[:MAX_PER_CHANNEL]
-        name = (entry.get("name") or "").strip()
         if not name or name == "示例频道":
             m = re.search(r"<title>(.*?)</title>", xml.decode("utf-8", "ignore"), re.S)
             name = (m.group(1).strip() if m else cid)
@@ -333,6 +402,25 @@ def main():
         channels_out.append({"id": cid, "name": name, "videos": videos})
         print("ok: %s (%d videos)" % (name, len(videos)))
 
+    def find_live(ch):
+        vid = check_live(ch["id"])
+        if not vid:
+            return None
+        info = live_info(vid)
+        info["channelId"] = ch["id"]
+        info["channel"] = ch["name"]
+        print("LIVE: %s -> %s %s" % (ch["name"], vid, info["title"]))
+        return info
+
+    live_out = []
+    if channels_out:
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            for r in ex.map(find_live, channels_out):
+                if r:
+                    live_out.append(r)
+                    if save_thumb(r["id"]):
+                        keep_thumbs.add(r["id"] + ".jpg")
+
     for fn in os.listdir(THUMBS):
         if fn not in keep_thumbs:
             try:
@@ -341,7 +429,8 @@ def main():
                 pass
 
     with open(os.path.join(DATA, "videos.json"), "w", encoding="utf-8") as f:
-        json.dump({"updated": now_iso(), "channels": channels_out}, f, ensure_ascii=False, indent=1)
+        json.dump({"updated": now_iso(), "live": live_out, "channels": channels_out},
+                  f, ensure_ascii=False, indent=1)
 
     with open(os.path.join(ROOT, "instances.json"), encoding="utf-8") as f:
         static = json.load(f).get("instances", [])
@@ -376,8 +465,8 @@ def main():
     ok = sum(1 for r in results if r["ok"])
     playable = sum(1 for r in results if r["play"] == "ok")
     botblock = sum(1 for r in results if r["play"] == "bot")
-    print("done. channels=%d instances=%d reachable=%d playable=%d botblocked=%d"
-          % (len(channels_out), len(results), ok, playable, botblock))
+    print("done. channels=%d live=%d instances=%d reachable=%d playable=%d botblocked=%d"
+          % (len(channels_out), len(live_out), len(results), ok, playable, botblock))
     for r in results:
         if r["ok"]:
             print("  %-9s %-44s %5dms  %s %s"
