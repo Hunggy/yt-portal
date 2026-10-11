@@ -290,24 +290,41 @@ def oembed_title(video_id):
         return ""
 
 
+def live_thumb(video_id):
+    """直播中的视频有专属缩略图 hqdefault_live.jpg，普通视频/已结束的回放没有。"""
+    req = urllib.request.Request(
+        "https://i.ytimg.com/vi/%s/hqdefault_live.jpg" % video_id,
+        headers={"User-Agent": UA}, method="HEAD")
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return r.status == 200
+    except urllib.error.HTTPError:
+        return False
+    except Exception:
+        return None
+
+
 def live_probe(video_ids):
     """在一组候选视频里找真正在直播的那个，返回 (info, 诊断字符串)。
 
     直播开始时就会出现在频道 RSS 的最新条目里，所以拿最新的几条逐个验即可。
-    必须用 liveBroadcastDetails.isLiveNow：isLiveContent 对「已结束的直播回放」也是 true，
-    只看它会误报。
+    player 接口的 isLiveNow 最准，但云服务器 IP 常被风控（LOGIN_REQUIRED），
+    所以同时用 hqdefault_live.jpg 是否存在做兜底判据。
     """
     diag = []
     for vid in video_ids:
         d = player_info(vid)
-        if d is None:
-            return None, "player api unreachable"
-        vd = d.get("videoDetails") or {}
-        lb = (((d.get("microformat") or {}).get("playerMicroformatRenderer") or {})
+        vd = (d or {}).get("videoDetails") or {}
+        lb = ((((d or {}).get("microformat") or {}).get("playerMicroformatRenderer") or {})
               .get("liveBroadcastDetails") or {})
-        status = (d.get("playabilityStatus") or {}).get("status")
-        diag.append("%s[%s,now=%s]" % (vid, status, lb.get("isLiveNow")))
+        status = ((d or {}).get("playabilityStatus") or {}).get("status")
+        thumb = live_thumb(vid)
+        diag.append("%s[%s,now=%s,live=%s]" % (vid, status, lb.get("isLiveNow"), thumb))
+
         if lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp")):
+            title = (vd.get("title") or "").strip() or oembed_title(vid)
+            return {"id": vid, "title": title or "（直播中）"}, " ".join(diag)
+        if thumb is True:
             title = (vd.get("title") or "").strip() or oembed_title(vid)
             return {"id": vid, "title": title or "（直播中）"}, " ".join(diag)
     return None, " ".join(diag)
