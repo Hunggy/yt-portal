@@ -254,37 +254,68 @@ def to_channel_id(entry):
     return None
 
 
-class _NoRedirect(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        return None
+INNERTUBE_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
 
 
-def check_live(channel_id):
-    """频道正在直播时，/live 会 302 到 /watch?v=ID。返回视频 ID 或 None。"""
-    url = "https://www.youtube.com/channel/%s/live" % channel_id
-    opener = urllib.request.build_opener(_NoRedirect)
-    loc = ""
+def channel_live_video(channel_id):
+    """频道 /live 页的 canonical 指向最近一场直播（可能是已结束的回放，需再确认）。"""
     try:
-        with opener.open(urllib.request.Request(url, headers=HEADERS), timeout=25) as r:
-            loc = r.headers.get("Location") or ""
-    except urllib.error.HTTPError as e:
-        loc = e.headers.get("Location") or ""
+        html = http_get("https://www.youtube.com/channel/%s/live" % channel_id,
+                        timeout=25).decode("utf-8", "ignore")
     except Exception:
         return None
-    m = re.search(r"[?&]v=([\w-]{11})", loc)
+    m = re.search(r'<link rel="canonical" href="https://www\.youtube\.com/watch\?v=([\w-]{11})"', html)
     return m.group(1) if m else None
 
 
-def live_info(vid):
-    title = ""
+def player_info(video_id):
+    body = json.dumps({
+        "context": {"client": {
+            "clientName": "WEB",
+            "clientVersion": "2.20250101.00.00",
+            "hl": "zh-CN",
+            "gl": "US",
+        }},
+        "videoId": video_id,
+    }).encode()
+    req = urllib.request.Request(
+        "https://www.youtube.com/youtubei/v1/player?key=" + INNERTUBE_KEY,
+        data=body,
+        headers={"User-Agent": UA, "Content-Type": "application/json"},
+    )
+    try:
+        return json.loads(urllib.request.urlopen(req, timeout=25).read())
+    except Exception:
+        return None
+
+
+def oembed_title(video_id):
     try:
         o = json.loads(http_get(
             "https://www.youtube.com/oembed?url="
-            + urllib.parse.quote("https://www.youtube.com/watch?v=" + vid, safe="")
+            + urllib.parse.quote("https://www.youtube.com/watch?v=" + video_id, safe="")
             + "&format=json", timeout=20))
-        title = (o.get("title") or "").strip()
+        return (o.get("title") or "").strip()
     except Exception:
-        pass
+        return ""
+
+
+def check_live(channel_id):
+    """现在真的在直播就返回 {"id", "title"}，否则 None。
+
+    注意 /live 的 canonical 对「已结束的直播回放」也成立，必须用
+    liveBroadcastDetails.isLiveNow 才能区分，否则会把回放当成直播。
+    """
+    vid = channel_live_video(channel_id)
+    if not vid:
+        return None
+    d = player_info(vid) or {}
+    vd = d.get("videoDetails") or {}
+    lb = (((d.get("microformat") or {}).get("playerMicroformatRenderer") or {})
+          .get("liveBroadcastDetails") or {})
+    if not (lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp"))):
+        return None
+    title = (vd.get("title") or "").strip() or oembed_title(vid)
     return {"id": vid, "title": title or "（直播中）"}
 
 
@@ -403,13 +434,12 @@ def main():
         print("ok: %s (%d videos)" % (name, len(videos)))
 
     def find_live(ch):
-        vid = check_live(ch["id"])
-        if not vid:
+        info = check_live(ch["id"])
+        if not info:
             return None
-        info = live_info(vid)
         info["channelId"] = ch["id"]
         info["channel"] = ch["name"]
-        print("LIVE: %s -> %s %s" % (ch["name"], vid, info["title"]))
+        print("LIVE: %s -> %s %s" % (ch["name"], info["id"], info["title"]))
         return info
 
     live_out = []
