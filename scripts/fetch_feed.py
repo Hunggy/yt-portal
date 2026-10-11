@@ -16,6 +16,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
@@ -33,6 +34,17 @@ HEADERS = {"User-Agent": UA, "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"}
 
 MAX_PER_CHANNEL = 12
 MAX_INSTANCES = 26
+
+# 用来实测实例能否提取播放流的固定视频（"Me at the zoo"，公开、无地区限制）
+PROBE_VIDEO = "jNQXAC9IVRw"
+# YouTube 匿名播放风控的典型报错关键字
+BOT_MARKERS = (
+    "sign in to confirm",
+    "not a bot",
+    "login_required",
+    "sign in to continue",
+    "bot check",
+)
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 YTNS = "{http://www.youtube.com/xml/schemas/2015}"
@@ -60,6 +72,91 @@ def probe(url, timeout=12):
         return {"url": url, "ok": True, "ms": int((time.time() - start) * 1000), "code": e.code}
     except Exception:
         return {"url": url, "ok": False, "ms": 0, "code": 0}
+
+
+def classify(obj):
+    """把实例返回的 JSON 归类为 ok / bot / err / unknown。"""
+    if not isinstance(obj, dict):
+        return "unknown", ""
+    err = obj.get("error")
+    if err:
+        s = str(err).strip()
+        low = s.lower()
+        if any(m in low for m in BOT_MARKERS):
+            return "bot", s[:180]
+        return "err", s[:180]
+    streams = (
+        (obj.get("formatStreams") or [])
+        + (obj.get("adaptiveFormats") or [])
+        + (obj.get("videoStreams") or [])
+        + (obj.get("audioStreams") or [])
+    )
+    if streams:
+        return "ok", ""
+    return "unknown", ""
+
+
+def check_invidious(base):
+    base = base.rstrip("/")
+    last = ""
+    for q in ("?fields=error,title,formatStreams,adaptiveFormats", ""):
+        try:
+            raw = http_get(base + "/api/v1/videos/" + PROBE_VIDEO + q, timeout=30)
+        except urllib.error.HTTPError as e:
+            return "err", "HTTP %s" % e.code
+        except Exception as e:
+            last = type(e).__name__
+            continue
+        try:
+            obj = json.loads(raw)
+        except Exception:
+            continue
+        kind, note = classify(obj)
+        if kind != "unknown":
+            return kind, note
+    return "unknown", last
+
+
+def piped_api_for(frontend, hint=None):
+    if hint:
+        return hint.rstrip("/")
+    try:
+        host = urllib.parse.urlsplit(frontend).netloc
+    except Exception:
+        return None
+    if host.startswith("piped."):
+        return "https://pipedapi." + host[len("piped."):]
+    return None
+
+
+def check_piped(frontend, api):
+    if not api:
+        return "unknown", "no api url"
+    try:
+        raw = http_get(api.rstrip("/") + "/streams/" + PROBE_VIDEO, timeout=30)
+        return classify(json.loads(raw))
+    except urllib.error.HTTPError as e:
+        return "err", "HTTP %s" % e.code
+    except Exception as e:
+        return "unknown", type(e).__name__
+
+
+def check_one(item):
+    """可达性 + 能否真正提取播放流。"""
+    url = item["url"]
+    r = probe(url)
+    if not r["ok"]:
+        play, note = "unknown", ""
+    elif item.get("type") == "piped":
+        play, note = check_piped(url, piped_api_for(url, item.get("api")))
+    else:
+        play, note = check_invidious(url)
+    r["type"] = item.get("type", "unknown")
+    r["play"] = play
+    r["note"] = note
+    if item.get("ratio") is not None:
+        r["ratio"] = item["ratio"]
+    return r
 
 
 def resolve_handle(handle):
@@ -142,23 +239,31 @@ def discover_invidious():
             continue
         if not isinstance(meta, dict) or meta.get("type") != "https":
             continue
-        uri = str(name or meta.get("uri") or "").strip()
+        uri = str(meta.get("uri") or name or "").strip()
         if not uri or uri.lower().endswith((".onion", ".i2p")):
             continue
         if not uri.startswith("http"):
             uri = "https://" + uri
-        out.append({"url": uri.rstrip("/"), "type": "invidious"})
+        pb = ((meta.get("stats") or {}).get("playback") or {})
+        out.append({"url": uri.rstrip("/"), "type": "invidious", "ratio": pb.get("ratio")})
     return out
 
 
 def dedup(instances):
-    seen, out = set(), []
+    """按 URL 去重，同 URL 的条目互补字段（静态清单的 api 提示 + 官方清单的 ratio）。"""
+    idx, out = {}, []
     for it in instances:
-        u = it["url"].rstrip("/")
-        if u in seen:
+        u = str(it.get("url") or "").rstrip("/")
+        if not u:
             continue
-        seen.add(u)
-        out.append({"url": u, "type": it.get("type", "unknown")})
+        if u in idx:
+            tgt = out[idx[u]]
+            for k, v in it.items():
+                if tgt.get(k) in (None, "") and v not in (None, ""):
+                    tgt[k] = v
+            continue
+        idx[u] = len(out)
+        out.append(dict(it))
     return out
 
 
@@ -206,11 +311,15 @@ def main():
     pool = dedup(list(static) + discover_invidious())[:MAX_INSTANCES]
 
     with ThreadPoolExecutor(max_workers=10) as ex:
-        results = list(ex.map(probe, [p["url"] for p in pool]))
-    by_url = {p["url"]: p["type"] for p in pool}
-    for r in results:
-        r["type"] = by_url.get(r["url"], "unknown")
-    results.sort(key=lambda r: (not r["ok"], r["ms"] if r["ok"] else 999999, r["url"]))
+        results = list(ex.map(check_one, pool))
+
+    play_rank = {"ok": 0, "unknown": 1, "err": 2, "bot": 3}
+    results.sort(key=lambda r: (
+        not r["ok"],
+        play_rank.get(r["play"], 1),
+        r["ms"] if r["ok"] else 999999,
+        r["url"],
+    ))
 
     with open(os.path.join(DATA, "status.json"), "w", encoding="utf-8") as f:
         json.dump({"updated": now_iso(), "instances": results}, f, ensure_ascii=False, indent=1)
@@ -227,7 +336,15 @@ def main():
             indent=1,
         )
 
-    print("done. channels=%d instances=%d ok=%d" % (len(channels_out), len(results), sum(1 for r in results if r["ok"])))
+    ok = sum(1 for r in results if r["ok"])
+    playable = sum(1 for r in results if r["play"] == "ok")
+    botblock = sum(1 for r in results if r["play"] == "bot")
+    print("done. channels=%d instances=%d reachable=%d playable=%d botblocked=%d"
+          % (len(channels_out), len(results), ok, playable, botblock))
+    for r in results:
+        if r["ok"]:
+            print("  %-9s %-44s %5dms  %s %s"
+                  % (r["type"], r["url"], r["ms"], r["play"], r["note"]))
 
 
 if __name__ == "__main__":

@@ -126,7 +126,11 @@
   <div class="mbox">
     <div class="mhead">
       <div id="mTitle" class="mtitle"></div>
-      <select id="mInst" title="换入口重试"></select>
+      <select id="mSrc" title="播放走哪里">
+        <option value="official">播放：官方 embed（推荐）</option>
+        <option value="instance">播放：当前入口</option>
+      </select>
+      <select id="mInst" title="搜索 / 换入口重试"></select>
       <a id="mNewTab" class="btn" target="_blank" rel="noopener">新标签打开</a>
       <a id="mOfficial" class="btn" target="_blank" rel="noopener">官方打开</a>
       <button id="mClose" class="btn">关闭</button>
@@ -139,9 +143,9 @@
       <div class="nact"><a id="mNoticeGo" class="btn" target="_blank" rel="noopener">在 youtube.com 搜索</a></div>
     </div>
     <div class="mfoot">
-      <span>放不出来？在上面下拉里换个入口，或者点「新标签打开」。</span>
-      <span>直播 / 长视频出问题的话，优先试标了 piped 的入口。</span>
-      <span>这里如果是空白页，说明该入口不允许被嵌入，用「新标签打开」。</span>
+      <span><b>搜索</b>走上面的前端入口，<b>播放</b>默认走 YouTube 官方 embed。</span>
+      <span>因为 Piped / Invidious 的服务器 IP 被 YouTube 的匿名播放风控挡住了（会报 “Sign in to confirm you're not a bot”），播放交给官方最稳。</span>
+      <span>如果你的网络连 youtube.com 反而不通，把播放改成「当前入口」。</span>
     </div>
   </div>
 </div>
@@ -149,12 +153,14 @@
 <script>
 const LS_KEY = "ytp.instance";
 const WORKING_KEY = "ytp.working";
+const PLAY_KEY = "ytp.playmode";
 const FALLBACK = [
   "https://piped.video", "https://piped.adminforge.de", "https://piped.private.coffee",
   "https://piped.mha.fi", "https://yewtu.be", "https://invidious.nerdvpn.de",
   "https://invidious.tiekoetter.com", "https://invidious.f5.si", "https://invidious.privacyredirect.com"
 ];
-const S = { instances: [], picked: null, meta: {}, videos: null, cur: null };
+const S = { instances: [], picked: null, meta: {}, videos: null, cur: null,
+            play: localStorage.getItem("ytp.playmode") || "official" };
 const $ = id => document.getElementById(id);
 const uniq = a => Array.from(new Set(a.filter(Boolean)));
 const hostOf = u => { try { return new URL(u).host; } catch(e){ return u; } };
@@ -222,7 +228,7 @@ async function pickInstance(force){
     if (await probe(u, 5000)) hits.push(u);
   }));
   if (hits.length) localStorage.setItem(WORKING_KEY, JSON.stringify(hits));
-  hits.sort((a, b) => order.indexOf(a) - order.indexOf(b));
+  hits.sort((a, b) => (playRank(a) - playRank(b)) || (order.indexOf(a) - order.indexOf(b)));
   return hits[0] || null;
 }
 
@@ -235,7 +241,10 @@ function fillInstSelect(sel, includeBad){
     sel.appendChild(o);
   };
   const src = allInstances();
-  src.filter(i => i.ok).forEach(i => mk(hostOf(i.url) + "  ·  " + (i.type || "-"), i.url));
+  src.filter(i => i.ok).forEach(i => {
+    const pl = playLabel(i);
+    mk(hostOf(i.url) + "  ·  " + (i.type || "-") + (pl ? "  ·  " + pl : ""), i.url);
+  });
   if (includeBad) src.filter(i => !i.ok).forEach(i => mk(hostOf(i.url) + "  ·  上次探测失败", i.url));
   mk(sel === $("mInst") ? "youtube.com（官方直连 · 不能内嵌搜索）" : "youtube.com（官方直连）", "https://www.youtube.com");
   if (prev) sel.value = prev;
@@ -288,22 +297,29 @@ function renderDiag(){
 function openInModal(spec){
   S.cur = spec;
   $("mTitle").textContent = spec.title || "";
+  $("mSrc").value = S.play;
   fillInstSelect($("mInst"), true);
   loadFrame();
   $("modal").hidden = false;
   document.body.style.overflow = "hidden";
 }
 
-function urlsFor(inst){
-  inst = inst || "https://www.youtube.com";
-  if (S.cur.kind === "search"){
-    const u = inst + "/search?q=" + encodeURIComponent(S.cur.q);
-    return { frame: u, tab: u };
-  }
-  return {
-    frame: inst + "/embed/" + S.cur.id + "?autoplay=1",
-    tab: inst + "/watch?v=" + S.cur.id
-  };
+function instMeta(url){
+  return S.instances.find(x => x.url === url) || {};
+}
+
+function playLabel(m){
+  if (m.play === "ok") return "可播放";
+  if (m.play === "bot") return "被 bot 检查挡住";
+  if (m.play === "err") return "接口报错";
+  return "";
+}
+
+function playRank(url){
+  const m = instMeta(url);
+  if (m.play === "ok") return 0;
+  if (!m.play || m.play === "unknown") return 1;
+  return 2;
 }
 
 function isOfficial(inst){
@@ -322,8 +338,8 @@ function currentInst(){
 
 function loadFrame(){
   const inst = currentInst();
-  const notice = $("mNotice");
   const search = S.cur.kind === "search";
+  const notice = $("mNotice");
 
   if (search && isOfficial(inst)){
     $("mFrame").hidden = true;
@@ -337,10 +353,20 @@ function loadFrame(){
 
   notice.hidden = true;
   $("mFrame").hidden = false;
-  const u = urlsFor(inst);
-  $("mFrame").src = u.frame;
-  $("mNewTab").href = u.tab;
-  $("mOfficial").href = search ? ytSearchUrl(S.cur.q) : "https://www.youtube.com/watch?v=" + S.cur.id;
+
+  if (search){
+    const u = inst + "/search?q=" + encodeURIComponent(S.cur.q);
+    $("mFrame").src = u;
+    $("mNewTab").href = u;
+    $("mOfficial").href = ytSearchUrl(S.cur.q);
+    return;
+  }
+
+  const useOfficial = (S.play !== "instance") || isOfficial(inst);
+  const playHost = useOfficial ? "https://www.youtube.com" : inst;
+  $("mFrame").src = playHost + "/embed/" + S.cur.id + "?autoplay=1";
+  $("mNewTab").href = (isOfficial(inst) ? "https://www.youtube.com" : inst) + "/watch?v=" + S.cur.id;
+  $("mOfficial").href = "https://www.youtube.com/watch?v=" + S.cur.id;
 }
 
 function closePlayer(){
@@ -363,16 +389,27 @@ async function doScan(){
     box.innerHTML = '<div class="panel"><h3>本机实测中… ' + done + '/' + list.length + '</h3></div>';
   }));
 
-  rows.sort((a, b) => (b.ok - a.ok) || (a.ms - b.ms));
+  rows.sort((a, b) => {
+    const ra = playRank(a.url), rb = playRank(b.url);
+    return (b.ok - a.ok) || (ra - rb) || (a.ms - b.ms);
+  });
   localStorage.setItem(WORKING_KEY, JSON.stringify(rows.filter(r => r.ok).map(r => r.url)));
 
-  let html = '<div class="panel"><h3>本机实测：' + rows.filter(r => r.ok).length + ' / ' + rows.length + ' 可用</h3>' +
-    '<p>这是在<b>你这台机器 + 当前网络</b>上测的，可能和 GitHub 那边的结果不一样。点「用它」切换入口。</p><div class="rows">';
+  const playable = rows.filter(r => r.ok && instMeta(r.url).play === "ok").length;
+  const botblock = rows.filter(r => r.ok && instMeta(r.url).play === "bot").length;
+
+  let html = '<div class="panel"><h3>本机实测：' + rows.filter(r => r.ok).length + ' / ' + rows.length + ' 可访问' +
+    (playable || botblock ? '　（其中 ' + playable + ' 个能播放，' + botblock + ' 个被 bot 检查挡住）' : '') + '</h3>' +
+    '<p>「可访问」是在<b>你这台机器 + 当前网络</b>上测的；「可播放」是 GitHub 那边实测提取视频流的结果。</p>' +
+    '<p>被 bot 检查挡住的入口，搜索还能用，但播不了——把播放改成「官方 embed」即可。</p><div class="rows">';
   rows.forEach(r => {
+    const m = instMeta(r.url);
+    const pl = playLabel(m);
     html += '<div class="row ' + (r.ok ? "ok" : "bad") + '">' +
       '<span class="tag">' + esc(r.type) + '</span>' +
       '<span class="h">' + esc(hostOf(r.url)) + '</span>' +
-      '<span class="ms">' + (r.ok ? r.ms + "ms" : "连不上") + '</span>' +
+      '<span class="tag">' + (r.ok ? (pl || "播放状态未知") : "连不上") + '</span>' +
+      '<span class="ms">' + (r.ok ? r.ms + "ms" : "-") + '</span>' +
       (r.ok ? '<button class="btn" data-use="' + esc(r.url) + '">用它</button>' : '') +
       '</div>';
   });
@@ -468,6 +505,11 @@ $("main").addEventListener("click", e => {
 });
 
 $("mInst").addEventListener("change", loadFrame);
+$("mSrc").addEventListener("change", e => {
+  S.play = e.target.value;
+  localStorage.setItem(PLAY_KEY, S.play);
+  loadFrame();
+});
 $("mClose").addEventListener("click", closePlayer);
 $("modal").addEventListener("click", e => { if (e.target === $("modal")) closePlayer(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("modal").hidden) closePlayer(); });
