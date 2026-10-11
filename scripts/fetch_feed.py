@@ -255,17 +255,7 @@ def to_channel_id(entry):
 
 
 INNERTUBE_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
-
-
-def channel_live_video(channel_id):
-    """频道 /live 页的 canonical 指向最近一场直播（可能是已结束的回放，需再确认）。"""
-    try:
-        html = http_get("https://www.youtube.com/channel/%s/live" % channel_id,
-                        timeout=25).decode("utf-8", "ignore")
-    except Exception:
-        return None
-    m = re.search(r'<link rel="canonical" href="https://www\.youtube\.com/watch\?v=([\w-]{11})"', html)
-    return m.group(1) if m else None
+LIVE_SCAN = 3
 
 
 def player_info(video_id):
@@ -300,30 +290,27 @@ def oembed_title(video_id):
         return ""
 
 
-def check_live(channel_id, tag=""):
-    """现在真的在直播就返回 {"id", "title"}，否则 None。
+def live_probe(video_ids):
+    """在一组候选视频里找真正在直播的那个，返回 (info, 诊断字符串)。
 
-    注意 /live 的 canonical 对「已结束的直播回放」也成立，必须用
-    liveBroadcastDetails.isLiveNow 才能区分，否则会把回放当成直播。
+    直播开始时就会出现在频道 RSS 的最新条目里，所以拿最新的几条逐个验即可。
+    必须用 liveBroadcastDetails.isLiveNow：isLiveContent 对「已结束的直播回放」也是 true，
+    只看它会误报。
     """
-    vid = channel_live_video(channel_id)
-    if not vid:
-        print("  livecheck %s: no canonical video" % tag)
-        return None
-    d = player_info(vid)
-    if d is None:
-        print("  livecheck %s: player api unreachable (vid=%s)" % (tag, vid))
-        return None
-    vd = d.get("videoDetails") or {}
-    lb = (((d.get("microformat") or {}).get("playerMicroformatRenderer") or {})
-          .get("liveBroadcastDetails") or {})
-    print("  livecheck %s: vid=%s status=%s isLiveNow=%s isLive=%s end=%s"
-          % (tag, vid, (d.get("playabilityStatus") or {}).get("status"),
-             lb.get("isLiveNow"), vd.get("isLive"), lb.get("endTimestamp")))
-    if not (lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp"))):
-        return None
-    title = (vd.get("title") or "").strip() or oembed_title(vid)
-    return {"id": vid, "title": title or "（直播中）"}
+    diag = []
+    for vid in video_ids:
+        d = player_info(vid)
+        if d is None:
+            return None, "player api unreachable"
+        vd = d.get("videoDetails") or {}
+        lb = (((d.get("microformat") or {}).get("playerMicroformatRenderer") or {})
+              .get("liveBroadcastDetails") or {})
+        status = (d.get("playabilityStatus") or {}).get("status")
+        diag.append("%s[%s,now=%s]" % (vid, status, lb.get("isLiveNow")))
+        if lb.get("isLiveNow") is True or (vd.get("isLive") is True and not lb.get("endTimestamp")):
+            title = (vd.get("title") or "").strip() or oembed_title(vid)
+            return {"id": vid, "title": title or "（直播中）"}, " ".join(diag)
+    return None, " ".join(diag)
 
 
 def parse_feed(xml_bytes):
@@ -441,8 +428,10 @@ def main():
         print("ok: %s (%d videos)" % (name, len(videos)))
 
     def find_live(ch):
-        info = check_live(ch["id"], ch["name"])
+        cands = [v["id"] for v in ch.get("videos", [])][:LIVE_SCAN]
+        info, diag = live_probe(cands)
         if not info:
+            print("  livecheck %s: none  %s" % (ch["name"], diag))
             return None
         info["channelId"] = ch["id"]
         info["channel"] = ch["name"]
