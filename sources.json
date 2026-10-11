@@ -1,0 +1,11 @@
+{
+  "_说明": "平台直播源清单，直接显示在首页「直播」板块。跟 YouTube 无关，所以在 YouTube 被墙的网络上照样能用。name 显示名，url 链接，tag 平台名（可省略）。自己加删都行。",
+  "sources": [
+    { "name": "KPL 官网直播", "url": "https://kpl.qq.com/", "tag": "官方" },
+    { "name": "虎牙 · KPL 官方间 660002", "url": "https://www.huya.com/660002", "tag": "虎牙" },
+    { "name": "斗鱼 · KPL 官方间 998", "url": "https://www.douyu.com/998", "tag": "斗鱼" },
+    { "name": "B站搜 KPL", "url": "https://search.bilibili.com/all?keyword=KPL%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B", "tag": "B站" },
+    { "name": "抖音搜 KPL", "url": "https://www.douyin.com/search/KPL%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B", "tag": "抖音" },
+    { "name": "微博搜 KPL", "url": "https://s.weibo.com/weibo?q=KPL", "tag": "微博" }
+  ]
+}

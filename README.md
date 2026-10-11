@@ -52,6 +52,19 @@ runner 调 innertube player 一律返回 `LOGIN_REQUIRED`（拿不到 `isLiveNow
 
 配额够用：`search.list` 每次 100 单位，免费额度每天 10000 单位，即每天 100 次查询。
 
+## 平台直播源
+
+`sources.json` 里放的是**跟 YouTube 无关**的直播入口，显示在首页「直播」板块最下面那一行。
+给 YouTube 完全打不开的网络用——比如 KPL 的正规直播其实在虎牙 / 斗鱼 / 官网：
+
+```json
+{ "sources": [
+  { "name": "虎牙 · KPL 官方间 660002", "url": "https://www.huya.com/660002", "tag": "虎牙" }
+] }
+```
+
+想加什么就加什么。点「本机实测所有入口」时，这些源也会一起测可达性。
+
 ## 说明
 
 - 仓库需要是 **public**，GitHub Free 才能开 Pages。有 Pro 的话可以转 private。

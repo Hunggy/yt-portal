@@ -85,6 +85,9 @@
   .chip:hover{border-color:#ff0033;color:#fff}
   .chip b{font-weight:500}
   .chip span{color:var(--muted);font-size:11px}
+  .subHead{display:flex;align-items:center;gap:8px;margin:16px 0 0;font-size:12px;
+    font-weight:500;color:var(--muted)}
+  .subHead em{font-style:normal;font-weight:400;font-size:11px;color:var(--tertiary,#6b6b73)}
   @media (prefers-reduced-motion: no-preference){
     .livedot{animation:lpulse 1.7s ease-in-out infinite}
     @keyframes lpulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -187,11 +190,12 @@ const FALLBACK = [
   "https://piped.mha.fi", "https://yewtu.be", "https://invidious.nerdvpn.de",
   "https://invidious.tiekoetter.com", "https://invidious.f5.si", "https://invidious.privacyredirect.com"
 ];
-const S = { instances: [], picked: null, meta: {}, videos: null, cur: null,
+const S = { instances: [], sources: [], picked: null, meta: {}, videos: null, cur: null,
             play: localStorage.getItem("ytp.playmode") || "official" };
 const $ = id => document.getElementById(id);
 const uniq = a => Array.from(new Set(a.filter(Boolean)));
 const hostOf = u => { try { return new URL(u).host; } catch(e){ return u; } };
+const originOf = u => { try { return new URL(u).origin; } catch(e){ return u; } };
 
 const jget = async (p) => {
   const r = await fetch(p, { cache: "no-store" });
@@ -283,7 +287,7 @@ function renderLive(){
   const el = $("live");
   const items = (S.videos && S.videos.live) || [];
   const chs = (S.videos && S.videos.channels) || [];
-  if (!items.length && !chs.length){ el.innerHTML = ""; return; }
+  if (!items.length && !chs.length && !S.sources.length){ el.innerHTML = ""; return; }
 
   let html = '<div class="liveSec"><div class="liveHead"><span class="livedot"></span>直播';
   if (items.length) html += '<span class="cnt">' + items.length + ' 个正在直播</span>';
@@ -310,10 +314,20 @@ function renderLive(){
   }
 
   if (chs.length){
-    html += '<div class="chips">';
+    html += '<div class="subHead">YouTube 频道直播</div><div class="chips">';
     chs.forEach(c => {
       html += '<a class="chip" href="https://www.youtube.com/channel/' + c.id + '/live" ' +
         'target="_blank" rel="noopener"><b>▸ ' + esc(c.name) + '</b><span>看直播</span></a>';
+    });
+    html += '</div>';
+  }
+
+  if (S.sources.length){
+    html += '<div class="subHead">平台直播源 <em>YouTube 不通时用这些</em></div><div class="chips">';
+    S.sources.forEach(s => {
+      html += '<a class="chip" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
+        (s.tag ? '<span>' + esc(s.tag) + '</span>' : '') +
+        '<b>' + esc(s.name) + '</b></a>';
     });
     html += '</div>';
   }
@@ -451,50 +465,66 @@ function closePlayer(){
 }
 
 async function doScan(){
-  const list = allInstances();
   const box = $("scanBox");
+  const insts = allInstances().map(i => ({ url: i.url, probe: i.url, type: i.type || "-", kind: "inst" }));
+  const srcs = S.sources.map(s => ({ url: s.url, probe: originOf(s.url), type: s.tag || "平台", kind: "src" }));
+  const list = insts.concat(srcs);
+  if (!list.length){ box.innerHTML = ""; return; }
+
   let done = 0;
   const rows = [];
   box.innerHTML = '<div class="panel"><h3>本机实测中… 0/' + list.length + '</h3></div>';
   await Promise.all(list.map(async it => {
     const t0 = Date.now();
-    const ok = await probe(it.url, 5000);
-    rows.push({ url: it.url, type: it.type || "-", ok: ok, ms: Date.now() - t0 });
+    const ok = await probe(it.probe, 5000);
+    rows.push({ url: it.url, type: it.type, ok: ok, ms: Date.now() - t0, kind: it.kind });
     done++;
     box.innerHTML = '<div class="panel"><h3>本机实测中… ' + done + '/' + list.length + '</h3></div>';
   }));
 
-  rows.sort((a, b) => {
-    const ra = playRank(a.url), rb = playRank(b.url);
-    return (b.ok - a.ok) || (ra - rb) || (a.ms - b.ms);
-  });
-  localStorage.setItem(WORKING_KEY, JSON.stringify(rows.filter(r => r.ok).map(r => r.url)));
+  const instRows = rows.filter(r => r.kind === "inst");
+  const srcRows = rows.filter(r => r.kind === "src");
+  instRows.sort((a, b) => (b.ok - a.ok) || (playRank(a.url) - playRank(b.url)) || (a.ms - b.ms));
+  srcRows.sort((a, b) => (b.ok - a.ok) || (a.ms - b.ms));
+  localStorage.setItem(WORKING_KEY, JSON.stringify(instRows.filter(r => r.ok).map(r => r.url)));
 
-  const playable = rows.filter(r => r.ok && instMeta(r.url).play === "ok").length;
-  const botblock = rows.filter(r => r.ok && instMeta(r.url).play === "bot").length;
+  const playable = instRows.filter(r => r.ok && instMeta(r.url).play === "ok").length;
+  const botblock = instRows.filter(r => r.ok && instMeta(r.url).play === "bot").length;
+  const nOk = k => rows.filter(r => r.kind === k && r.ok).length;
 
-  let html = '<div class="panel"><h3>本机实测：' + rows.filter(r => r.ok).length + ' / ' + rows.length + ' 可访问' +
-    (playable || botblock ? '　（其中 ' + playable + ' 个能播放，' + botblock + ' 个播放被挡）' : '') + '</h3>' +
-    '<p>「可访问」是在<b>你这台机器 + 当前网络</b>上测的，这个才决定你能不能打开它。</p>' +
-    '<p>「能不能播放」主要看 YouTube 有没有封该实例的服务器 IP——被挡住时搜索照样能用，但播不了，' +
-    '所以播放默认走官方 embed。</p><div class="rows">';
-  rows.forEach(r => {
+  const rowHtml = (r, withUse) => {
     const m = instMeta(r.url);
-    const pl = playLabel(m);
-    const rt = ratioTxt(m);
-    html += '<div class="row ' + (r.ok ? "ok" : "bad") + '">' +
+    const pl = r.kind === "inst" ? playLabel(m) : "";
+    const rt = r.kind === "inst" ? ratioTxt(m) : "";
+    return '<div class="row ' + (r.ok ? "ok" : "bad") + '">' +
       '<span class="tag">' + esc(r.type) + '</span>' +
       '<span class="h">' + esc(hostOf(r.url)) + '</span>' +
-      '<span class="tag">' + (r.ok ? (pl || "播放状态未知") : "连不上") + '</span>' +
+      (r.kind === "inst" ? '<span class="tag">' + (r.ok ? (pl || "播放状态未知") : "连不上") + '</span>' : '') +
       (rt ? '<span class="tag">' + esc(rt) + '</span>' : '') +
-      '<span class="ms">' + (r.ok ? r.ms + "ms" : "-") + '</span>' +
-      (r.ok ? '<button class="btn" data-use="' + esc(r.url) + '">用它</button>' : '') +
+      '<span class="ms">' + (r.ok ? r.ms + "ms" : "连不上") + '</span>' +
+      (withUse && r.ok ? '<button class="btn" data-use="' + esc(r.url) + '">用它</button>' : '') +
       '</div>';
-  });
-  html += '</div></div>';
+  };
+
+  let html = '<div class="panel"><h3>本机实测结果</h3>' +
+    '<p>这是在<b>你这台机器 + 当前网络</b>上测的，「可访问」才决定你能不能打开它。</p>' +
+    '<p>播放能力看 YouTube 有没有封该实例的服务器 IP——被挡住时搜索还能用但播不了。' +
+    '如果连 YouTube 官方都进不去，就直接用下面的平台直播源。</p>' +
+    '<div class="subHead">播放入口　' + nOk("inst") + ' / ' + instRows.length + ' 可访问' +
+    (playable || botblock ? '（' + playable + ' 能播 · ' + botblock + ' 播放被挡）' : '') + '</div><div class="rows">';
+  instRows.forEach(r => { html += rowHtml(r, true); });
+  html += '</div>';
+
+  if (srcRows.length){
+    html += '<div class="subHead">平台直播源　' + nOk("src") + ' / ' + srcRows.length + ' 可访问</div><div class="rows">';
+    srcRows.forEach(r => { html += rowHtml(r, false); });
+    html += '</div>';
+  }
+
+  html += '</div>';
   box.innerHTML = html;
 
-  const first = rows.find(r => r.ok);
+  const first = instRows.find(r => r.ok);
   if (first){
     S.picked = first.url;
     localStorage.setItem(LS_KEY, S.picked);
@@ -507,8 +537,12 @@ async function doScan(){
 }
 
 async function boot(){
-  try { S.meta = await jget("data/meta.json"); } catch(e){ S.meta = {}; }
   try { S.videos = await jget("data/videos.json"); } catch(e){ S.videos = null; }
+  try { S.meta = await jget("data/meta.json"); } catch(e){ S.meta = {}; }
+  try {
+    const sd = await jget("sources.json");
+    S.sources = (sd.sources || []).filter(s => s && s.url);
+  } catch(e){ S.sources = []; }
   try {
     const st = await jget("data/status.json");
     S.instances = (st.instances || []).filter(i => i.url);
