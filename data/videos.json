@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T11:27:48Z",
+ "updated": "2026-10-16T16:41:50Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "Qzuk399Bqwc",
      "title": "【2026 KPL】北京WB vs 南通Hero久競 | 重慶狼隊 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-16T08:12:47+00:00",
+     "published": "2026-10-16T15:03:16+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "omAGT-GlbeE",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 北京WB vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-16T14:47:41+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】KSG vs 深圳DYG | 廣州TTG vs 南通Hero久競 | 成都AG超玩會 vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-04T15:13:38+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "ketHIBL1nMI",
-     "title": "【2026 KPL】北京WB vs 杭州LGD.NBW | 北京JDG vs 上海EDG.M | 重慶狼隊 vs 長沙TES.A | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-03T17:31:24+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -85,15 +85,15 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
-     "id": "Zet6Xf-Y3kU",
-     "title": "L14 Esports Coaching | HoK Global Esports Power-Up Program Esports Academy",
-     "published": "2026-10-16T10:00:29+00:00",
+     "id": "xQ2eRWD03cs",
+     "title": "🔴 LIVE NOW | [BM] Musim Luruh 2026 | Regular Season Minggu 4 Hari 2",
+     "published": "2026-10-16T12:54:14+00:00",
      "author": "HoK Esports"
     },
     {
-     "id": "xQ2eRWD03cs",
-     "title": "🔴 LIVE NOW | [BM] Musim Luruh 2026 | Regular Season Minggu 4 Hari 2",
-     "published": "2026-10-14T15:50:57+00:00",
+     "id": "Zet6Xf-Y3kU",
+     "title": "L14 Esports Coaching | HoK Global Esports Power-Up Program Esports Academy",
+     "published": "2026-10-16T10:00:29+00:00",
      "author": "HoK Esports"
     },
     {
