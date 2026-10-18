@@ -1,11 +1,17 @@
 {
- "updated": "2026-10-18T11:09:54Z",
+ "updated": "2026-10-18T15:54:21Z",
  "live": [],
  "channels": [
   {
    "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
    "name": "KPL 王者荣耀职业联赛",
    "videos": [
+    {
+     "id": "djpGLAEBSr0",
+     "title": "【2026 KPL】重慶狼隊 vs 深圳DYG | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-18T15:45:54+00:00",
+     "author": "KPL聯盟"
+    },
     {
      "id": "3Y4DgwD7A90",
      "title": "【2026 KPL】KSG vs 上海EDG.M | 北京JDG vs 長沙TES.A | 組外單循環 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】廣州TTG vs 濟南RW俠 | 北京JDG vs 南通Hero久競 | 成都AG超玩會 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-06T15:36:36+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "IN90HrBLqSY",
-     "title": "【2026 KPL】北京WB vs 長沙TES.A | 北京JDG vs 杭州LGD.NBW | 重慶狼隊 vs 上海EDG.M | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-05T16:52:52+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -87,7 +87,7 @@
     {
      "id": "WfBPM0kkoVA",
      "title": "LIVE 🔴 KIC India Qualifiers LAN Grand Finals | Day 2 | Honor of Kings",
-     "published": "2026-10-15T23:27:25+00:00",
+     "published": "2026-10-18T12:49:06+00:00",
      "author": "HoK Esports"
     },
     {
@@ -163,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "3nKNq1HU7vs",
+     "title": "so this is what a sleep paralysis demon looks like @valeriyaeros",
+     "published": "2026-10-18T14:00:31+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "XiW4sNNLFBY",
      "title": "walk walk fashion baby, the world is our runway",
      "published": "2026-10-17T19:00:28+00:00",
@@ -226,12 +232,6 @@
      "id": "okKJt6VPhLc",
      "title": "melatonin was a layup, but crash out got us too @tinashenow",
      "published": "2026-10-09T01:00:36+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "osV29Z8KQ6A",
-     "title": "legendary. iconic. a miracle. yet to be outdone. @Valkyrae @scarra",
-     "published": "2026-10-08T16:00:30+00:00",
      "author": "YouTube"
     }
    ]
