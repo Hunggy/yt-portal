@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T13:21:20Z",
+ "updated": "2026-10-19T22:22:55Z",
  "live": [],
  "channels": [
   {
@@ -163,8 +163,20 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "yjHvkMeVzK0",
+     "title": "@ldshadowlady created Shadowcraft as a teen. 15 years later, she's a Minecraft legend.",
+     "published": "2026-10-19T16:00:26+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "O6OXQCfPCig",
+     "title": "going behind the screen with @ldshadowlady",
+     "published": "2026-10-19T16:00:20+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "TNwB7bX0pyg",
-     "title": "RC_GigiHadid_Solo_R2B.mp4",
+     "title": "what’s Gigi Hadid watching? science and animal videos 🩷 #VSFashionShow",
      "published": "2026-10-19T13:00:32+00:00",
      "author": "YouTube"
     },
@@ -220,18 +232,6 @@
      "id": "AwMy11R3au0",
      "title": "the badge still works! watch more on @LillySingh's YouTube channel now",
      "published": "2026-10-16T19:00:30+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "q3gzYpK82ZM",
-     "title": "bugha is the blueprint ✍️ drop your top 3 esports streaming moments below @valkyrae @scarra",
-     "published": "2026-10-15T16:00:31+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "PYIoVCXp_dY",
-     "title": "choose your fighter! catch Street Fighter in theaters this Friday.",
-     "published": "2026-10-14T22:19:40+00:00",
      "author": "YouTube"
     }
    ]
