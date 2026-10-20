@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T11:41:20Z",
+ "updated": "2026-10-20T17:10:37Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "djpGLAEBSr0",
      "title": "【2026 KPL】重慶狼隊 vs 深圳DYG | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-18T15:45:54+00:00",
+     "published": "2026-10-20T13:18:27+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "957sjvvaU8Q",
+     "title": "【2026 KPL】成都AG超玩會 vs 長沙TES.A | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-20T13:08:31+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -70,12 +76,6 @@
      "id": "FQbmjwRkF-c",
      "title": "【2026 KPL】KSG vs 長沙TES.A | 北京WB vs 上海EDG.M | 成都AG超玩會 vs 杭州LGD.NBW | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-07T15:54:04+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "V4HrwU3zFVY",
-     "title": "【2026 KPL】廣州TTG vs 濟南RW俠 | 北京JDG vs 南通Hero久競 | 成都AG超玩會 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-06T15:36:36+00:00",
      "author": "KPL聯盟"
     }
    ]
@@ -163,6 +163,18 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "S8Yn2Os0bWc",
+     "title": "can we all agree a smokey eye never misses 🩷 which one are you picking #VSFashionShow",
+     "published": "2026-10-20T16:00:24+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "BinqprMup7k",
+     "title": "most likely to make you cry? lose sleep? cancel plans?",
+     "published": "2026-10-20T13:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "jjV71mvMM2o",
      "title": "what song would you strut to?? #VSFashionShow",
      "published": "2026-10-20T01:00:27+00:00",
@@ -220,18 +232,6 @@
      "id": "XiW4sNNLFBY",
      "title": "walk walk fashion baby, the world is our runway",
      "published": "2026-10-17T19:00:28+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "LObUNgOG1ao",
-     "title": "october 22nd can't come soon enough!",
-     "published": "2026-10-17T16:00:35+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "AOVf1JmEeS8",
-     "title": "the ICONIC Victoria's Secret angel wings... but make it rug version",
-     "published": "2026-10-16T22:00:58+00:00",
      "author": "YouTube"
     }
    ]
