@@ -1,37 +1,58 @@
 {
- "updated": "2026-10-19T22:23:08Z",
+ "updated": "2026-10-20T04:54:39Z",
  "instances": [
   {
-   "url": "https://piped.video",
+   "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 153,
+   "ms": 317,
    "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
+   "type": "invidious",
+   "play": "ok",
+   "note": "官方统计 13/13 成功",
+   "ratio": 1.0,
+   "ratioTotal": 13,
+   "ratioSuccess": 13
   },
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 181,
+   "ms": 168,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
+   "url": "https://piped.kavin.rocks",
+   "ok": true,
+   "ms": 179,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 249,
+   "ms": 273,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
-   "url": "https://piped.kavin.rocks",
+   "url": "https://yewtu.be",
    "ok": true,
-   "ms": 553,
+   "ms": 401,
+   "code": 200,
+   "type": "invidious",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
+   "url": "https://piped.video",
+   "ok": true,
+   "ms": 485,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -40,67 +61,49 @@
   {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 692,
+   "ms": 615,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
-  },
-  {
-   "url": "https://yewtu.be",
-   "ok": true,
-   "ms": 712,
-   "code": 200,
-   "type": "invidious",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
-  },
-  {
-   "url": "https://invidious.privacyredirect.com",
-   "ok": true,
-   "ms": 800,
-   "code": 200,
-   "type": "invidious",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 404)"
   },
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 1036,
+   "ms": 787,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
+   "url": "https://invidious.privacyredirect.com",
+   "ok": true,
+   "ms": 970,
+   "code": 200,
+   "type": "invidious",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 404)"
+  },
+  {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1387,
+   "ms": 1335,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://invidious.f5.si",
-   "ok": true,
-   "ms": 860,
-   "code": 502,
-   "type": "invidious",
-   "play": "err",
-   "note": "HTTP 502"
-  },
-  {
    "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 863,
+   "ms": 856,
    "code": 200,
    "type": "invidious",
    "play": "bot",
-   "note": "官方统计 0/17 成功",
+   "note": "官方统计 0/9 成功",
    "ratio": 0.0,
-   "ratioTotal": 17,
+   "ratioTotal": 9,
    "ratioSuccess": 0
   },
   {
