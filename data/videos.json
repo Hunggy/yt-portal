@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T17:10:37Z",
+ "updated": "2026-10-20T21:39:01Z",
  "live": [],
  "channels": [
   {
@@ -163,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "il_MMI2MOYM",
+     "title": "all great bags hold something wild",
+     "published": "2026-10-20T19:49:34+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "S8Yn2Os0bWc",
      "title": "can we all agree a smokey eye never misses 🩷 which one are you picking #VSFashionShow",
      "published": "2026-10-20T16:00:24+00:00",
@@ -226,12 +232,6 @@
      "id": "3nKNq1HU7vs",
      "title": "so this is what a sleep paralysis demon looks like @valeriyaeros",
      "published": "2026-10-18T14:00:31+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "XiW4sNNLFBY",
-     "title": "walk walk fashion baby, the world is our runway",
-     "published": "2026-10-17T19:00:28+00:00",
      "author": "YouTube"
     }
    ]
