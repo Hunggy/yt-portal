@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T11:52:57Z",
+ "updated": "2026-10-21T17:14:36Z",
  "live": [],
  "channels": [
   {
@@ -7,9 +7,15 @@
    "name": "KPL 王者荣耀职业联赛",
    "videos": [
     {
+     "id": "6PuSLtgFiyE",
+     "title": "【2026 KPL】成都AG超玩會 vs 長沙TES.A | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-21T16:51:22+00:00",
+     "author": "KPL聯盟"
+    },
+    {
      "id": "957sjvvaU8Q",
      "title": "【2026 KPL】成都AG超玩會 vs 長沙TES.A | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-20T13:08:31+00:00",
+     "published": "2026-10-21T14:10:43+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -70,12 +76,6 @@
      "id": "Wx0saj2dP9g",
      "title": "【2026 KPL】重慶狼隊 vs 南通Hero久競 | 北京JDG vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-09T15:05:32+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "FQbmjwRkF-c",
-     "title": "【2026 KPL】KSG vs 長沙TES.A | 北京WB vs 上海EDG.M | 成都AG超玩會 vs 杭州LGD.NBW | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-07T15:54:04+00:00",
      "author": "KPL聯盟"
     }
    ]
@@ -163,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "XT8-iYLYCg8",
+     "title": "lights, camera, @ldshadowlady",
+     "published": "2026-10-21T16:00:24+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "wXSbAW0B2FQ",
      "title": "the watch history reveal we needed 👀 #VSFashionShow",
      "published": "2026-10-20T22:00:36+00:00",
@@ -226,12 +232,6 @@
      "id": "xI6PobUun3c",
      "title": "6-inch heels or 10-foot wings? the angels have spoken ✨ #VSFashionShow",
      "published": "2026-10-19T00:30:24+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "QXXcf2p5I5U",
-     "title": "dream deserted island vibes 💖 #VSFashionShow",
-     "published": "2026-10-18T22:43:20+00:00",
      "author": "YouTube"
     }
    ]
