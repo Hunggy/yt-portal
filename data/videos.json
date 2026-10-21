@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T17:14:36Z",
+ "updated": "2026-10-21T21:45:00Z",
  "live": [],
  "channels": [
   {
@@ -163,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "0HAETg7L15o",
+     "title": "if dress rehearsal is any indication, this will be a great (and slightly chaotic) episode",
+     "published": "2026-10-21T19:00:58+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "XT8-iYLYCg8",
      "title": "lights, camera, @ldshadowlady",
      "published": "2026-10-21T16:00:24+00:00",
@@ -226,12 +232,6 @@
      "id": "19IX8zSEJXg",
      "title": "dreams come true on the VS runway 💗 #VSFashionShow",
      "published": "2026-10-19T01:40:29+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "xI6PobUun3c",
-     "title": "6-inch heels or 10-foot wings? the angels have spoken ✨ #VSFashionShow",
-     "published": "2026-10-19T00:30:24+00:00",
      "author": "YouTube"
     }
    ]
