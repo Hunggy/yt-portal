@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T11:56:32Z",
+ "updated": "2026-10-22T17:13:22Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "6PuSLtgFiyE",
      "title": "【2026 KPL】杭州LGD.NBW vs 南通Hero久競 | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-21T16:51:22+00:00",
+     "published": "2026-10-22T13:23:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "T2nVcLI3UBs",
+     "title": "【2026 KPL】北京JDG vs 廣州TTG | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-22T13:11:26+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 重慶狼隊 vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-10T16:29:36+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "Wx0saj2dP9g",
-     "title": "【2026 KPL】重慶狼隊 vs 南通Hero久競 | 北京JDG vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-09T15:05:32+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -84,6 +84,12 @@
    "id": "UCBqo62uoCQKO71QF6J2aNQA",
    "name": "Honor of Kings Global Esports",
    "videos": [
+    {
+     "id": "VAx7KG9Z2Ik",
+     "title": "L15 Psychological Guidance | HoK Global Esports Power-Up Program Esports Academy",
+     "published": "2026-10-22T13:11:32+00:00",
+     "author": "HoK Esports"
+    },
     {
      "id": "0ypHkFujFZ4",
      "title": "Can you match their moves? 👀🔥#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
@@ -149,12 +155,6 @@
      "title": "🔴 LIVE | HOK IKL FALL 2026 | Play-Ins",
      "published": "2026-10-13T13:33:18+00:00",
      "author": "HoK Esports"
-    },
-    {
-     "id": "2TalXvzz4iI",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | Regular Season Week 4 - Day 4",
-     "published": "2026-10-11T14:06:14+00:00",
-     "author": "HoK Esports"
     }
    ]
   },
@@ -162,6 +162,12 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "6yX9tINzYf0",
+     "title": "so that’s what ladybugs look like @aaronyooz",
+     "published": "2026-10-22T14:00:18+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "0HAETg7L15o",
      "title": "if dress rehearsal is any indication, this will be a great (and slightly chaotic) episode",
@@ -226,12 +232,6 @@
      "id": "zinYqcm70zk",
      "title": "the baddest artists are in LA tonight 🩷#VSFashionShow",
      "published": "2026-10-19T04:08:18+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "19IX8zSEJXg",
-     "title": "dreams come true on the VS runway 💗 #VSFashionShow",
-     "published": "2026-10-19T01:40:29+00:00",
      "author": "YouTube"
     }
    ]
