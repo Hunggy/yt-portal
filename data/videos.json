@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T17:10:49Z",
+ "updated": "2026-10-23T21:26:20Z",
  "live": [],
  "channels": [
   {
@@ -163,6 +163,18 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "tY-CR5Ki-OY",
+     "title": "some girlfriends have the magic touch",
+     "published": "2026-10-23T20:56:56+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "idqAz3omDi4",
+     "title": "something spooky is connecting your favorite YouTube worlds. who’s along for the ride?",
+     "published": "2026-10-23T18:00:50+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "cr6XbujbuX4",
      "title": "impossible baseball pitch?? challenge accepted @dudeperfect ⚾️",
      "published": "2026-10-23T13:00:43+00:00",
@@ -220,18 +232,6 @@
      "id": "yjHvkMeVzK0",
      "title": "@ldshadowlady created Shadowcraft as a teen. 15 years later, she's a Minecraft legend.",
      "published": "2026-10-19T16:00:26+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "O6OXQCfPCig",
-     "title": "going behind the screen with @ldshadowlady",
-     "published": "2026-10-19T16:00:20+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "TNwB7bX0pyg",
-     "title": "what’s Gigi Hadid watching? science and animal videos 🩷 #VSFashionShow",
-     "published": "2026-10-19T13:00:32+00:00",
      "author": "YouTube"
     }
    ]
