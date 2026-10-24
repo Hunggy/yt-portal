@@ -1,28 +1,37 @@
 {
- "updated": "2026-10-24T15:59:18Z",
+ "updated": "2026-10-24T20:52:45Z",
  "instances": [
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 258,
+   "ms": 311,
    "code": 200,
    "type": "invidious",
    "play": "ok",
    "note": ""
   },
   {
-   "url": "https://piped.kavin.rocks",
+   "url": "https://piped.video",
    "ok": true,
-   "ms": 85,
+   "ms": 133,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.video",
+   "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 119,
+   "ms": 195,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "URLError"
+  },
+  {
+   "url": "https://piped.kavin.rocks",
+   "ok": true,
+   "ms": 214,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -31,25 +40,16 @@
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 164,
+   "ms": 481,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.mha.fi",
-   "ok": true,
-   "ms": 217,
-   "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "URLError"
-  },
-  {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 545,
+   "ms": 827,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -58,7 +58,7 @@
   {
    "url": "https://invidious.privacyredirect.com",
    "ok": true,
-   "ms": 879,
+   "ms": 1033,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -67,7 +67,7 @@
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 894,
+   "ms": 1095,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -76,7 +76,7 @@
   {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1229,
+   "ms": 1466,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -85,7 +85,7 @@
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 144,
+   "ms": 181,
    "code": 530,
    "type": "invidious",
    "play": "err",
@@ -94,13 +94,13 @@
   {
    "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 813,
+   "ms": 958,
    "code": 200,
    "type": "invidious",
    "play": "bot",
-   "note": "官方统计 0/161 成功",
+   "note": "官方统计 0/31 成功",
    "ratio": 0.0,
-   "ratioTotal": 161,
+   "ratioTotal": 31,
    "ratioSuccess": 0
   },
   {
