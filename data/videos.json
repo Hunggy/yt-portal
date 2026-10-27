@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T18:04:39Z",
+ "updated": "2026-10-27T22:16:53Z",
  "live": [],
  "channels": [
   {
@@ -14,7 +14,7 @@
     },
     {
      "id": "pPYqZ3jgMyE",
-     "title": "【2026 KPL】北京JDG vs 廣州TTG | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "title": "【2026 KPL】重慶狼隊 vs 長沙TES.A | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-27T13:56:23+00:00",
      "author": "KPL聯盟"
     },
@@ -85,6 +85,12 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "OasUf5fJkMk",
+     "title": "[한국어 해설] Kings Major League 2026 Fall | 그룹 스테이지 Day 1",
+     "published": "2026-10-27T21:54:04+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "o_05wEwfI3I",
      "title": "[AR] Kings Major League 2026 Fall | Group Stage Day 1",
      "published": "2026-10-27T13:02:33+00:00",
@@ -127,12 +133,6 @@
      "author": "HoK Esports"
     },
     {
-     "id": "OasUf5fJkMk",
-     "title": "[한국어 해설] Kings Major League 2026 Fall | 그룹 스테이지 Day 1",
-     "published": "2026-10-26T12:52:47+00:00",
-     "author": "HoK Esports"
-    },
-    {
      "id": "7DjULvmUHdM",
      "title": "When you put them together… 👀 #KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
      "published": "2026-10-26T11:00:27+00:00",
@@ -162,6 +162,12 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "o35G7TrrcQY",
+     "title": "can the power of these creators purge the camera demons? | #DontLookBehindTheCamera Pt. 5",
+     "published": "2026-10-27T18:00:35+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "cY18lymcn2A",
      "title": "who would you pass the mic to? 🌸",
@@ -226,12 +232,6 @@
      "id": "idqAz3omDi4",
      "title": "something spooky is connecting your favorite YouTube worlds. who’s along for the ride?",
      "published": "2026-10-23T18:00:50+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "cr6XbujbuX4",
-     "title": "impossible baseball pitch?? challenge accepted @dudeperfect ⚾️",
-     "published": "2026-10-23T13:00:43+00:00",
      "author": "YouTube"
     }
    ]
