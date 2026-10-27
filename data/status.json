@@ -1,19 +1,19 @@
 {
- "updated": "2026-10-27T12:16:03Z",
+ "updated": "2026-10-27T18:04:52Z",
  "instances": [
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 213,
+   "ms": 179,
    "code": 200,
    "type": "invidious",
    "play": "ok",
    "note": ""
   },
   {
-   "url": "https://piped.kavin.rocks",
+   "url": "https://piped.video",
    "ok": true,
-   "ms": 295,
+   "ms": 163,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -22,16 +22,16 @@
   {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 464,
+   "ms": 269,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
-   "url": "https://piped.video",
+   "url": "https://piped.kavin.rocks",
    "ok": true,
-   "ms": 487,
+   "ms": 334,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -40,7 +40,7 @@
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 575,
+   "ms": 358,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -49,7 +49,7 @@
   {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 723,
+   "ms": 681,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -58,7 +58,7 @@
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 1034,
+   "ms": 921,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -67,7 +67,7 @@
   {
    "url": "https://invidious.privacyredirect.com",
    "ok": true,
-   "ms": 1045,
+   "ms": 1061,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -76,7 +76,7 @@
   {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1632,
+   "ms": 1487,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -85,7 +85,7 @@
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 187,
+   "ms": 422,
    "code": 530,
    "type": "invidious",
    "play": "err",
@@ -94,13 +94,13 @@
   {
    "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 925,
+   "ms": 936,
    "code": 200,
    "type": "invidious",
    "play": "bot",
-   "note": "官方统计 0/14 成功",
+   "note": "官方统计 0/150 成功",
    "ratio": 0.0,
-   "ratioTotal": 14,
+   "ratioTotal": 150,
    "ratioSuccess": 0
   },
   {
