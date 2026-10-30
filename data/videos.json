@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T12:59:07Z",
+ "updated": "2026-10-30T22:23:44Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "fj_wbDKE9_U",
      "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-29T14:25:39+00:00",
+     "published": "2026-10-30T17:36:06+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T13:58:39+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】北京WB vs 南通Hero久競 | 重慶狼隊 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-16T15:03:16+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "dHBdqsipUk8",
-     "title": "【2026 KPL】成都AG超玩會 vs 上海EDG.M | 廣州TTG vs 長沙TES.A | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-15T17:43:43+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -84,6 +84,42 @@
    "id": "UCBqo62uoCQKO71QF6J2aNQA",
    "name": "Honor of Kings Global Esports",
    "videos": [
+    {
+     "id": "prDSW-4q4rM",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 1 [FIL]",
+     "published": "2026-10-30T19:25:41+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "VbLuBPxqxuc",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Play Ins",
+     "published": "2026-10-30T19:04:40+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "5JGndMWuUTQ",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 1",
+     "published": "2026-10-30T18:29:48+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "8UAQQgGyfNY",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2",
+     "published": "2026-10-30T17:26:01+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "myfRPhEa45U",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 1 [EN]",
+     "published": "2026-10-30T16:53:43+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "waAmzK4gWvQ",
+     "title": "[EN] Kings Major League 2026 Fall | Playoffs Day 2",
+     "published": "2026-10-30T14:07:21+00:00",
+     "author": "HoK Esports"
+    },
     {
      "id": "-YSU_ZhqRgI",
      "title": "[AR] Kings Major League 2026 Fall | Grand Final",
@@ -115,45 +151,9 @@
      "author": "HoK Esports"
     },
     {
-     "id": "VbLuBPxqxuc",
-     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Play Ins",
-     "published": "2026-10-28T09:58:50+00:00",
-     "author": "HoK Esports"
-    },
-    {
      "id": "UBW03CMzyjk",
      "title": "[AR] Kings Major League 2026 Fall | Playoffs Day 2",
      "published": "2026-10-30T10:53:39+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "TCU2xnwjU8s",
-     "title": "[中文AI字幕] 王者荣耀国际职业联赛秋季赛 | 总决赛",
-     "published": "2026-10-30T09:45:55+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "waAmzK4gWvQ",
-     "title": "[EN] Kings Major League 2026 Fall | Playoffs Day 2",
-     "published": "2026-10-29T13:34:50+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "5JGndMWuUTQ",
-     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 1",
-     "published": "2026-10-29T17:46:37+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "myfRPhEa45U",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 1 [EN]",
-     "published": "2026-10-30T04:49:37+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "prDSW-4q4rM",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 1 [FIL]",
-     "published": "2026-10-30T04:47:21+00:00",
      "author": "HoK Esports"
     }
    ]
@@ -162,6 +162,24 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "gpit4lmDl94",
+     "title": "#LISA @wearelloud celebrated ‘PRESS PLAY’ with fans at a special YouTube + PlayStation EP playback",
+     "published": "2026-10-30T20:34:27+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "SEacE4MXP4k",
+     "title": "your honor, the Night Court has entered the chat. ⚖️ who's getting your vote? #ACOTAR",
+     "published": "2026-10-30T15:30:32+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "7BwPvtZvo3M",
+     "title": "three sisters, one goal 🏅🏅🏅 #YouTubePartner",
+     "published": "2026-10-30T14:10:57+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "LEbBDoXFpb0",
      "title": "food is the way to everyone’s heart. tap in to @DaddyYankee’s watch history",
@@ -214,24 +232,6 @@
      "id": "SZnCR2V19nk",
      "title": "no gnomes were harmed in the making of this GRWM",
      "published": "2026-10-26T22:01:00+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "ov39hPhppNs",
-     "title": "somebody check on the creepy clown | #DontLookBehindTheCamera Pt. 4",
-     "published": "2026-10-26T19:00:29+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "tZDeftCcj80",
-     "title": "so fierce and ethereal ✨ @haleypham",
-     "published": "2026-10-26T16:00:31+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "QEM3EHUV5ko",
-     "title": "@haleypham started posting vlogs in high school. Now, she's a best-selling author",
-     "published": "2026-10-26T15:58:07+00:00",
      "author": "YouTube"
     }
    ]
