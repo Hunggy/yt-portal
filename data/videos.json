@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T12:36:09Z",
+ "updated": "2026-10-31T21:38:23Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "hE0BDdDPp0Q",
      "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-30T13:58:39+00:00",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T13:44:20+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 北京WB vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-17T14:13:07+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "Qzuk399Bqwc",
-     "title": "【2026 KPL】北京WB vs 南通Hero久競 | 重慶狼隊 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-16T15:03:16+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -85,21 +85,63 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "ZcgQd-UABws",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
+     "published": "2026-10-31T21:17:28+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ic9nC4xVCOg",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
+     "published": "2026-10-31T21:00:39+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "0SL7CgdLxig",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
+     "published": "2026-10-31T20:57:24+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "s2BGANZHf8k",
      "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2",
-     "published": "2026-10-31T10:27:32+00:00",
+     "published": "2026-10-31T20:42:19+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "IKih9H_faC8",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
+     "published": "2026-10-31T18:33:32+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "dFygz9nVNLo",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 1",
+     "published": "2026-10-31T17:34:46+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ItM8Gkeg-cs",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 3",
+     "published": "2026-10-31T16:59:26+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "bR1jnB9ioWw",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 2",
+     "published": "2026-10-31T14:07:58+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "8UAQQgGyfNY",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2 PART 1",
+     "published": "2026-10-31T14:06:20+00:00",
      "author": "HoK Esports"
     },
     {
      "id": "BqPiAy-4OjM",
      "title": "[EN] Kings Major League 2026 Fall | Grand Final",
      "published": "2026-10-31T11:25:26+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "8UAQQgGyfNY",
-     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2 PART 1",
-     "published": "2026-10-30T17:26:01+00:00",
      "author": "HoK Esports"
     },
     {
@@ -113,48 +155,6 @@
      "title": "[AR] Kings Major League 2026 Fall | Grand Final",
      "published": "2026-10-31T09:46:42+00:00",
      "author": "HoK Esports"
-    },
-    {
-     "id": "TCU2xnwjU8s",
-     "title": "[中文AI字幕] 王者荣耀国际职业联赛秋季赛 | 总决赛",
-     "published": "2026-10-31T09:40:26+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "IKih9H_faC8",
-     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
-     "published": "2026-10-31T05:52:17+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "dFygz9nVNLo",
-     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 1",
-     "published": "2026-10-31T04:09:03+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "ic9nC4xVCOg",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
-     "published": "2026-10-31T05:22:54+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "ZcgQd-UABws",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
-     "published": "2026-10-31T04:37:27+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "0SL7CgdLxig",
-     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
-     "published": "2026-10-31T04:34:38+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "fD9YAGGbfIQ",
-     "title": "[中文AI字幕] 王者荣耀国际职业联赛秋季赛 | 淘汰赛 第二天",
-     "published": "2026-10-31T02:51:06+00:00",
-     "author": "HoK Esports"
     }
    ]
   },
@@ -162,6 +162,12 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "86Ccatsw92c",
+     "title": "not every pumpkin was built for the afterlife @evanandkatelynextras",
+     "published": "2026-10-31T14:00:33+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "etcRgjG4qRo",
      "title": "comment what song you think he’s actually dancing to",
@@ -226,12 +232,6 @@
      "id": "U_cFG3EnmNk",
      "title": "Prythian has entered its YouTuber era. ✨ #ACOTAR",
      "published": "2026-10-27T22:45:40+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "o35G7TrrcQY",
-     "title": "can the power of these creators purge the camera demons? | #DontLookBehindTheCamera Pt. 5",
-     "published": "2026-10-27T18:00:35+00:00",
      "author": "YouTube"
     }
    ]
