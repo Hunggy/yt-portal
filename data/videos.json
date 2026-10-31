@@ -1,5 +1,240 @@
 {
- "updated": "2026-10-31T05:46:03Z",
+ "updated": "2026-10-31T12:36:09Z",
  "live": [],
- "channels": []
+ "channels": [
+  {
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
+   "name": "KPL 王者荣耀职业联赛",
+   "videos": [
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T13:58:39+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "fj_wbDKE9_U",
+     "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T17:36:06+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "20WfTEluYe8",
+     "title": "【2026 KPL】KSG vs 北京WB | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T02:30:09+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "yrYhHCrqqNU",
+     "title": "【2026 KPL】KSG vs 北京WB | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-29T17:32:01+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "pPYqZ3jgMyE",
+     "title": "【2026 KPL】重慶狼隊 vs 長沙TES.A | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-28T18:08:29+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "T2nVcLI3UBs",
+     "title": "【2026 KPL】北京JDG vs 廣州TTG | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-27T16:34:06+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "6PuSLtgFiyE",
+     "title": "【2026 KPL】杭州LGD.NBW vs 南通Hero久競 | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-22T13:23:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "957sjvvaU8Q",
+     "title": "【2026 KPL】成都AG超玩會 vs 長沙TES.A | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-21T14:10:43+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "djpGLAEBSr0",
+     "title": "【2026 KPL】重慶狼隊 vs 深圳DYG | 突圍賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-20T13:18:27+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "3Y4DgwD7A90",
+     "title": "【2026 KPL】KSG vs 上海EDG.M | 北京JDG vs 長沙TES.A | 組外單循環 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-18T16:06:18+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "omAGT-GlbeE",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 北京WB vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-17T14:13:07+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "Qzuk399Bqwc",
+     "title": "【2026 KPL】北京WB vs 南通Hero久競 | 重慶狼隊 vs 深圳DYG | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-16T15:03:16+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
+  {
+   "id": "UCBqo62uoCQKO71QF6J2aNQA",
+   "name": "Honor of Kings Global Esports",
+   "videos": [
+    {
+     "id": "s2BGANZHf8k",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2",
+     "published": "2026-10-31T10:27:32+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "BqPiAy-4OjM",
+     "title": "[EN] Kings Major League 2026 Fall | Grand Final",
+     "published": "2026-10-31T11:25:26+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "8UAQQgGyfNY",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 2 PART 1",
+     "published": "2026-10-30T17:26:01+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "MqljPSgUbu8",
+     "title": "[한국어 해설] Kings Major League 2026 Fall | 그랜드 파이널",
+     "published": "2026-10-31T10:07:16+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "-YSU_ZhqRgI",
+     "title": "[AR] Kings Major League 2026 Fall | Grand Final",
+     "published": "2026-10-31T09:46:42+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "TCU2xnwjU8s",
+     "title": "[中文AI字幕] 王者荣耀国际职业联赛秋季赛 | 总决赛",
+     "published": "2026-10-31T09:40:26+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "IKih9H_faC8",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
+     "published": "2026-10-31T05:52:17+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "dFygz9nVNLo",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 1",
+     "published": "2026-10-31T04:09:03+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ic9nC4xVCOg",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
+     "published": "2026-10-31T05:22:54+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ZcgQd-UABws",
+     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
+     "published": "2026-10-31T04:37:27+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "0SL7CgdLxig",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2",
+     "published": "2026-10-31T04:34:38+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "fD9YAGGbfIQ",
+     "title": "[中文AI字幕] 王者荣耀国际职业联赛秋季赛 | 淘汰赛 第二天",
+     "published": "2026-10-31T02:51:06+00:00",
+     "author": "HoK Esports"
+    }
+   ]
+  },
+  {
+   "id": "UCBR8-60-B28hp2BmDPdntcQ",
+   "name": "YouTube",
+   "videos": [
+    {
+     "id": "etcRgjG4qRo",
+     "title": "comment what song you think he’s actually dancing to",
+     "published": "2026-10-31T01:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "iJWdJsDuEjA",
+     "title": "you heard @DaddyYankee 💌 send your message of love worldwide on YouTube Shorts.",
+     "published": "2026-10-30T23:23:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "gpit4lmDl94",
+     "title": "#LISA @wearelloud celebrated ‘PRESS PLAY’ with fans at a special YouTube + PlayStation EP playback",
+     "published": "2026-10-30T20:34:27+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "SEacE4MXP4k",
+     "title": "your honor, the Night Court has entered the chat. ⚖️ who's getting your vote? #ACOTAR",
+     "published": "2026-10-30T15:30:32+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "7BwPvtZvo3M",
+     "title": "three sisters, one goal 🏅🏅🏅 #YouTubePartner",
+     "published": "2026-10-30T14:10:57+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "LEbBDoXFpb0",
+     "title": "food is the way to everyone’s heart. tap in to @DaddyYankee’s watch history",
+     "published": "2026-10-29T16:00:19+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "Yil32mThG04",
+     "title": "Daddy Yankee reacts to his Watch History",
+     "published": "2026-10-29T15:58:11+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "yaYmVR2EsYM",
+     "title": "the horror… 😮‍💨",
+     "published": "2026-10-29T13:38:39+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "kwWElKZVCBc",
+     "title": "the Suriel says… it's confession time 👀",
+     "published": "2026-10-28T20:30:47+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "htPqYAcrQPE",
+     "title": "all is well for american high, almost friday, and the chit show. | #Don'tLookBehindTheCamera Pt. 6",
+     "published": "2026-10-28T18:00:39+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "U_cFG3EnmNk",
+     "title": "Prythian has entered its YouTuber era. ✨ #ACOTAR",
+     "published": "2026-10-27T22:45:40+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "o35G7TrrcQY",
+     "title": "can the power of these creators purge the camera demons? | #DontLookBehindTheCamera Pt. 5",
+     "published": "2026-10-27T18:00:35+00:00",
+     "author": "YouTube"
+    }
+   ]
+  }
+ ]
 }
