@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T13:28:35Z",
+ "updated": "2026-11-01T22:04:05Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "iB2lsoQ-AS4",
      "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-31T13:44:20+00:00",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T14:27:25+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】KSG vs 上海EDG.M | 北京JDG vs 長沙TES.A | 組外單循環 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-18T16:06:18+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "omAGT-GlbeE",
-     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 北京WB vs 濟南RW俠 | BO5 | 擂台賽 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-17T14:13:07+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -85,21 +85,21 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "A4RSm91uQGE",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 3",
+     "published": "2026-11-01T20:34:43+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "bR1jnB9ioWw",
      "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 2",
-     "published": "2026-10-31T14:07:58+00:00",
+     "published": "2026-11-01T16:58:43+00:00",
      "author": "HoK Esports"
     },
     {
      "id": "ItM8Gkeg-cs",
      "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 3 PART 1",
      "published": "2026-11-01T11:07:53+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "A4RSm91uQGE",
-     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 3",
-     "published": "2026-11-01T09:05:33+00:00",
      "author": "HoK Esports"
     },
     {
