@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T13:05:54Z",
+ "updated": "2026-11-07T21:53:17Z",
  "live": [],
  "channels": [
   {
@@ -7,15 +7,15 @@
    "name": "KPL 王者荣耀职业联赛",
    "videos": [
     {
-     "id": "U6BqHkHwhfM",
-     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-07T12:44:17+00:00",
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
      "author": "KPL聯盟"
     },
     {
-     "id": "AulgAZ33WXY",
-     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-06T13:46:40+00:00",
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T12:44:17+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -85,27 +85,33 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
-     "id": "CGC1rOt9dnU",
-     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 12",
-     "published": "2026-11-07T07:11:58+00:00",
-     "author": "HoK Esports"
-    },
-    {
      "id": "B3a0myNCFE8",
      "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 3",
-     "published": "2026-11-05T14:12:00+00:00",
+     "published": "2026-11-07T20:58:25+00:00",
      "author": "HoK Esports"
     },
     {
      "id": "vj09-uSm-gE",
      "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
-     "published": "2026-11-07T02:15:40+00:00",
+     "published": "2026-11-07T16:25:39+00:00",
      "author": "HoK Esports"
     },
     {
      "id": "24kbY1h0Ep8",
      "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
-     "published": "2026-11-07T02:12:56+00:00",
+     "published": "2026-11-07T16:22:48+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ePcUzSJjPOE",
+     "title": "🔴 LIVE NOW | Honor of Kings Campus Series Season 3 | Grand Final",
+     "published": "2026-11-07T15:03:57+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "CGC1rOt9dnU",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 12",
+     "published": "2026-11-07T07:11:58+00:00",
      "author": "HoK Esports"
     },
     {
@@ -148,12 +154,6 @@
      "id": "ZcgQd-UABws",
      "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
      "published": "2026-10-31T21:17:28+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "ic9nC4xVCOg",
-     "title": "LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 2 [EN]",
-     "published": "2026-10-31T21:00:39+00:00",
      "author": "HoK Esports"
     }
    ]
