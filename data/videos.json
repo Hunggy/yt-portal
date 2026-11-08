@@ -1,5 +1,240 @@
 {
- "updated": "2026-11-08T06:05:46Z",
+ "updated": "2026-11-08T13:28:04Z",
  "live": [],
- "channels": []
+ "channels": [
+  {
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
+   "name": "KPL 王者荣耀职业联赛",
+   "videos": [
+    {
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T12:44:17+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "Xg1HWdHZldI",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T01:54:33+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "IJcuUAYGHWk",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-06T14:48:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "jOyB-F9ENO0",
+     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-05T16:41:11+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "sxKTACQHRS8",
+     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-04T15:23:43+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "zR6nZEjRgQ4",
+     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-03T17:44:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-02T15:20:30+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "fj_wbDKE9_U",
+     "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T17:36:06+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "20WfTEluYe8",
+     "title": "【2026 KPL】KSG vs 北京WB | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T02:30:09+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
+  {
+   "id": "UCBqo62uoCQKO71QF6J2aNQA",
+   "name": "Honor of Kings Global Esports",
+   "videos": [
+    {
+     "id": "1qVYejX3Er0",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Grand Finals",
+     "published": "2026-11-07T15:15:55+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ePcUzSJjPOE",
+     "title": "🔴 LIVE NOW | Honor of Kings Campus Series Season 3 | Grand Final",
+     "published": "2026-11-07T15:03:57+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "WKWU3TQ7tQ4",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 13",
+     "published": "2026-11-08T07:25:08+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "aw4mkd1QX80",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-08T03:38:31+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "FSufYquWDOU",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 4",
+     "published": "2026-11-08T03:38:53+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "CGC1rOt9dnU",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 12",
+     "published": "2026-11-08T01:33:58+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "B3a0myNCFE8",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 3",
+     "published": "2026-11-07T20:58:25+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "vj09-uSm-gE",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-07T16:25:39+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "24kbY1h0Ep8",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-07T16:22:48+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "7371We-UXM0",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 11",
+     "published": "2026-11-06T19:44:46+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "5GxxCtnzn7I",
+     "title": "When you have 2 personalities 😮‍💨 #KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-05T11:00:02+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "A4RSm91uQGE",
+     "title": "🔴 LIVE | HOK IKL FALL 2026 | Playoffs - Day 3",
+     "published": "2026-11-01T20:34:43+00:00",
+     "author": "HoK Esports"
+    }
+   ]
+  },
+  {
+   "id": "UCBR8-60-B28hp2BmDPdntcQ",
+   "name": "YouTube",
+   "videos": [
+    {
+     "id": "9i55R_hxj2g",
+     "title": "SNL with host @druski is about to be the highlight of our weekend. Don't miss it LIVE on NBC tonight",
+     "published": "2026-11-07T23:15:27+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "8ThAGdBV8LY",
+     "title": "studying our @druski core before saturday",
+     "published": "2026-11-07T03:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "pLUcD_cfDOs",
+     "title": "how do you rank THIS many amazing adventures?",
+     "published": "2026-11-07T01:00:52+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "q3V8gk-3ZQ8",
+     "title": "the amount of times we gasped during @daddyyankee’s new micro series needs to be studied.",
+     "published": "2026-11-06T21:00:49+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "dMqUIwtn0BY",
+     "title": "pick your roommate, but don’t be too picky",
+     "published": "2026-11-06T14:48:33+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "GmBXKjzM11w",
+     "title": "roll the tape girlypops @haleypham",
+     "published": "2026-11-05T17:00:34+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "GR9lNJISviw",
+     "title": "no one's doing it like @IShowSpeed  👀 don't miss \"speed goes pro\" season 2 on @IShowSpeed’s channel",
+     "published": "2026-11-04T18:00:21+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "P7GTfHdl5E8",
+     "title": "How to Build a Planted Aquarium from Scratch with SerpaDesign",
+     "published": "2026-11-04T17:00:41+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "78WYGgK_2j0",
+     "title": "adopted a cat and we know exactly what’s going on inside his brain",
+     "published": "2026-11-04T15:04:03+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "FFK9hSYmEu0",
+     "title": "leaf @dognamedstella alone, she has friends over",
+     "published": "2026-11-03T16:00:21+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "dlpFv_Irxi8",
+     "title": "the crossover we DEFINITELY needed. check out the POKITO music video. #YouTubePartner",
+     "published": "2026-11-02T19:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "pxqy51-bq5c",
+     "title": "losing an hour of daylight, gaining an hour of snooze time. we'll take it",
+     "published": "2026-11-01T06:02:05+00:00",
+     "author": "YouTube"
+    }
+   ]
+  }
+ ]
 }
