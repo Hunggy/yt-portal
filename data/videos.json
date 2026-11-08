@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T13:28:04Z",
+ "updated": "2026-11-08T22:08:44Z",
  "live": [],
  "channels": [
   {
@@ -9,7 +9,13 @@
     {
      "id": "U6BqHkHwhfM",
      "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-07T12:44:17+00:00",
+     "published": "2026-11-08T14:27:15+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "F5EcvKGJJ4c",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:10:40+00:00",
      "author": "KPL聯盟"
     },
     {
@@ -71,12 +77,6 @@
      "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
      "published": "2026-10-30T17:36:06+00:00",
      "author": "KPL聯盟"
-    },
-    {
-     "id": "20WfTEluYe8",
-     "title": "【2026 KPL】KSG vs 北京WB | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-30T02:30:09+00:00",
-     "author": "KPL聯盟"
     }
    ]
   },
@@ -85,21 +85,21 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "WKWU3TQ7tQ4",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 13",
+     "published": "2026-11-08T20:32:33+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "1qVYejX3Er0",
      "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Grand Finals",
      "published": "2026-11-07T15:15:55+00:00",
      "author": "HoK Esports"
     },
     {
-     "id": "ePcUzSJjPOE",
-     "title": "🔴 LIVE NOW | Honor of Kings Campus Series Season 3 | Grand Final",
-     "published": "2026-11-07T15:03:57+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "WKWU3TQ7tQ4",
-     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 13",
-     "published": "2026-11-08T07:25:08+00:00",
+     "id": "FSufYquWDOU",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 4",
+     "published": "2026-11-08T18:06:03+00:00",
      "author": "HoK Esports"
     },
     {
@@ -109,9 +109,9 @@
      "author": "HoK Esports"
     },
     {
-     "id": "FSufYquWDOU",
-     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 4",
-     "published": "2026-11-08T03:38:53+00:00",
+     "id": "ePcUzSJjPOE",
+     "title": "🔴 LIVE NOW | Honor of Kings Campus Series Season 3 | Grand Final",
+     "published": "2026-11-07T15:03:57+00:00",
      "author": "HoK Esports"
     },
     {
@@ -162,6 +162,18 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "BhY9d_MwdLQ",
+     "title": "update: fall is falling",
+     "published": "2026-11-08T20:01:55+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "2CkofPRY3V4",
+     "title": "no candied salmon gatekeeping here @shinanovaYT",
+     "published": "2026-11-08T17:00:30+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "9i55R_hxj2g",
      "title": "SNL with host @druski is about to be the highlight of our weekend. Don't miss it LIVE on NBC tonight",
@@ -220,18 +232,6 @@
      "id": "FFK9hSYmEu0",
      "title": "leaf @dognamedstella alone, she has friends over",
      "published": "2026-11-03T16:00:21+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "dlpFv_Irxi8",
-     "title": "the crossover we DEFINITELY needed. check out the POKITO music video. #YouTubePartner",
-     "published": "2026-11-02T19:00:28+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "pxqy51-bq5c",
-     "title": "losing an hour of daylight, gaining an hour of snooze time. we'll take it",
-     "published": "2026-11-01T06:02:05+00:00",
      "author": "YouTube"
     }
    ]
