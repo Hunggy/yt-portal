@@ -1,7 +1,85 @@
 {
- "updated": "2026-11-09T06:36:14Z",
+ "updated": "2026-11-09T22:24:17Z",
  "live": [],
  "channels": [
+  {
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
+   "name": "KPL 王者荣耀职业联赛",
+   "videos": [
+    {
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:27:15+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "F5EcvKGJJ4c",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:10:40+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "Xg1HWdHZldI",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T01:54:33+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "IJcuUAYGHWk",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-06T14:48:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "jOyB-F9ENO0",
+     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-05T16:41:11+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "sxKTACQHRS8",
+     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-04T15:23:43+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "zR6nZEjRgQ4",
+     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-03T17:44:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-02T15:20:30+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "fj_wbDKE9_U",
+     "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T17:36:06+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
   {
    "id": "UCBqo62uoCQKO71QF6J2aNQA",
    "name": "Honor of Kings Global Esports",
@@ -85,6 +163,12 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "3O6LlZb9grU",
+     "title": "smoothest pumpkin carving video ever @foodiechina888",
+     "published": "2026-11-09T17:00:20+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "BhY9d_MwdLQ",
      "title": "update: fall is falling",
      "published": "2026-11-08T20:01:55+00:00",
@@ -148,12 +232,6 @@
      "id": "78WYGgK_2j0",
      "title": "adopted a cat and we know exactly what’s going on inside his brain",
      "published": "2026-11-04T15:04:03+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "FFK9hSYmEu0",
-     "title": "leaf @dognamedstella alone, she has friends over",
-     "published": "2026-11-03T16:00:21+00:00",
      "author": "YouTube"
     }
    ]

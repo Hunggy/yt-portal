@@ -1,19 +1,28 @@
 {
- "updated": "2026-11-09T06:36:27Z",
+ "updated": "2026-11-09T22:24:30Z",
  "instances": [
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 163,
+   "ms": 373,
    "code": 200,
    "type": "invidious",
    "play": "ok",
    "note": ""
   },
   {
+   "url": "https://piped.kavin.rocks",
+   "ok": true,
+   "ms": 168,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
    "url": "https://piped.video",
    "ok": true,
-   "ms": 66,
+   "ms": 490,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -22,7 +31,7 @@
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 254,
+   "ms": 509,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -31,25 +40,25 @@
   {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 282,
+   "ms": 571,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
-   "url": "https://piped.kavin.rocks",
+   "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 346,
+   "ms": 774,
    "code": 200,
-   "type": "piped",
+   "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://invidious.tiekoetter.com",
+   "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 601,
+   "ms": 894,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -58,25 +67,16 @@
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 712,
+   "ms": 914,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
-   "url": "https://inv.nadeko.net",
-   "ok": true,
-   "ms": 754,
-   "code": 200,
-   "type": "invidious",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
-  },
-  {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1172,
+   "ms": 1533,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -85,7 +85,7 @@
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 134,
+   "ms": 351,
    "code": 530,
    "type": "invidious",
    "play": "err",
