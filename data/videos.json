@@ -1,82 +1,238 @@
 {
- "updated": "2026-11-13T06:49:23Z",
+ "updated": "2026-11-13T19:44:36Z",
  "live": [],
  "channels": [
   {
-   "id": "UCSBnP1q8kxHt6aVToh01bpg",
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
    "name": "KPL 王者荣耀职业联赛",
    "videos": [
     {
-     "id": "DnlcSTKRvJg",
-     "title": "选手第一视角 | Player #3 POV",
-     "published": "2026-11-08T20:03:34+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:27:15+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "ySZwZkAFuxU",
-     "title": "选手第一视角 | Player #1 POV",
-     "published": "2026-11-08T19:33:39+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "F5EcvKGJJ4c",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:10:40+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "dZh8YfFt_OM",
-     "title": "选手第一视角 | Player #4 POV",
-     "published": "2026-11-08T19:17:28+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "N7SUhprtmdc",
-     "title": "广州TTG vs 北京WB 3:4",
-     "published": "2026-11-08T19:05:44+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "Xg1HWdHZldI",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T01:54:33+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "YuglPrWOA0A",
-     "title": "选手第一视角 | Player #9 POV",
-     "published": "2026-11-08T18:35:06+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "IJcuUAYGHWk",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-06T14:48:34+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "5S0vWx3IZXQ",
-     "title": "选手第一视角 | Player #2 POV",
-     "published": "2026-11-08T17:57:47+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "jOyB-F9ENO0",
+     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-05T16:41:11+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "oatfAsDrwN8",
-     "title": "选手第一视角 | Player #6 POV",
-     "published": "2026-11-08T16:38:37+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "sxKTACQHRS8",
+     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-04T15:23:43+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "LNPt-3hDG4A",
-     "title": "选手第一视角 | Player #5 POV",
-     "published": "2026-11-08T15:24:38+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "zR6nZEjRgQ4",
+     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-03T17:44:46+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "L8rF0NWM7zo",
-     "title": "选手第一视角 | Player #7 POV",
-     "published": "2026-11-08T15:19:40+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-02T15:20:30+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "AW6SAZgaktg",
-     "title": "选手第一视角 | Player #8 POV",
-     "published": "2026-11-08T14:55:33+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "aK_IV9F8Ucs",
-     "title": "选手第一视角 | Player #8 POV",
-     "published": "2026-11-07T15:39:20+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
     },
     {
-     "id": "fqH8StCIgIo",
-     "title": "选手第一视角 | Player #1 POV",
-     "published": "2026-11-07T15:39:08+00:00",
-     "author": "KPL王者荣耀职业联赛"
+     "id": "fj_wbDKE9_U",
+     "title": "【2026 KPL】上海EDG.M vs 杭州LGD.NBW | 雙敗淘汰制 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-30T17:36:06+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
+  {
+   "id": "UCBqo62uoCQKO71QF6J2aNQA",
+   "name": "Honor of Kings Global Esports",
+   "videos": [
+    {
+     "id": "mF6ogUYYJXA",
+     "title": "Only one will lift the trophy! 🏆#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-13T11:00:06+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "IILnza6G1OQ",
+     "title": "When you're playing Farm Lane 😮‍💨#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-10T11:00:32+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "ePcUzSJjPOE",
+     "title": "🔴 LIVE NOW | Honor of Kings Campus Series Season 3 | Grand Final",
+     "published": "2026-11-08T23:53:43+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "aw4mkd1QX80",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-08T23:20:25+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "1qVYejX3Er0",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Grand Finals",
+     "published": "2026-11-08T23:18:55+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "WKWU3TQ7tQ4",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 13",
+     "published": "2026-11-08T20:32:33+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "FSufYquWDOU",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 4",
+     "published": "2026-11-08T18:06:03+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "CGC1rOt9dnU",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 12",
+     "published": "2026-11-08T01:33:58+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "B3a0myNCFE8",
+     "title": "🔴 LIVE NOW | [BM] Fall Season 2026 | Playoffs Day 3",
+     "published": "2026-11-07T20:58:25+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "vj09-uSm-gE",
+     "title": "[EN] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-07T16:25:39+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "24kbY1h0Ep8",
+     "title": "[FIL] LIVE | PKL Honor of Kings Fall Season 2026 | PLAYOFFS Day 3",
+     "published": "2026-11-07T16:22:48+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "7371We-UXM0",
+     "title": "[EN]King Pro League Grand Finals 2026  | Knockout Stage Day 11",
+     "published": "2026-11-06T19:44:46+00:00",
+     "author": "HoK Esports"
+    }
+   ]
+  },
+  {
+   "id": "UCBR8-60-B28hp2BmDPdntcQ",
+   "name": "YouTube",
+   "videos": [
+    {
+     "id": "YX-6NbnG5hQ",
+     "title": "@SerpaDesign built the ultimate YouTube aquascape on our channel. what would you put in yours?",
+     "published": "2026-11-13T17:00:32+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "dD33lDxL9K0",
+     "title": "Sourav Joshi drew sketches for $5. Now he has 42 million subscribers",
+     "published": "2026-11-13T14:17:15+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "VusuCNdgPw4",
+     "title": "@souravjvlogs never lost the artist in him, just learned a new way to create and share",
+     "published": "2026-11-13T14:00:25+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "n0FM32lZA8s",
+     "title": "one for each day of the week maybe @AClothesHorse",
+     "published": "2026-11-12T21:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "8vAPJgyoO9g",
+     "title": "TRAILER | Launch Day: YouTube's 24 Hour GTAVI Livestream",
+     "published": "2026-11-12T15:04:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "r-tZnHuRC0I",
+     "title": "but what if everything was a musical??",
+     "published": "2026-11-11T21:05:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "g4rArHjS30k",
+     "title": "paying his respects to a legend. see what @daddyyankee is watching, full video link in bio",
+     "published": "2026-11-11T17:00:33+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "41f_EDdLubo",
+     "title": "@EagleBlackbird has a new naming system",
+     "published": "2026-11-10T17:00:41+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "gFOK8XE0Rto",
+     "title": "the haaland hammer is up for grabs 👀 watch full video with @erling and @mrbeast on youtube",
+     "published": "2026-11-10T14:00:21+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "aT9NmgFTNt4",
+     "title": "a party in CDMX with @DaddyYankee 🔥 head to his channel to experience La Postal.",
+     "published": "2026-11-10T00:02:27+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "3O6LlZb9grU",
+     "title": "smoothest pumpkin carving video ever @foodiechina888",
+     "published": "2026-11-09T17:00:20+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "BhY9d_MwdLQ",
+     "title": "update: fall is falling",
+     "published": "2026-11-08T20:01:55+00:00",
+     "author": "YouTube"
     }
    ]
   }

@@ -1,19 +1,28 @@
 {
- "updated": "2026-11-13T06:49:36Z",
+ "updated": "2026-11-13T19:44:49Z",
  "instances": [
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 94,
+   "ms": 263,
    "code": 200,
    "type": "invidious",
    "play": "ok",
    "note": ""
   },
   {
+   "url": "https://piped.mha.fi",
+   "ok": true,
+   "ms": 133,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "URLError"
+  },
+  {
    "url": "https://piped.video",
    "ok": true,
-   "ms": 78,
+   "ms": 255,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -22,7 +31,7 @@
   {
    "url": "https://piped.kavin.rocks",
    "ok": true,
-   "ms": 290,
+   "ms": 256,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -31,25 +40,16 @@
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 314,
+   "ms": 265,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.mha.fi",
-   "ok": true,
-   "ms": 332,
-   "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "URLError"
-  },
-  {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 699,
+   "ms": 543,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -58,34 +58,34 @@
   {
    "url": "https://inv.nadeko.net",
    "ok": true,
-   "ms": 859,
+   "ms": 774,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.private.coffee",
-   "ok": true,
-   "ms": 928,
-   "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "URLError"
-  },
-  {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1485,
+   "ms": 1024,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
+   "url": "https://piped.private.coffee",
+   "ok": true,
+   "ms": 3897,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "URLError"
+  },
+  {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 368,
+   "ms": 99,
    "code": 530,
    "type": "invidious",
    "play": "err",
