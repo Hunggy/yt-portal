@@ -1,5 +1,240 @@
 {
- "updated": "2026-11-16T06:34:05Z",
+ "updated": "2026-11-16T22:06:51Z",
  "live": [],
- "channels": []
+ "channels": [
+  {
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
+   "name": "KPL 王者荣耀职业联赛",
+   "videos": [
+    {
+     "id": "5TfTwciylmc",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-15T01:22:35+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "F5EcvKGJJ4c",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-14T15:16:25+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:27:15+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "Xg1HWdHZldI",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T01:54:33+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "IJcuUAYGHWk",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-06T14:48:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "jOyB-F9ENO0",
+     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-05T16:41:11+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "sxKTACQHRS8",
+     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-04T15:23:43+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "zR6nZEjRgQ4",
+     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-03T17:44:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-02T15:20:30+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
+  {
+   "id": "UCBqo62uoCQKO71QF6J2aNQA",
+   "name": "Honor of Kings Global Esports",
+   "videos": [
+    {
+     "id": "0OLc1n-g8TI",
+     "title": "🏆 A well-deserved award! Your hard work and dedication inspire us all, BuPing! 👏",
+     "published": "2026-11-15T12:40:44+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "1Akx4d8esR0",
+     "title": "Teamwork and passion keep Wendy's fire burning on the international stage! 🔥",
+     "published": "2026-11-15T12:32:05+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "dKCeUwBicJI",
+     "title": "We definitely hope to see more female pro-player on the international stage! Thank you, Xia! 🇲🇾",
+     "published": "2026-11-15T12:12:20+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "rE6hMggkAAo",
+     "title": "We love you, ZhanQ! Semoga terus semangat! 💛#shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-15T12:01:08+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "BaWezlLj7TA",
+     "title": "🏆 WEIBO IS YOUR CHAMPION!#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-15T05:19:44+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "0agR38Ykq-0",
+     "title": "The key play of the Ultimate Battle! 🐉#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-15T05:01:20+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "J4jW-A0I2I0",
+     "title": "[EN]King Pro League Grand Finals 2026  |Grand Final",
+     "published": "2026-11-14T17:34:08+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "pah49yccRYc",
+     "title": "Perfect combo turns the game around! ⚔️#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-14T15:17:50+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "sCOaQ5oRS3w",
+     "title": "JDG or WBG? Drop your champion pick in the comments! 🔥",
+     "published": "2026-11-14T11:32:22+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "wT0DQv7zOiI",
+     "title": "The KPL Grand Finals 2026 begin NOW! 🔥#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-14T11:16:00+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "mF6ogUYYJXA",
+     "title": "Only one will lift the trophy! 🏆#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-13T11:00:06+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "IILnza6G1OQ",
+     "title": "When you're playing Farm Lane 😮‍💨#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-10T11:00:32+00:00",
+     "author": "HoK Esports"
+    }
+   ]
+  },
+  {
+   "id": "UCBR8-60-B28hp2BmDPdntcQ",
+   "name": "YouTube",
+   "videos": [
+    {
+     "id": "bkSNwyl7iHE",
+     "title": "nobody does multi-character lore quite like @iamtonytalks",
+     "published": "2026-11-15T21:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "Jt5fgKBqZSY",
+     "title": "ok so lunch is hitting harder than ever imagined…",
+     "published": "2026-11-14T20:04:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "mD2togDGRsI",
+     "title": "Came for @thehungergamesmovies, stayed for the chaos️ The Hunger Games: Sunrise on the Reaping",
+     "published": "2026-11-14T17:00:30+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "YX-6NbnG5hQ",
+     "title": "@SerpaDesign built the ultimate YouTube aquascape on our channel. what would you put in yours?",
+     "published": "2026-11-13T17:00:32+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "dD33lDxL9K0",
+     "title": "Sourav Joshi drew sketches for $5. Now he has 42 million subscribers",
+     "published": "2026-11-13T14:17:15+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "VusuCNdgPw4",
+     "title": "@souravjvlogs never lost the artist in him, just learned a new way to create and share",
+     "published": "2026-11-13T14:00:25+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "n0FM32lZA8s",
+     "title": "one for each day of the week maybe @AClothesHorse",
+     "published": "2026-11-12T21:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "8vAPJgyoO9g",
+     "title": "TRAILER | Launch Day: YouTube's 24 Hour GTAVI Livestream",
+     "published": "2026-11-12T15:04:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "r-tZnHuRC0I",
+     "title": "but what if everything was a musical??",
+     "published": "2026-11-11T21:05:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "g4rArHjS30k",
+     "title": "paying his respects to a legend. see what @daddyyankee is watching, full video link in bio",
+     "published": "2026-11-11T17:00:33+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "41f_EDdLubo",
+     "title": "@EagleBlackbird has a new naming system",
+     "published": "2026-11-10T17:00:41+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "gFOK8XE0Rto",
+     "title": "the haaland hammer is up for grabs 👀 watch full video with @erling and @mrbeast on youtube",
+     "published": "2026-11-10T14:00:21+00:00",
+     "author": "YouTube"
+    }
+   ]
+  }
+ ]
 }
