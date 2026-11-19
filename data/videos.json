@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T20:34:56Z",
+ "updated": "2026-11-19T07:29:10Z",
  "live": [],
  "channels": [
   {
@@ -85,6 +85,12 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "JiVjJH_clow",
+     "title": "The #KNC2026 players have made their pick. 👀 Which matchup are you most excited to see? 🔥",
+     "published": "2026-11-19T03:13:44+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "eR7sjvle7WU",
      "title": "The KPL players are ready to have fun at #KNC2026. Are you? 🔥",
      "published": "2026-11-18T13:15:00+00:00",
@@ -149,12 +155,6 @@
      "title": "[EN]King Pro League Grand Finals 2026  |Grand Final",
      "published": "2026-11-14T17:34:08+00:00",
      "author": "HoK Esports"
-    },
-    {
-     "id": "pah49yccRYc",
-     "title": "Perfect combo turns the game around! ⚔️#KPL2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
-     "published": "2026-11-14T15:17:50+00:00",
-     "author": "HoK Esports"
     }
    ]
   },
@@ -162,6 +162,54 @@
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "Kd7Sa22aCHg",
+     "title": "AO VIVO 19 de nov. | Dia de Lançamento: Transmissão ao vivo de 24 horas de GTAVI no YT | Português",
+     "published": "2026-10-26T21:34:59+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "4VKcoAxJ91A",
+     "title": "11月19日ライブ配信 | 発売記念: YouTube『GTAVI』24時間ライブ配信",
+     "published": "2026-10-26T21:34:15+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "uQ5g9R9F1ZU",
+     "title": "Countdown menuju Launch Day telah dimulai: Livestream GTAVI 24 Jam di YouTube | Bahasa Indonesia",
+     "published": "2026-10-26T21:33:02+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "KiNcXK6rsTk",
+     "title": "بالعربية | LIVE Nov 19 | Launch Day: YouTube's 24 Hour GTAVI Livestream",
+     "published": "2026-10-26T21:32:05+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "7rbcitMfRo4",
+     "title": "EN VIVO 19 de nov. | Día de lanzamiento: 24 horas en vivo de GTAVI en YouTube | Español",
+     "published": "2026-10-26T21:31:00+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "2SP00xP1HuY",
+     "title": "19 नवंबर को लाइव | लॉन्च डे: YouTube की 24 घंटे की GTAVI लाइव स्ट्रीम",
+     "published": "2026-10-26T21:29:23+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "KY4DWumZffg",
+     "title": "LIVE NOW | Launch Day: YouTube's 24 Hour GTAVI Livestream",
+     "published": "2026-10-26T21:21:27+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "az-aKc_p9oc",
+     "title": "some memories are just too good not to smile at 🌸",
+     "published": "2026-11-18T21:00:42+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "8yCfVxFWxf4",
      "title": "one unforgettable year, now yours to watch 🌸",
@@ -184,54 +232,6 @@
      "id": "bkSNwyl7iHE",
      "title": "nobody does multi-character lore quite like @iamtonytalks",
      "published": "2026-11-15T21:00:28+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "Jt5fgKBqZSY",
-     "title": "ok so lunch is hitting harder than ever imagined…",
-     "published": "2026-11-14T20:04:17+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "mD2togDGRsI",
-     "title": "Came for @thehungergamesmovies, stayed for the chaos️ The Hunger Games: Sunrise on the Reaping",
-     "published": "2026-11-14T17:00:30+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "YX-6NbnG5hQ",
-     "title": "@SerpaDesign built the ultimate YouTube aquascape on our channel. what would you put in yours?",
-     "published": "2026-11-13T17:00:32+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "dD33lDxL9K0",
-     "title": "Sourav Joshi drew sketches for $5. Now he has 42 million subscribers",
-     "published": "2026-11-13T14:17:15+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "VusuCNdgPw4",
-     "title": "@souravjvlogs never lost the artist in him, just learned a new way to create and share",
-     "published": "2026-11-13T14:00:25+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "n0FM32lZA8s",
-     "title": "one for each day of the week maybe @AClothesHorse",
-     "published": "2026-11-12T21:00:28+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "8vAPJgyoO9g",
-     "title": "TRAILER | Launch Day: YouTube's 24 Hour GTAVI Livestream",
-     "published": "2026-11-12T15:04:17+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "r-tZnHuRC0I",
-     "title": "but what if everything was a musical??",
-     "published": "2026-11-11T21:05:17+00:00",
      "author": "YouTube"
     }
    ]
