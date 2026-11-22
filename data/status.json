@@ -1,19 +1,10 @@
 {
- "updated": "2026-11-22T06:53:55Z",
+ "updated": "2026-11-22T19:44:15Z",
  "instances": [
   {
    "url": "https://piped.kavin.rocks",
    "ok": true,
-   "ms": 89,
-   "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
-  },
-  {
-   "url": "https://piped.video",
-   "ok": true,
-   "ms": 92,
+   "ms": 135,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -22,16 +13,25 @@
   {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 279,
+   "ms": 216,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
+   "url": "https://piped.video",
+   "ok": true,
+   "ms": 460,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 467,
+   "ms": 651,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -40,34 +40,34 @@
   {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 862,
+   "ms": 851,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.adminforge.de",
-   "ok": true,
-   "ms": 1212,
-   "code": 200,
-   "type": "piped",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
-  },
-  {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 1258,
+   "ms": 1312,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
+   "url": "https://piped.adminforge.de",
+   "ok": true,
+   "ms": 1751,
+   "code": 200,
+   "type": "piped",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 45,
+   "ms": 141,
    "code": 530,
    "type": "invidious",
    "play": "err",
