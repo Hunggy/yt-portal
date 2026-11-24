@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23T23:55:47Z",
+ "updated": "2026-11-24T09:57:00Z",
  "live": [],
  "channels": [
   {
@@ -85,6 +85,30 @@
    "name": "Honor of Kings Global Esports",
    "videos": [
     {
+     "id": "fngXCYsvFaw",
+     "title": "Where are they going with those moves? 👀#KNC2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-24T09:00:16+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "wMxsDmiu25E",
+     "title": "KAGE.Fei 🇮🇩 steps up with the clutch play in the teamfight! 🔥",
+     "published": "2026-11-24T08:00:11+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "fgqfd2oWols",
+     "title": "Kung fu class is in session! 🥋 #KNC2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-24T07:00:06+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "xUQ8hxdZRgo",
+     "title": "Warm cheers all around at the meet & greet! 🔥👏#KNC2026 #shineHoK #2026HoK #HonorofKings #HoKEsports",
+     "published": "2026-11-24T06:00:14+00:00",
+     "author": "HoK Esports"
+    },
+    {
      "id": "YJFdWFy0uUU",
      "title": "Sending love your way from #KNC2026! 🫶🏼#shineHoK #2026HoK #HonorofKings #HoKEsports",
      "published": "2026-11-23T11:00:06+00:00",
@@ -131,30 +155,6 @@
      "title": "[BM] Honor of Kings Nation Clash 2026 | Peringkat Kumpulan Hari 3",
      "published": "2026-11-22T23:11:48+00:00",
      "author": "HoK Esports"
-    },
-    {
-     "id": "NkntKGVDn9o",
-     "title": "[FIL] 2026 Honor of Kings Nation Clash | Group Stage Day 3",
-     "published": "2026-11-22T19:35:12+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "E7maqkuFUUs",
-     "title": "[ID] Honor of Kings Nation Clash 2026 | Group Stage Hari ke-3",
-     "published": "2026-11-22T17:02:31+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "ShZLOeOXSAI",
-     "title": "[EN] 2026 Honor of Kings Nation Clash | Group Stage Day 3",
-     "published": "2026-11-22T15:28:19+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "oK85jRvYg9w",
-     "title": "Fans fill the venue with cheers and GKE deliver! 🇲🇾🔥",
-     "published": "2026-11-22T15:19:59+00:00",
-     "author": "HoK Esports"
     }
    ]
   },
@@ -163,8 +163,14 @@
    "name": "YouTube",
    "videos": [
     {
+     "id": "Gn_qE3PJYDk",
+     "title": "@Mythpat & @WindahBasudara welcome you to Vice City | Launch Day: 24Hr Livestream",
+     "published": "2026-11-24T01:43:08+00:00",
+     "author": "YouTube"
+    },
+    {
      "id": "K9A9zuxnln8",
-     "title": "@NoughtPointFourLIVE & @Jelly's first GTAVI gameplay reactions | Launch Day: 24Hr Livestream",
+     "title": "Jelly & Nought's first GTAVI gameplay reactions | Launch Day: 24Hr Livestream",
      "published": "2026-11-23T22:08:50+00:00",
      "author": "YouTube"
     },
@@ -226,12 +232,6 @@
      "id": "8yCfVxFWxf4",
      "title": "one unforgettable year, now yours to watch 🌸",
      "published": "2026-11-18T18:00:23+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "de3zxaQ3Gl0",
-     "title": "iconic then iconic now",
-     "published": "2026-11-17T20:00:28+00:00",
      "author": "YouTube"
     }
    ]
