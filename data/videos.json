@@ -1,167 +1,23 @@
 {
- "updated": "2026-11-27T08:38:09Z",
+ "updated": "2026-11-27T21:20:12Z",
  "live": [],
  "channels": [
-  {
-   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
-   "name": "KPL 王者荣耀职业联赛",
-   "videos": [
-    {
-     "id": "5TfTwciylmc",
-     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-15T01:22:35+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "F5EcvKGJJ4c",
-     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-14T15:16:25+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "U6BqHkHwhfM",
-     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-08T14:27:15+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "AulgAZ33WXY",
-     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-07T13:54:46+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "Xg1HWdHZldI",
-     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-07T01:54:33+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "IJcuUAYGHWk",
-     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-06T14:48:34+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "jOyB-F9ENO0",
-     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-05T16:41:11+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "sxKTACQHRS8",
-     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-04T15:23:43+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "zR6nZEjRgQ4",
-     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-03T17:44:46+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "dDKEC1Hq2Cs",
-     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-02T15:20:30+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "iB2lsoQ-AS4",
-     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-11-01T17:27:34+00:00",
-     "author": "KPL聯盟"
-    },
-    {
-     "id": "hE0BDdDPp0Q",
-     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
-     "published": "2026-10-31T15:01:02+00:00",
-     "author": "KPL聯盟"
-    }
-   ]
-  },
-  {
-   "id": "UCBqo62uoCQKO71QF6J2aNQA",
-   "name": "Honor of Kings Global Esports",
-   "videos": [
-    {
-     "id": "Xc2sG8So7tg",
-     "title": "The PKL players are ready to dive into the playoffs! 🌊",
-     "published": "2026-11-27T05:50:15+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "O3LtyXw6RGw",
-     "title": "[中文] 2026王者荣耀洲际争霸赛 | 淘汰赛第一天",
-     "published": "2026-11-26T10:30:06+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "I78C4mhWsco",
-     "title": "[ID] Honor of Kings Nation Clash 2026 | Playoffs Hari ke-1",
-     "published": "2026-11-26T03:05:12+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "F02-ntKZEk4",
-     "title": "[FIL] 2026 Honor of Kings Nation Clash | Playoffs Day 1",
-     "published": "2026-11-26T03:13:25+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "MZsBbBDvFAM",
-     "title": "[BM] Honor of Kings Nation Clash 2026 | Playoffs Hari 1",
-     "published": "2026-11-26T03:06:32+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "ZhGFtnewLbY",
-     "title": "[EN] 2026 Honor of Kings Nation Clash | Playoffs Day 1",
-     "published": "2026-11-26T02:48:49+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "rNsvZ2RoC9Y",
-     "title": "Start your engines and get ready, because the #KNC2026 playoffs kick off today! 🏍️",
-     "published": "2026-11-27T05:30:14+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "dZVWBgFO5MQ",
-     "title": "Mara and Nora are ready for the #KNC2026 PLAYOFFS. Are you ready? 🔥😎",
-     "published": "2026-11-27T04:00:21+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "P_xCZnzKvTE",
-     "title": "The banter is heating up before the playoffs. ⚔️",
-     "published": "2026-11-27T03:24:07+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "Be1UMM6Q-gU",
-     "title": "Step behind the stage, and feel the energy build up to the win. 🔥",
-     "published": "2026-11-27T02:30:27+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "akIs555MgYU",
-     "title": "Bonds made, and the journey continues at the #KNC2026 PLAYOFFS! 🤝🔥",
-     "published": "2026-11-26T11:00:03+00:00",
-     "author": "HoK Esports"
-    },
-    {
-     "id": "uTrH3kGr52E",
-     "title": "Next Stage: #KNC2026 PLAYOFFS 🙌🏼#shineHoK #2026HoK #HonorofKings #HoKEsports",
-     "published": "2026-11-26T09:00:13+00:00",
-     "author": "HoK Esports"
-    }
-   ]
-  },
   {
    "id": "UCBR8-60-B28hp2BmDPdntcQ",
    "name": "YouTube",
    "videos": [
+    {
+     "id": "Os_q9jJk8TM",
+     "title": "nobody wants to look like a square",
+     "published": "2026-11-27T19:02:04+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "XBLmhDdbO4s",
+     "title": "watch HBO Original Girls on HBO Max without leaving YouTube. explore offers in the Movies & TV tab",
+     "published": "2026-11-27T16:00:43+00:00",
+     "author": "YouTube"
+    },
     {
      "id": "XPw-0jBj9nY",
      "title": "our dream house tbh @milin.woolfelt",
@@ -220,18 +76,6 @@
      "id": "K9A9zuxnln8",
      "title": "Jelly & Nought's first GTAVI gameplay reactions | Launch Day: 24Hr Livestream",
      "published": "2026-11-23T22:08:50+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "vFIEvLIlwhM",
-     "title": "​@any_austin discovers incredible GTAVI details you may have missed | Launch Day: 24Hr Livestream",
-     "published": "2026-11-23T21:21:20+00:00",
-     "author": "YouTube"
-    },
-    {
-     "id": "E91KhS2FrRo",
-     "title": "recycling but make it runway @rauddyisaacc7242",
-     "published": "2026-11-23T16:00:26+00:00",
      "author": "YouTube"
     }
    ]

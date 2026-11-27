@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-27T08:38:22Z",
+ "updated": "2026-11-27T21:20:25Z",
  "instances": [
   {
    "url": "https://yt.chocolatemoo53.com",
    "ok": true,
-   "ms": 177,
+   "ms": 224,
    "code": 200,
    "type": "invidious",
    "play": "ok",
    "note": ""
   },
   {
-   "url": "https://piped.video",
+   "url": "https://piped.kavin.rocks",
    "ok": true,
-   "ms": 126,
+   "ms": 96,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "API 未开放 (HTTP 403)"
   },
   {
-   "url": "https://piped.kavin.rocks",
+   "url": "https://piped.video",
    "ok": true,
-   "ms": 146,
+   "ms": 133,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -31,7 +31,7 @@
   {
    "url": "https://piped.mha.fi",
    "ok": true,
-   "ms": 166,
+   "ms": 511,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -40,7 +40,7 @@
   {
    "url": "https://yewtu.be",
    "ok": true,
-   "ms": 402,
+   "ms": 545,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -49,16 +49,7 @@
   {
    "url": "https://invidious.tiekoetter.com",
    "ok": true,
-   "ms": 718,
-   "code": 200,
-   "type": "invidious",
-   "play": "unknown",
-   "note": "API 未开放 (HTTP 403)"
-  },
-  {
-   "url": "https://inv.nadeko.net",
-   "ok": true,
-   "ms": 937,
+   "ms": 827,
    "code": 200,
    "type": "invidious",
    "play": "unknown",
@@ -67,16 +58,25 @@
   {
    "url": "https://piped.private.coffee",
    "ok": true,
-   "ms": 1016,
+   "ms": 956,
    "code": 200,
    "type": "piped",
    "play": "unknown",
    "note": "URLError"
   },
   {
+   "url": "https://inv.nadeko.net",
+   "ok": true,
+   "ms": 1026,
+   "code": 200,
+   "type": "invidious",
+   "play": "unknown",
+   "note": "API 未开放 (HTTP 403)"
+  },
+  {
    "url": "https://piped.adminforge.de",
    "ok": true,
-   "ms": 1574,
+   "ms": 1612,
    "code": 200,
    "type": "piped",
    "play": "unknown",
@@ -85,7 +85,7 @@
   {
    "url": "https://invidious.f5.si",
    "ok": true,
-   "ms": 419,
+   "ms": 112,
    "code": 530,
    "type": "invidious",
    "play": "err",
