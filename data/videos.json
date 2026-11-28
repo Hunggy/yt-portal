@@ -1,5 +1,240 @@
 {
- "updated": "2026-11-28T07:52:30Z",
+ "updated": "2026-11-28T20:07:47Z",
  "live": [],
- "channels": []
+ "channels": [
+  {
+   "id": "UCfzRiA1Z11IXqHAWm2x_5Yg",
+   "name": "KPL 王者荣耀职业联赛",
+   "videos": [
+    {
+     "id": "5TfTwciylmc",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-15T01:22:35+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "F5EcvKGJJ4c",
+     "title": "北京德比!【2026 KPL】北京JDG vs 北京WB | 總決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-14T15:16:25+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "U6BqHkHwhfM",
+     "title": "【2026 KPL】廣州TTG vs 北京WB | 敗者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-08T14:27:15+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "AulgAZ33WXY",
+     "title": "【2026 KPL】廣州TTG vs 杭州LGD.NBW | 敗者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T13:54:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "Xg1HWdHZldI",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-07T01:54:33+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "IJcuUAYGHWk",
+     "title": "【2026 KPL】北京JDG vs 北京WB | 勝者組決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-06T14:48:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "jOyB-F9ENO0",
+     "title": "【2026 KPL】杭州LGD.NBW vs 上海EDG.M | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-05T16:41:11+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "sxKTACQHRS8",
+     "title": "【2026 KPL】廣州TTG vs 重慶狼隊 | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-04T15:23:43+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "zR6nZEjRgQ4",
+     "title": "【2026 KPL】北京WB vs 上海EDG.M | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-03T17:44:46+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "dDKEC1Hq2Cs",
+     "title": "【2026 KPL】北京JDG vs 重慶狼隊 | 勝者組半決賽 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-02T15:20:30+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "iB2lsoQ-AS4",
+     "title": "【2026 KPL】KSG vs 杭州LGD.NBW | 敗者組 | 雙敗淘汰賽 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-11-01T17:27:34+00:00",
+     "author": "KPL聯盟"
+    },
+    {
+     "id": "hE0BDdDPp0Q",
+     "title": "【2026 KPL】廣州TTG vs 長沙TES.A | 淘汰賽 敗者組 | BO7 | 年度總決賽 | 王者榮耀",
+     "published": "2026-10-31T15:01:02+00:00",
+     "author": "KPL聯盟"
+    }
+   ]
+  },
+  {
+   "id": "UCBqo62uoCQKO71QF6J2aNQA",
+   "name": "Honor of Kings Global Esports",
+   "videos": [
+    {
+     "id": "dS8IOkB2tgw",
+     "title": "[BM] Honor of Kings Nation Clash 2026 | Playoffs Hari 2",
+     "published": "2026-11-28T16:59:31+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "YMFz73akx_g",
+     "title": "W or L? KPL 🇨🇳 and MKL 🇲🇾 have their own answers! 🫢",
+     "published": "2026-11-28T15:32:04+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "qNNYqC6V9mw",
+     "title": "[FIL] 2026 Honor of Kings Nation Clash | Playoffs Day 2",
+     "published": "2026-11-28T15:28:07+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "QMJgHeEr6ZI",
+     "title": "Refused 4-0 for MKL! 🇲🇾 Defending home turf, one game at a time at #KNC2026! 🔥",
+     "published": "2026-11-28T14:56:32+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "2IMNHG0OFpY",
+     "title": "[EN] 2026 Honor of Kings Nation Clash | Playoffs Day 2",
+     "published": "2026-11-28T14:19:25+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "fzA_ccKOLBs",
+     "title": "[FIL] 2026 Honor of Kings Nation Clash | Playoffs Day 3",
+     "published": "2026-11-28T14:14:44+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "inySdjTPW0g",
+     "title": "[中文] 2026王者荣耀洲际争霸赛 | 小淘汰赛第二天",
+     "published": "2026-11-28T14:11:49+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "R5J0_QZFmNw",
+     "title": "[BM] Honor of Kings Nation Clash 2026 | Playoffs Hari 3",
+     "published": "2026-11-28T14:10:39+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "93PvPJQjSoI",
+     "title": "[ID] Honor of Kings Nation Clash 2026 | Playoffs Hari ke-3",
+     "published": "2026-11-28T14:07:45+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "9jbxqb5D3vo",
+     "title": "[EN] 2026 Honor of Kings Nation Clash | Playoffs Day 3",
+     "published": "2026-11-28T14:05:45+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "GyIrwR-HU10",
+     "title": "[ID] Honor of Kings Nation Clash 2026 | Playoffs Hari ke-2",
+     "published": "2026-11-27T12:28:17+00:00",
+     "author": "HoK Esports"
+    },
+    {
+     "id": "nz43mMt3_HA",
+     "title": "Stay united, and all pressure turns into motivation! 🇲🇾🔥",
+     "published": "2026-11-28T13:30:16+00:00",
+     "author": "HoK Esports"
+    }
+   ]
+  },
+  {
+   "id": "UCBR8-60-B28hp2BmDPdntcQ",
+   "name": "YouTube",
+   "videos": [
+    {
+     "id": "GGProxIvLkk",
+     "title": "saw the football paper bags and knew this would slap",
+     "published": "2026-11-28T17:00:33+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "bywdvlhUtS4",
+     "title": "@patrickisanavajo is keeping indigenous tradition alive and beautiful as ever",
+     "published": "2026-11-28T14:00:29+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "Gf7MIyp82tI",
+     "title": "@MatthewPatrick has a confession to make",
+     "published": "2026-11-27T22:00:37+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "Os_q9jJk8TM",
+     "title": "nobody wants to look like a square",
+     "published": "2026-11-27T19:02:04+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "XBLmhDdbO4s",
+     "title": "watch HBO Original Girls on HBO Max without leaving YouTube. explore offers in the Movies & TV tab",
+     "published": "2026-11-27T16:00:43+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "XPw-0jBj9nY",
+     "title": "our dream house tbh @milin.woolfelt",
+     "published": "2026-11-26T21:00:25+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "CP2UgMK-wTs",
+     "title": "the best weekends are the ones with a little Disney magic 🏰 #YouTubeCreatorCollective",
+     "published": "2026-11-26T10:00:28+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "uYiplZft4Xk",
+     "title": "Boy Throb stopped by the YouTube office for a little game of guess who 👀",
+     "published": "2026-11-26T04:00:17+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "hypFKFRDd5o",
+     "title": "guess who is most likely to from @ATEEZofficial we’re entering our GOLDEN HOUR: Part.6 era ✨",
+     "published": "2026-11-26T01:00:21+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "w6tZpvRyE5k",
+     "title": "sometimes all you need to do is touch some grass @heovers",
+     "published": "2026-11-25T21:00:19+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "mwnzBqH0X5A",
+     "title": "our kind of night in 💗 ‘Always Lalisa’ is out now, only with YouTube Premium",
+     "published": "2026-11-25T18:00:29+00:00",
+     "author": "YouTube"
+    },
+    {
+     "id": "6QIoikiN_ok",
+     "title": "we're entering our GOLDEN HOUR: Part 6 era ✨⭐️ streaming on YouTube Music",
+     "published": "2026-11-24T20:00:21+00:00",
+     "author": "YouTube"
+    }
+   ]
+  }
+ ]
 }
